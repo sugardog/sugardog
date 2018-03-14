@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  kana_first_name: MyString
+  kana_last_name: MyString
+  email: MyString
+  zipcode: MyString
+  tel: MyString
+  prefecture_id: 1
+  address: MyString
+  password: MyString
+  nickname: MyString
+  soft_destroyed_at: 2018-03-14 07:00:36
+  cart_id: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  kana_first_name: MyString
+  kana_last_name: MyString
+  email: MyString
+  zipcode: MyString
+  tel: MyString
+  prefecture_id: 1
+  address: MyString
+  password: MyString
+  nickname: MyString
+  soft_destroyed_at: 2018-03-14 07:00:36
+  cart_id: 1

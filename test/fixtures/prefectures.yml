@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prefecture_name: MyString
+  postage: 1
+
+two:
+  prefecture_name: MyString
+  postage: 1

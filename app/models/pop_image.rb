@@ -1,0 +1,2 @@
+class PopImage < ApplicationRecord
+end

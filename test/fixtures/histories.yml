@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cd_id: 1
+  delivery_id: 1
+  total_price: 1
+  status: 1
+  soft_destroyed_at: 2018-03-14 07:03:00
+
+two:
+  cd_id: 1
+  delivery_id: 1
+  total_price: 1
+  status: 1
+  soft_destroyed_at: 2018-03-14 07:03:00
