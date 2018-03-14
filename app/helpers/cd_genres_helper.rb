@@ -1,0 +1,2 @@
+module CdGenresHelper
+end

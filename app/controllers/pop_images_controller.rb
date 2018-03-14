@@ -1,0 +1,2 @@
+class PopImagesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class CdGenresController < ApplicationController
+end
