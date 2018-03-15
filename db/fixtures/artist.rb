@@ -93,3 +93,19 @@ Artist.seed do |s|
  	s.introduction = "日本のロック・バンド。メンバーはTAKA（vo）、TORU（g）、RYOTA（b）、TOMOYA（ds）の4名。"
  	s.image = Rails.root.join("db/fixtures/images/one_favorite.jpg").open
 end
+
+Artist.seed do |s|
+ 	s.id = 13
+ 	s.artist_name = "Ariana Grande"
+ 	s.artist_kana_name = "アリアナ　グランデ"
+ 	s.introduction = "1993年6月26日生まれ、米・フロリダ州ボカラトン出身のシンガー・ソングライター／女優。"
+ 	s.image = Rails.root.join("db/fixtures/images/ariana_favorite.jpg").open
+end
+
+Artist.seed do |s|
+ 	s.id = 14
+ 	s.artist_name = "RAD WIMPS"
+ 	s.artist_kana_name = "ラッド　ウィンプス"
+ 	s.introduction = "日本のロック・バンド。メンバーは野田洋次郎（vo,g,p）、桑原彰（g）、武田祐介（b）、山口智史（ds）の4名。"
+ 	s.image = Rails.root.join("db/fixtures/images/ariana_favorite.jpg").open
+end
