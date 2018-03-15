@@ -22,39 +22,38 @@
 	    	<div class="col-lg-8 col-lg-offset-2">
 	    		<div class="title-headline">基本情報</div>
 	    			<ul class="list-group">
-					  <li class="list-group-item list-group-item-info">基本情報</li>
-					  <li class="list-group-item">
+					    <li class="list-group-item list-group-item-info">基本情報</li>
+					    <li class="list-group-item">
 	  					    <table class="table">
-						    <thead>
-						      <tr>
-						        <td>カナ<br>
-						        	名前
-						        </td>
-						        <td><%= @user.kana_first_name %> <%= @user.kana_last_name %><br>
-						        	<%= @user.first_name %> <%= @user.last_name %>
-						        </td>
-						      </tr>
-						    </thead>
-						    <tbody>
-						      <tr>
-						        <td>郵便番号<br>住所</td>
-						        <td>〒 <%= @user.zipcode %><br>
-						        	<%= @user.prefecture.id %> <%= @user.address %>
-						        </td>
-						      </tr>
-						      <tr>
-						        <td>電話番号</td>
-						        <td> <%= %> </td>
-						      </tr>
-						      <tr>
-						        <td>E-Mail</td>
-						        <td>suger@dog。</td>
-						      </tr>
-						    </tbody>
-						  </table>
+							    <thead>
+							        <tr>
+								        <td>カナ<br>名前
+								        </td>
+								        <td><%= @user.kana_first_name %> <%= @user.kana_last_name %><br>
+								        	<%= @user.first_name %> <%= @user.last_name %>
+								        </td>
+							        </tr>
+							    </thead>
+							    <tbody>
+							        <tr>
+								        <td>郵便番号<br>住所</td>
+								        <td>〒 <%= @user.zipcode %><br>
+								        	<%= @user.prefecture.id %> <%= @user.address %>
+								        </td>
+							        </tr>
+							        <tr>
+								        <td>電話番号</td>
+								        <td> <%= %> </td>
+							        </tr>
+							        <tr>
+								        <td>E-Mail</td>
+								        <td>suger@dog。</td>
+							        </tr>
+							    </tbody>
+						    </table>
 						</li>
 					</ul>
-
+					<a href="quit.html"><button class="btn btn-default destroy" >退会のお手続きへ</button></a><br>
 					  <div class="title-headline">お届け先情報</div>
 						  <ul class="list-group">
 							  <li class="list-group-item list-group-item-warning">お届け先１</li>
