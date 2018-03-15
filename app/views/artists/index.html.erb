@@ -1,0 +1,58 @@
+<div class="col-lg-5">
+    <div class="title-headline">アーティスト追加</div>
+    <%= form_for(@artist,  html: {class: 'form-horizontal'}) do |f| %>
+        <div class="form-group">
+            <label class="control-label col-sm-4 nav-text" for="image">アーティストイメージ:</label>
+            <div class="col-sm-8"> 
+                <div class="artist_pic"><%= f.attachment_field :image, placeholder:"image" %>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 nav-text" for="artist_name">アーティスト名:</label>
+            <div class="col-sm-8">
+                <%= f.text_field :artist_name, class: "form-control", placeholder: "artist_name"%>                        
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 nav-text" for="artist_kana_name">アーティスト名(カナ):</label>
+            <div class="col-sm-8"> 
+                <%= f.text_field :artist_kana_name, class: "form-control", placeholder: "artist_kana_name"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 nav-text" for="comment">アーティスト紹介:</label>
+            <div class="col-sm-8"> 
+                <%= f.text_area :introduction, class: "form-control", placeholder: "introduction", rows: "5" %>
+            </div>
+        </div> 
+        <div class="right">
+            <%= f.submit 'create', class: 'btn btn-warning' %>
+        </div>
+    <% end %>
+</div>
+<!-- </form> -->
+<div class="col-lg-7">
+    <div class="title-headline">ARTIST INDEX</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>アーティスト名</td>
+                <td>カナ</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <% @artists.each do |artist| %>
+                <tr>
+                    <td><%= link_to artist_path(artist) do %>
+                            <%= artist.artist_name %>
+                        <% end %>
+                        </td>
+                    <td><%= artist.artist_kana_name %></td>
+                    <td></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+

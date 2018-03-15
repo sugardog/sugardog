@@ -17,35 +17,34 @@
 		<link rel="stylesheet" href="sugerdog.css">
 		<title>sugerdog.</title>
 	</head>
-	<body>
 	    <!-- ここからコードを書きましょう -->
+	    <body>
 	    <!-- header -->
-	 	<header class="navbar-fixed-top">
-	    <!-- nav -->
-	        <nav class="clearfix">
-	       		<div class="title">sugerdog。</div>
-			 	<div class="search-box">
-					<form>
-						<dl>
-							<dt><input class="search-form" type="text" name="search" placeholder="Search" value=""></dt>
-							<dd><a href="search.html"><button class="search-button fa fa-search"></button></a></dd>
-						</dl>
-					</form>
-				</div>
-		        <ul class="nav-list clearfix">
-		          	<a href="index.html" class="nav-list-item"><div class="white"><div class="nav-text white">home</div></div></a>
-		            <a href="sign_up.html" class="nav-list-item"><div class="nav-text white">sign up</div></div></a>
-		            <a href="login.html" class="nav-list-item"><div class="nav-text white">login</div></div></a>
-		            <a href="user.html" class="nav-list-big"><div class="nav-text white">mymenu</div></a>
-		            <a href="cart_index.html" class="nav-list-big"><li class="fa fa-shopping-cart white" style="font-size: 45px"><br><div class="nav-text white">cart</div></li></a>
-		        </ul>
-			</nav>
-	    </header>
+		 	<header class="navbar-fixed-top">
+		    <!-- nav -->
+		        <nav class="clearfix">
+		       		<div class="title">sugerdog。</div>
+				 	<div class="search-box">
+						<form>
+							<dl>
+								<dt><input class="search-form" type="text" name="search" placeholder="Search" value=""></dt>
+								<dd><a href="search.html"><button class="search-button fa fa-search"></button></a></dd>
+							</dl>
+						</form>
+					</div>
+			        <ul class="nav-list clearfix">
+			          	<a href="index.html" class="nav-list-item"><div class="white"><div class="nav-text white">home</div></div></a>
+			            <a href="sign_up.html" class="nav-list-item"><div class="nav-text white">sign up</div></div></a>
+			            <a href="login.html" class="nav-list-item"><div class="nav-text white">login</div></div></a>
+			            <a href="user.html" class="nav-list-item"><div class="nav-text white">mymenu</div></a>
+			            <a href="cart_index.html" class="nav-list-big"><li class="fa fa-shopping-cart white" style="font-size: 45px"><br><div class="nav-text white">cart</div></li></a>
+			        </ul>
+				</nav>
+		    </header>
 
 
 <!-- ここからadmin header -->
-	        <header class="admin">
-    <!-- nav -->
+	  <!--       <header class="admin">
         <nav class="clearfix admin">
         	<div class="clearfix header_nav">
             <a href="admin.html"><div class="admin_nav-list-item">TOP</div></a>
@@ -60,8 +59,7 @@
             <a href="top_image_edit.html"><div class="admin_nav-list-item">Topイメージ<br>設定</div></a>
         	</div>
         </nav>
-    </header>
-	<body>
+    </header> -->
 	    <%= yield %>
-	  </body>
+	    <body>
 	</html>
