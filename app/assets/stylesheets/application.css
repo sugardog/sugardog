@@ -137,6 +137,7 @@ a:hover {
   line-height: 80px;
   border-radius: 50%;
   margin:10px 10px;
+  padding-top: 10px;
 }
 .nav-list-item:hover {
   background-color: #ff19a3;
@@ -153,6 +154,7 @@ a:hover {
   margin: 0px 5px;
   line-height: 100px;
   border: none;
+  padding-top: 20px;
 }
 /*nav_user finish*/
 /*nav_admin start*/
@@ -200,6 +202,7 @@ a:hover {
 .main-menu {
 	width: 90%;
 	text-align: center;
+	margin: 0 auto;
 }
 
 .category-box {
@@ -310,11 +313,12 @@ th {
 	font-size: 20px;
 	margin: 40px;
 	text-align: center;
+	margin-top: 130px;
 }
 .right {
 	text-align: right;
 }
-.artist_pic {
+.artist_pic img {
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
