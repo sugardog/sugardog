@@ -1,0 +1,43 @@
+<div class="col-lg-4">
+        <div class="title-headline">Topイメージ追加</div>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <%= form_for(@pop_image) do |f| %>
+                            
+                    <% end %>
+                      
+                    <label class="control-label col-sm-4 nav-text" for="image">Topイメージ:</label>
+                    <div class="col-sm-8"> 
+                        
+                        <input type="file" id="image" placeholder="image">
+                    </div>
+                </div>
+            </div>
+        <div class="right">
+            <a href="artist.html"><button class="btn btn-warning">create</button></a>
+        </div>
+    </div>
+<div class="col-lg-8">
+    <div class="title-headline">TOP IMAGE</div>
+
+     <table class="table">
+                <thead>
+                    <tr>
+                        <td>imege</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% pop_images.each do |pop_image| %>
+                    <tr>
+                        <td><img class="top_image_index" src="cd_image/aiko_top.jpg"></td>
+                        <td><a href="top_image_edit.html"><button class="btn btn-danger">destroy</button></a></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+</div>
+    
+
+
+    </div>

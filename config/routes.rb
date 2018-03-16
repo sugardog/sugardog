@@ -18,7 +18,7 @@ end
 resources :carts
 resources :histories
 resources :genres, except: [:show]
-resources :pop_images, except: [:edit,:update,:show]
+resources :pop_images, except: [:edit,:update,:show,:new]
 resources :songs
 resources :artists do
 	resource :favorites, only: [:create, :destroy]
