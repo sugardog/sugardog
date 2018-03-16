@@ -1,0 +1,39 @@
+<body>
+    <title>cart-html</title>
+    <div class="col-lg-4">
+        <div class="title-headline">ジャンル編集</div>
+              <%= form_for(@genre) do |f| %>
+                <div class="form-group">
+                <label class="control-label col-sm-4 nav-text" for="genre_name">ジャンル名:</label>
+                <div class="col-sm-8">
+                    <%= f.text_field :genre_name, class: "form-control", placeholder: "genre_name", id: "genre_name" %>
+                </div>
+                </div>
+                 <div class="right">
+                 <%= f.submit "edit", class: "btn btn-warning" %>
+                 <% end %>
+                 </div>
+                 </div>
+    <div class="col-lg-8">
+        <div class="title-headline">GENRE INDEX</div>
+        <div class="col-lg-8 col-lg-offset-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>ジャンル</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                      <% @genres.each do |f|%>
+                    <tr>
+                        <td><%= f.genre_name %></td>
+                        <td><%= link_to "edit", edit_genre_path(f), class: "btn btn-success"  %></td>
+                        <td><%= link_to "destroy", genre_path(f), method: :delete, class: "btn btn-danger" %></td>
+                    </tr>
+                       <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
