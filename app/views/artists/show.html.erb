@@ -1,0 +1,35 @@
+<div class="col-lg-10 col-lg-offset-1">
+	<div class="main-menu">
+		<div class="title-headline"><%= @artist.artist_name %></div>
+		<div class="col-lg-6">
+			 	<%#= attachment_image_tag image, :image, :fill, 200, 200 %>
+			 	<div class="artist_pic">
+                	<%= attachment_image_tag @artist,:image, placeholder:"image" %><br>
+                </div>
+		</div>
+		<div class="col-lg-6">
+			<div class="artist_introduct">
+				<table class="table">
+					<thead>
+  						<th><%= @artist.artist_name %></th>
+					</thead>
+					<tr>
+  						<td><%= @artist.introduction %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<table class="table"></table>
+		<table class="table">
+			<thead>
+  				<th colspan="4">
+  					<div class=cart_show_title >ディスコグラフィー
+  					</div>
+  				
+                  </table>
+
+  				</th>
+			</thead>
+		</table>
+	</div>
+</div>

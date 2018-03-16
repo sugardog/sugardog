@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3">
+    	<div class="side-bar">
+    	 	<div class="category-box">
+		    	<h4>hello User!!</h4>
+		    	<h2>my menu</h2>
+		    	<ol>
+			    	<li> <%= link_to "ユーザー情報の確認", user_path(@user) %> </li>
+			    	<li> <%= lin_to "基本情報の編集", edit_user_path(@user) %> </li>
+			    	<li> <%= link_to "お届け先追加・変更", %> </li>
+			    	<li> <%= link_to "パスワード変更", %> </li>
+			    	<li> <%= link_to "購入履歴", %> </li>
+			    	<li> <%= link_to "お気に入りアーティスト", %> </li>
+			    	<li> <%= link_to "my review", %> </li>
+			    </ol>
+	    	</div>
+		</div>
+	</div>
+	<div class="col-lg-9">
+	    <div class="main-menu">
+	    	<div class="col-lg-8 col-lg-offset-2">
+	    		<div class="title-headline">基本情報</div>
+	    			<ul class="list-group">
+					    <li class="list-group-item list-group-item-info">基本情報</li>
+					    <li class="list-group-item">
+	  					    <table class="table">
+							    <thead>
+							        <tr>
+								        <td>カナ<br>名前
+								        </td>
+								        <td><%= @user.kana_first_name %> <%= @user.kana_last_name %><br>
+								        	<%= @user.first_name %> <%= @user.last_name %>
+								        </td>
+							        </tr>
+							    </thead>
+							    <tbody>
+							        <tr>
+								        <td>郵便番号<br>住所</td>
+								        <td>〒 <%= @user.zipcode %><br>
+								        	<%= @user.prefecture.id %> <%= @user.address %>
+								        </td>
+							        </tr>
+							        <tr>
+								        <td>電話番号</td>
+								        <td> <%= @user.tel %> </td>
+							        </tr>
+							        <tr>
+								        <td>E-Mail</td>
+								        <td> <%= @user.email %></td>
+							        </tr>
+							    </tbody>
+						    </table>
+						</li>
+					</ul>
+					<a href="quit.html"><button class="btn btn-default destroy" >退会のお手続きへ</button></a><br>
+					    <div class="title-headline">お届け先情報</div>
+					    <ul class="list-group">
+						    <li class="list-group-item list-group-item-warning">お届け先１</li>
+						    <li class="list-group-item">
+						  		〒 <%= %><br>
+						  							　茨城県つくば市沼田５７９<br>
+							  						  sugerdog。様<br>
+							  					      080-0000-0000<br>
+						        <div class="right">
+								  	<a href="delivery.html"><button class="btn btn-default edit">edit</button></a>
+									<a href="user.html"><button class="btn btn-default destroy">destroy</button></a>
+	    					    </div>
+						    </li>
+					    </ul>
+					    <ul class="list-group">
+						    <li class="list-group-item list-group-item-warning">お届け先2</li>
+						    <li class="list-group-item">〒300-4353<br>
+						   							　  茨城県つくば市沼田５７９<br>
+							  						  　sugerdog。様<br>
+							  					    	080-0000-0000<br>
+   					    	    <div class="right">
+								   	<a href="delivery.html"><button class="btn btn-default edit">edit</button></a>
+     	  					    	<a href="user.html"><button class="btn btn-default destroy">destroy</button></a>
+ 	  					        </div>
+						    </li>
+					    </ul>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+</div>

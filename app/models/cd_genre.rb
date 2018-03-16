@@ -1,0 +1,2 @@
+class CdGenre < ApplicationRecord
+end

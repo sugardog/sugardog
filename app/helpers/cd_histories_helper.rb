@@ -1,0 +1,2 @@
+module CdHistoriesHelper
+end

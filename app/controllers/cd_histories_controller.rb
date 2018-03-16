@@ -1,0 +1,2 @@
+class CdHistoriesController < ApplicationController
+end

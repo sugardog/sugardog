@@ -1,0 +1,2 @@
+class CdCartsController < ApplicationController
+end
