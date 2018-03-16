@@ -1,6 +1,15 @@
 <div class="col-lg-5">
     <div class="title-headline">アーティスト追加</div>
     <%= form_for(@artist,  html: {class: 'form-horizontal'}) do |f| %>
+        <% if @artist.errors.any? %>
+            <div id="error_explanation" class="text-center">
+                <h4><%= @artist.errors.count %>件のエラーが発生しました。</h4>
+                    <% @artist.errors.full_messages.each do |message| %>
+                        <h6><%= message %></h6>
+                    <% end %>
+            </div>
+        <% end %>
+
         <div class="form-group">
             <label class="control-label col-sm-4 nav-text" for="image">アーティストイメージ:</label>
             <div class="col-sm-8"> 
@@ -39,7 +48,8 @@
             <tr>
                 <td>アーティスト名</td>
                 <td>カナ</td>
-                <td></td>
+                <td>編集</td>
+                <td>削除</td>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +60,15 @@
                         <% end %>
                         </td>
                     <td><%= artist.artist_kana_name %></td>
-                    <td></td>
+                    <td><%= link_to artists_path(id: artist.id) do %>
+                        <div class="btn btn-success">edit</div>
+                        <% end %>
+                    </td>
+                    <td>
+                        <%= link_to artist_path(artist.id), method: :delete, "data-confirm" => "are you sure?" do %>
+                            <div class="btn btn-danger">destroy</div>
+                        <% end %>
+                    </td>
                 </tr>
             <% end %>
         </tbody>

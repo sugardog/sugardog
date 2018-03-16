@@ -1,0 +1,23 @@
+   <div class="col-lg-8">
+        <div class="title-headline">GENRE INDEX</div>
+            <div class="col-lg-8 col-lg-offset-2">
+             <table class="table">
+                <thead>
+                    <tr>
+                        <td>ジャンル</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                      <% genres.each do |f| %>
+                        <tr>
+                        <td><%= f.genre_name %></td>
+                        <td><%= link_to "edit", edit_genre_path(f), class: "btn btn-success"  %></td>
+                        <td><%= link_to "destroy", genre_path(f), method: :delete, class: "btn btn-danger" %></td>
+                        </tr>
+                       <% end %>
+                </tbody>
+             </table>
+            </div>
+    </div>

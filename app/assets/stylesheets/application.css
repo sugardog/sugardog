@@ -53,12 +53,12 @@ dd .search-button:hover {
 /*search form finish*/
 
 
-
 /*header*/
-header {
+
+header{
 	width: 100%;
 	height: 100px;
-	background-color: #8e8e8e94;
+	background-color: rgba(142,142,142,0.5);
 }
 body {
   margin-top: 100px;
@@ -69,7 +69,6 @@ body {
 	color: #fff;
 	float:left;
 	margin-top: 25px;
-
 }
 
 h2{
@@ -115,7 +114,7 @@ a:hover {
 .nav-list-item {
   width: 80px;
   height: 80px;
-　font-size: 20px;
+  font-size: 20px;
   text-align: center;
   float: left;
   border: 1px;
@@ -207,7 +206,7 @@ a:hover {
 
 .category-box {
 	width: 100%;
-	margin: 0 auto;
+	margin: 130px auto;
 }
 
 /*main*/
@@ -228,7 +227,7 @@ a:hover {
 .cd-box:hover {
   border-color: #ff00819e;
 }
-.cd_image {
+.cd_image img {
 	width: 130px;
 	height: 130px;
 }
@@ -313,7 +312,6 @@ th {
 	font-size: 20px;
 	margin: 40px;
 	text-align: center;
-	margin-top: 130px;
 }
 .right {
 	text-align: right;
@@ -394,13 +392,16 @@ th {
 	border-color: #fff;
 	background-color: #ffd7d9;
 	border-radius: 50px;
-	margin: 20px 2.5% 20px 2.5%;
+	margin: 130px 2.5% 20px 2.5%;
 	color: #fff;
 }
 
-.top_image_index {
+.top_image_index img {
 	width: 500px;
 }
 .left {
 	text-align: left;
+}
+.text-center {
+	margin: 0 auto;
 }

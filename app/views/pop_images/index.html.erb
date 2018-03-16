@@ -1,0 +1,46 @@
+<div class="col-lg-4">
+    <div class="title-headline">Topイメージ追加</div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <%= form_for(@pop_image) do |f| %>
+                    <% if @pop_image.errors.any? %>
+                        <div id="error_explanation" class="text-center">
+                        <h5>画像を登録してください</h5></br>
+                    <% end %>
+                    <%= f.attachment_field :image %>
+                    <div class="right">
+                        <%= f.submit 'create', class: "btn btn-warning" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-8">
+    <div class="title-headline">TOP IMAGE</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>imege</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <% @pop_images.each do |pop_image| %>
+                    <tr>
+                        <td>
+                            <div class="top_image_index">
+                                <%= attachment_image_tag pop_image,:image %>
+                            </div>
+                        </td>
+                        <td><%= link_to pop_image_path(pop_image), method: :delete, "data-confirm" => "are you sure?" do %>
+                            <div class="btn btn-danger">destroy</div>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
