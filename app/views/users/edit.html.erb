@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3">
+    	<div class="side-bar">
+    	 	<div class="category-box">
+		    	<h4>hello User!!</h4>
+		    	<h2>my menu</h2>
+		    	<ol>
+			    	<li><a href="user.html" >ユーザー情報の確認</a></li>
+			    	<li><a href="user_edit.html" >基本情報の編集</a></li>
+			    	<li><a href="delivery.html" >お届け先追加・変更</a></li>
+			    	<li><a href="pass_edit.html" >パスワード変更</a></li>
+			    	<li><a href="history.html" >購入履歴</a></li>
+			    	<li><a href="my_favorite.html">お気に入りアーティスト</a></li>
+			    	<li><a href="user_review.html">my review</a></li>
+			    </ol>
+	    	</div>
+		</div>
+	</div>
+	<div class="col-lg-9">
+	    <div class="main-menu">
+			<div class="container">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div class="title-headline">基本情報の編集</div>
+						<div class="form-horizontal">
+							<%= form_for(@user) do |f| %>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="last_name">姓:</label>
+								    <div class="col-sm-10">
+								    	<%= f.last_name, class: "form-control", placeholder: "last_name" %>
+							    	</div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="first_name">名:</label>
+								    <div class="col-sm-10">
+								    	<%= f.first_name, class: "form-control", placeholder: "first_name" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="kana_last_name">カタカナ姓:</label>
+								    <div class="col-sm-10">
+								    	<%= f.kana_last_name, class: "form-control", placeholder: "kana_last_name" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="kana_first_name">カタカナ名:</label>
+								    <div class="col-sm-10">
+								    	<%= f.kana_first_name, class: "form-control", placeholder: "kana_first_name" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="zipcode">郵便番号:</label>
+								    <div class="col-sm-10">
+								    	<%= f.zipcode, class: "form-control", placeholder: "zipcode" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="prefecture">都道府県:</label>
+								    <div class="col-sm-10">
+								    	<%= f.prefecture_id, class: "form-control", placeholder: "都道府県を選んで下さい" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="address">住所:</label>
+								    <div class="col-sm-10">
+								    	<%= f.address, class: "form-control", placeholder: "address" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="tel">電話番号:</label>
+								    <div class="col-sm-10">
+								    	<%= f.tel, class: "form-control", placeholder: "tel" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <label class="control-label col-sm-2" for="address">メール:</label>
+								    <div class="col-sm-10">
+								    	<%= f.email, class: "form-control", placeholder: "e-mail" %>
+								    </div>
+							    </div>
+							    <div class="form-group">
+								    <div class="col-sm-offset-2 col-sm-10">
+								    	<%= f.submit "update", class: "btn btn-default create" %>
+								    </div>
+							    </div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+</div>

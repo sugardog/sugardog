@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
+#root 'cds#index'
 get 'cds/search' => 'cds#search'
 get 'cd_carts/:id/select' => 'cd_carts#select'
 

@@ -1,4 +1,4 @@
-<div class="container-fluid"> 
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-2">
       <div class="side-bar">
@@ -26,35 +26,35 @@
           <div class="form-group">
               <label class="control-label col-sm-3 nav-text" for="image"> 姓:</label>
               <div class="col-sm-6">
-                <%= f.text_field :last_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"last_name" %>
+                <%= f.text_field :last_name, autofocus: true, class: "form-control", id: "inputName", placeholder:"last_name" %>
               </div>
           </div>
 
           <div class="form-group">
               <label class="control-label col-sm-3 nav-text" for="kana_last_name"> カタカナ姓:</label>
               <div class="col-sm-6">
-                <%= f.text_field :kana_last_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"kana_last_name", :size=>"10" %>
+                <%= f.text_field :kana_last_name, autofocus: true, class: "form-control", id: "inputName", placeholder: "kana_last_name", size: "10" %>
               </div>
           </div>
 
           <div class="form-group">
               <label class="control-label col-sm-3 nav-text" for="first_name"> 名:</label>
               <div class="col-sm-6">
-                <%= f.text_field :first_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"first_name" %>
+                <%= f.text_field :first_name, autofocus: true, class: "form-control", id: "inputName", placeholder: "first_name" %>
               </div>
           </div>
 
           <div class="form-group">
               <label class="control-label col-sm-3 nav-text" for="kana_last_name"> カタカナ名:</label>
               <div class="col-sm-6">
-                <%= f.text_field :kana_first_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"kana_first_name" %>
+                <%= f.text_field :kana_first_name, autofocus: true, class: "form-control", id: "inputName", placeholder: "kana_first_name" %>
               </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-3 nav-text" for="zipcode"> 郵便番号:</label>
             <div class="col-sm-6">
-              <%= f.text_field :zipcode, autofocus: true, class:"form-control", id:"inputName", placeholder:"zipcode" %>
+              <%= f.text_field :zipcode, autofocus: true, class: "form-control", id: "inputName", placeholder: "zipcode" %>
             </div>
           </div>
 
@@ -74,14 +74,14 @@
           <div class="form-group">
             <label class="control-label col-sm-3 nav-text" for="address"> 住所:</label>
             <div class="col-sm-6">
-              <%= f.text_area :address, autofocus: true, class:"form-control", id:"inputName", placeholder:"address", row:"5" %>
+              <%= f.text_area :address, autofocus: true, class: "form-control", id: "inputName", placeholder: "address", row: "5" %>
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-3 nav-text" for="email"> メールアドレス:</label>
             <div class="col-sm-6">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
             </div>
           </div>
 
@@ -91,20 +91,20 @@
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
-              <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"password" %>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "password" %>
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-3 nav-text" for="password">パスワード確認:</label>
             <div class="col-sm-6">
-              <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "password" %>
             </div>
           </div>
 
           <div class="col-sm-9">
             <div class="right">
-              <%= f.submit "Sign up", class:"btn btn-default create" %>
+              <%= f.submit "Sign up", class: "btn btn-default create" %>
             </div>
           </div>
 
