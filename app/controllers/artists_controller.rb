@@ -3,6 +3,7 @@ class ArtistsController < ApplicationController
 	def new
 		@artist = Artist.new
 		@singer = Singer.new
+		@cd = Cd.new
 	end
 	def create
 		@artist = Artist.new(artist_params)
@@ -18,33 +19,33 @@ class ArtistsController < ApplicationController
 	def index
 		@artists = Artist.all
 		@artist =Artist.new
+	  	if params[:id].present?
+	    	@artist = Artist.find(params[:id])
+	  	else
+	   		@artist = Artist.new
+	  	end
 	end
 	def show
 	   @artist = Artist.new
        @artist = Artist.find(params[:id])
+       @cds = Cd.all
+       @cd = Cd.new
+       
 	end
 
 	def destroy
 		@artist = Artist.find(params[:id])
-		if artist = Artist.find(params[:id])
-			@signger = Singer.find(params[:id])
-		end
-
-		if artist.destroy
-				singer.destroy
-		end
-		ridirect_to artists_path
+  		@artist.destroy
+  		redirect_to artists_path
 	end
 	def update
 		@artist = Artist.find(params[:id])
-		@singer = Singer.find(params[:id])
 		@artist.update(artist_params)
-		@singer.update(singer_params)
 		redirect_to artists_path
+
 	end
 	def edit
 		@artist = Artist.find(params[:id])
-		@singer = Singer.find(params[:id])
 	end
 
 	private
