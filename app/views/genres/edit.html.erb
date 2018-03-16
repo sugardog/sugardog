@@ -1,0 +1,15 @@
+    <div class="col-lg-4">
+        <div class="title-headline">ジャンル編集</div>
+              <%= form_for(@genre) do |f| %>
+                <div class="form-group">
+                <label class="control-label col-sm-4 nav-text" for="genre_name">ジャンル名:</label>
+                <div class="col-sm-8">
+                    <%= f.text_field :genre_name, class: "form-control", placeholder: "genre_name", id: "genre_name" %>
+                </div>
+                </div>
+                 <div class="right">
+                 <%= f.submit "edit", class: "btn btn-warning" %>
+                 <% end %>
+                 </div>
+                 </div>
+<%= render 'genres/list', genre: @genre %>

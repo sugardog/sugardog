@@ -1,19 +1,17 @@
-<div class="container-fluid"> 
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-2">
     	<div class="side-bar">
     	 	<div class="category-box">
 		    	<h3>Hello,User様</h3>
-		    	<h2>category</h2>
-
+		    	<h2>Category</h2>
 		    	<h3>
-			    	<li><a href="each_genre.html" title="J-pop">J-pop</a></li>
-			    	<li><a href="each_genre.html" title="K-pop">K-pop</a></li>
-			    	<li><a href="each_genre.html" title="Hiphop">Hiphop</a></li>
-			    	<li><a href="each_genre.html" title="classic">classic</a></li>
-			    	<li><a href="each_genre.html" title="Kids">Kids</a></li>
-			    	<li><a href="each_genre.html" title="Anime">Anime</a></li>
-			    	<li><a href="each_genre.html" title="Sound-track">Sound-track</a></li>
+		    		<% genres.each do |genre| %>
+		    			<li><%= link_to genre_path(genre) do %>
+		    				<%= genre.genre_name %>
+		    			</li>
+		    				<% end %>
+		    		<% end %>
 		    	</h3>
     	  	</div>
 		</div>
