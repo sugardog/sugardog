@@ -6,13 +6,13 @@
 		    	<h4>hello User!!</h4>
 		    	<h2>my menu</h2>
 		    	<ol>
-			    	<li><a href="user.html" >ユーザー情報の確認</a></li>
-			    	<li><a href="user_edit.html" >基本情報の編集</a></li>
-			    	<li><a href="delivery.html" >お届け先追加・変更</a></li>
-			    	<li><a href="pass_edit.html" >パスワード変更</a></li>
-			    	<li><a href="history.html" >購入履歴</a></li>
-			    	<li><a href="my_favorite.html">お気に入りアーティスト</li>
-			    	<li><a href="user_review.html">my review</a></li>
+			    	<li> <%= link_to "ユーザー情報の確認", user_path(@user) %> </li>
+			    	<li> <%= lin_to "基本情報の編集", edit_user_path(@user) %> </li>
+			    	<li> <%= link_to "お届け先追加・変更", %> </li>
+			    	<li> <%= link_to "パスワード変更", %> </li>
+			    	<li> <%= link_to "購入履歴", %> </li>
+			    	<li> <%= link_to "お気に入りアーティスト", %> </li>
+			    	<li> <%= link_to "my review", %> </li>
 			    </ol>
 	    	</div>
 		</div>
@@ -43,42 +43,43 @@
 							        </tr>
 							        <tr>
 								        <td>電話番号</td>
-								        <td> <%= %> </td>
+								        <td> <%= @user.tel %> </td>
 							        </tr>
 							        <tr>
 								        <td>E-Mail</td>
-								        <td>suger@dog。</td>
+								        <td> <%= @user.email %></td>
 							        </tr>
 							    </tbody>
 						    </table>
 						</li>
 					</ul>
 					<a href="quit.html"><button class="btn btn-default destroy" >退会のお手続きへ</button></a><br>
-					  <div class="title-headline">お届け先情報</div>
-						  <ul class="list-group">
-							  <li class="list-group-item list-group-item-warning">お届け先１</li>
-							  <li class="list-group-item">〒300-4353<br>
-							  							　茨城県つくば市沼田５７９<br>
-								  						  sugerdog。様<br>
-								  					      080-0000-0000<br>
-							      <div class="right">
+					    <div class="title-headline">お届け先情報</div>
+					    <ul class="list-group">
+						    <li class="list-group-item list-group-item-warning">お届け先１</li>
+						    <li class="list-group-item">
+						  		〒 <%= %><br>
+						  							　茨城県つくば市沼田５７９<br>
+							  						  sugerdog。様<br>
+							  					      080-0000-0000<br>
+						        <div class="right">
 								  	<a href="delivery.html"><button class="btn btn-default edit">edit</button></a>
 									<a href="user.html"><button class="btn btn-default destroy">destroy</button></a>
-		    					  </div>
-							  </li>
-						  </ul>
-						  <ul class="list-group">
-							  <li class="list-group-item list-group-item-warning">お届け先2</li>
-							  <li class="list-group-item">〒300-4353<br>
-							   							　  茨城県つくば市沼田５７９<br>
-								  						  　sugerdog。様<br>
-								  					    	080-0000-0000<br>
-	   					    	  <div class="right">
+	    					    </div>
+						    </li>
+					    </ul>
+					    <ul class="list-group">
+						    <li class="list-group-item list-group-item-warning">お届け先2</li>
+						    <li class="list-group-item">〒300-4353<br>
+						   							　  茨城県つくば市沼田５７９<br>
+							  						  　sugerdog。様<br>
+							  					    	080-0000-0000<br>
+   					    	    <div class="right">
 								   	<a href="delivery.html"><button class="btn btn-default edit">edit</button></a>
      	  					    	<a href="user.html"><button class="btn btn-default destroy">destroy</button></a>
-     	  					    </div>
-							  </li>
-						  </ul>
+ 	  					        </div>
+						    </li>
+					    </ul>
 					</div>
 				</div>
 			</div>

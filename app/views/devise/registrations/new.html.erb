@@ -1,29 +1,117 @@
-<h2>Sign up</h2>
+<div class="container-fluid"> 
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="side-bar">
+        <div class="category-box">
+          <h2>category</h2>
+          <h3>
+            <li><a href="" title="J-pop">J-pop</a></li>
+            <li><a href="" title="K-pop">K-pop</a></li>
+            <li><a href="" title="Hiphop">Hiphop</a></li>
+            <li><a href="" title="classic">classic</a></li>
+            <li><a href="" title="Kids">Kids</a></li>
+            <li><a href="" title="Anime">Anime</a></li>
+            <li><a href="" title="Sound-track">Sound-track</a></li>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="main-menu">
+        <div class="title-headline">Sign Up</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="image"> 姓:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :last_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"last_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="kana_last_name"> カタカナ姓:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :kana_last_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"kana_last_name", :size=>"20" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="first_name"> 名:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :first_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"first_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="kana_last_name"> カタカナ名:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :kana_first_name, autofocus: true, class:"form-control", id:"inputName", placeholder:"kana_first_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="zipcode"> 郵便番号:</label>
+            <div class="col-sm-6">
+              <%= f.text_field :zipcode, autofocus: true, class:"form-control", id:"inputName", placeholder:"zipcode" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sel1" class="control-label col-sm-3" for="prefucture"> 都道府県:</label>
+            <div class="col-sm-6"> 
+              <select class="form-control" id="sel1">
+                <option>北海道</option>
+                <option>岩手</option>
+                <option>秋田</option>
+                <option>埼玉</option>
+                <option>東京</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="address"> 住所:</label>
+            <div class="col-sm-6">
+              <%= f.text_area :address, autofocus: true, class:"form-control", id:"inputName", placeholder:"address", row:"5" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="email"> メールアドレス:</label>
+            <div class="col-sm-6">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"email" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="password">パスワード:</label>
+            <div class="col-sm-6">
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"password" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="password">パスワード確認:</label>
+            <div class="col-sm-6">
+              <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"password" %>
+            </div>
+          </div>
+
+          <div class="col-sm-9">
+            <div class="right">
+              <%= f.submit "Sign up", class:"btn btn-default create" %>
+            </div>
+          </div>
+
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
