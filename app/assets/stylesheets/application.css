@@ -227,7 +227,7 @@ a:hover {
 .cd-box:hover {
   border-color: #ff00819e;
 }
-.cd_image {
+.cd_image img {
 	width: 130px;
 	height: 130px;
 }
@@ -402,4 +402,7 @@ th {
 }
 .left {
 	text-align: left;
+}
+.text-center {
+	margin: 0 auto;
 }
