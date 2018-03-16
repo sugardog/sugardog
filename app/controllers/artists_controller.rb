@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+
 	def new
 		@artist = Artist.new
 	end
@@ -35,5 +36,6 @@ class ArtistsController < ApplicationController
         params.require(:artist).permit(:artist_name, :artist_kana_name, :introduction, :image)
 
     end
+
 
 end

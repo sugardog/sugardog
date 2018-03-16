@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
 get 'cds/search' => 'cds#search'
 get 'cd_carts/:id/select' => 'cd_carts#select'
 

@@ -62,3 +62,9 @@ gem 'kaminari'
 gem 'nested_form'
 gem 'seed-fu'
 gem 'kakurenbo-puti'
+
+# Imagemagickをインストール
+# refileを使用する際に必要なツールを読み込みます。
+# ターミナルで以下のコマンドを実行してください。
+# sudo apt-get update
+# sudo apt-get -y install imagemagick libmagick++-dev
