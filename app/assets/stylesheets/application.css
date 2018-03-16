@@ -312,7 +312,6 @@ th {
 	font-size: 20px;
 	margin: 40px;
 	text-align: center;
-	margin-top: 130px;
 }
 .right {
 	text-align: right;
@@ -397,7 +396,7 @@ th {
 	color: #fff;
 }
 
-.top_image_index {
+.top_image_index img {
 	width: 500px;
 }
 .left {

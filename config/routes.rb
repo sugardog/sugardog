@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	resources :users do
 		resources :histories, only: [:index]
 	end
+
 	resources :deliveries
 	resources :cds do
 		resources :discs do
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
 	resources :carts
 	resources :histories
 	resources :genres, except: [:new]
-	resources :pop_images, except: [:edit,:update,:show]
+	resources :pop_images, except: [:edit,:update,:show, :new]
 	resources :songs
 	resources :artists do
 		resource :favorites, only: [:create, :destroy]
@@ -31,4 +32,5 @@ Rails.application.routes.draw do
 	resource :reviews, except: [:show]
 	resources :cd_histories, only: [:show]
 	resources :cd_genre, only: [:show]
+
 end
