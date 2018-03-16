@@ -7,12 +7,12 @@
 		    	<h2>my menu</h2>
 		    	<ol>
 			    	<li> <%= link_to "ユーザー情報の確認", user_path(@user) %> </li>
-			    	<li> <%= lin_to "基本情報の編集", edit_user_path(@user) %> </li>
-			    	<li> <%= link_to "お届け先追加・変更", %> </li>
-			    	<li> <%= link_to "パスワード変更", %> </li>
-			    	<li> <%= link_to "購入履歴", %> </li>
-			    	<li> <%= link_to "お気に入りアーティスト", %> </li>
-			    	<li> <%= link_to "my review", %> </li>
+			    	<li> <%= link_to "基本情報の編集", edit_user_path(@user) %> </li>
+			    	<li> <%= link_to "お届け先追加・変更", edit_delivery_path(@user) %> </li>
+			    	<li> <%= link_to "パスワード変更", edit_user_password_path(@user)%> </li>
+			    	<li> <%= link_to "購入履歴", cd_history_path(@user)%> </li>
+			    	<li> <%= link_to "お気に入りアーティスト", user_path(@user) %> </li> 
+			    	<li> <%= link_to "my review", user_path(@user) %> </li> 
 			    </ol>
 	    	</div>
 		</div>
@@ -38,7 +38,7 @@
 							        <tr>
 								        <td>郵便番号<br>住所</td>
 								        <td>〒 <%= @user.zipcode %><br>
-								        	<%= @user.prefecture.id %> <%= @user.address %>
+								        	<%= @user.prefecture_id %> <%= @user.address %>
 								        </td>
 							        </tr>
 							        <tr>
