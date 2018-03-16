@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 	end
 	resources :carts
 	resources :histories
-	resources :genres, except: [:new, :show]
+	resources :genres, except: [:new]
 	resources :pop_images, except: [:edit,:update,:show]
 	resources :songs
 	resources :artists do

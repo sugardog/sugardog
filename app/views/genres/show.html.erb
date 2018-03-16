@@ -1,0 +1,26 @@
+<%= render 'shared/category', genre: @genre, genres: @genres %>
+
+<div class="col-lg-10">
+    <div class="main-menu">
+    	<div class="genre-title top-space">
+    		<%= @genre.genre_name %>
+    	</div>
+	 		<div class="cd-box">
+    			<a href="cd_show.html"><img class="cd_image" src="cd_image/momus1.jpg"></a><br>
+    			 <table class="table">
+				    <thead>
+				      	<tr>
+				       		<td><a href="cd_show.html">album-name</a></td>
+				     	</tr>
+				  	</thead>
+				    <tr>
+				        <td><a href="favorite_artist.html">モーニング娘。</a></td>
+				    </tr>
+				</table>
+			</div>
+	</div>
+</div>
+
+<!-- 部分テンプレート共有部分のdiv閉じタグ用 -->
+</div>
+</div>
