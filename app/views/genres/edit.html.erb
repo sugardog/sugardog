@@ -8,8 +8,9 @@
                 </div>
                 </div>
                  <div class="right">
+                 <%= link_to "back", genres_path, class: "btn btn-success" %>
                  <%= f.submit "edit", class: "btn btn-warning" %>
                  <% end %>
                  </div>
                  </div>
-<%= render 'genres/list', genre: @genre %>
+<%= render 'genres/list', genres: @genres %>

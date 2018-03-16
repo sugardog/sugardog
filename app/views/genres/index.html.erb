@@ -1,7 +1,19 @@
-   <title>cart-html</title>
+<title>cart-html</title>
     <div class="col-lg-4">
-        <div class="title-headline">ジャンル追加</div>
                 <%= form_for(@genre) do |f| %>
+                     <% if @genre.errors.any? %>
+                      <div class="error_explanation">
+                        <h2>
+                        <%= @genre.errors.messages.count %>件のエラーが発生しました。
+                        </h2>
+                      <ul>
+                      <% @genre.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                      </div>
+                      <% end %>
+                <div class="title-headline">ジャンル追加</div>
                 <div class="form-group">
                 <label class="control-label col-sm-4 nav-text" for="genre_name">ジャンル名:</label>
                 <div class="col-sm-8">
@@ -11,6 +23,6 @@
                 <div class="right">
                 <%= f.submit "create", class: "btn btn-warning" %>
                 <% end %>
-        </div>
+                </div>
     </div>
-<%= render 'genres/list', genre: @genre %>
+<%= render 'genres/list', genres: @genres %>
