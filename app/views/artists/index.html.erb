@@ -1,6 +1,6 @@
 <div class="col-lg-5">
     <div class="title-headline">アーティスト追加</div>
-    <%= form_for(@artist,  html: {class: 'form-horizontal'}) do |f| %>
+    <%= form_for(@artist, html: {class: 'form-horizontal'}) do |f| %>
         <% if @artist.errors.any? %>
             <div id="error_explanation" class="text-center">
                 <h4><%= @artist.errors.count %>件のエラーが発生しました。</h4>

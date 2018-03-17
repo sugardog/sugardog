@@ -34,6 +34,7 @@ class ArtistsController < ApplicationController
 	end
 	def show
 	   @artist = Artist.new
+	   @genres = Genre.all
        @artist = Artist.find(params[:id])
        @cds = Cd.all
        @cd = Cd.new
