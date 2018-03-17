@@ -5,19 +5,24 @@
     	<div class="genre-title top-space">
     		<%= @genre.genre_name %>
     	</div>
-	 		<div class="cd-box">
-    			<a href="cd_show.html"><img class="cd_image" src="cd_image/momus1.jpg"></a><br>
-    			 <table class="table">
-				    <thead>
-				      	<tr>
-				       		<td><a href="cd_show.html">album-name</a></td>
-				     	</tr>
-				  	</thead>
-				    <tr>
-				        <td><a href="favorite_artist.html">モーニング娘。</a></td>
-				    </tr>
-				</table>
+    		<% @genre.cd_genres.each do |c_g| %>
+    		<div class="cd-box">
+				      	<div class="cd_image">
+				       	<%= attachment_image_tag c_g.cd,:image %>
+				       	</div>
+				       	<table class="table">
+				   		<thead>
+				    	<tr>
+				        <td><%= c_g.cd.album_name %></td>
+				    	</tr>
+				    	</thead>
+				    	<tbody>
+				    	<tr>
+				    	<td><%= c_g.cd.artist.artist_name %></td>
+				    	</tr>
+						</table>
 			</div>
+			<% end %>
 	</div>
 </div>
 
