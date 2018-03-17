@@ -9,7 +9,6 @@ Cd.seed do |s|
 	s.stock = 100
 	s.release_date = "2018年2月22日"
 	s.cd_introduction = "モーニング娘。誕生20周年！"
-	#s.campaign_id =
 end
 
 Cd.seed do |s|
