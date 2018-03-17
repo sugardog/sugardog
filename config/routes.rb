@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   	devise_for :admins
 
-
+	root 'cds#index'
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'
 
@@ -33,6 +33,6 @@ Rails.application.routes.draw do
 	resources :cd_carts
 	resource :reviews, except: [:show]
 	resources :cd_histories, only: [:show]
-	resources :cd_genre, only: [:show]
+	resources :cd_genres, only: [:show]
 
 end
