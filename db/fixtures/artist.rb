@@ -107,5 +107,5 @@ Artist.seed do |s|
  	s.artist_name = "RAD WIMPS"
  	s.artist_kana_name = "ラッド　ウィンプス"
  	s.introduction = "日本のロック・バンド。メンバーは野田洋次郎（vo,g,p）、桑原彰（g）、武田祐介（b）、山口智史（ds）の4名。"
- 	s.image = Rails.root.join("db/fixtures/images/ariana_favorite.jpg").open
+ 	s.image = Rails.root.join("db/fixtures/images/rad1.jpg").open
 end

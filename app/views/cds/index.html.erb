@@ -42,7 +42,7 @@
 					<table class="table">
 					    <thead>
 					      	<tr>
-					       		<td><a href="cd_show.html"><%= cd.album_name %></a></td>
+					       		<td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
 					     	</tr>
 					  	</thead>
 					    <tr>

@@ -7,8 +7,10 @@ def index
 end
 
 def show
-	@cd = Cd.new
 	@cd = Cd.find(params[:id])
+	@cd_genres = CdGenre.all
+	@genre = Genre.find(params[:id])
+	@artist = Artist.find(params[:id])
 end
 
 def new
@@ -39,7 +41,7 @@ def destroy
 end
 
 private
-def cd_paramd
+def cd_params
 	params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id)
 end
 
