@@ -1,24 +1,11 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-3">
-    	<div class="side-bar">
-    	 	<div class="category-box">
-		    	<h4>hello User!!</h4>
-		    	<h2>my menu</h2>
-		    	<ol>
-			    	<li> <%= link_to "ユーザー情報の確認", user_path(@user) %> </li>
-			    	<li> <%= link_to "基本情報の編集", edit_user_registration %> </li>
-			    	<li> <%= link_to "お届け先追加・変更", edit_delivery_path(@user) %> </li>
-			    	<li> <%= link_to "パスワード変更", edit_user_password_path(@user)%> </li>
-			    	<li> <%= link_to "購入履歴", cd_history_path(@user)%> </li>
-			    	<li> <%= link_to "お気に入りアーティスト", user_path(@user) %> </li> 
-			    	<li> <%= link_to "my review", user_path(@user) %> </li> 
-			    </ol>
-	    	</div>
-		</div>
-	</div>
+    <%= render 'users/list', user: @user %>
 	<div class="col-lg-9">
 	    <div class="main-menu">
+	    	<div class="right">
+	    		
+	    	</div>
 	    	<div class="col-lg-8 col-lg-offset-2">
 	    		<div class="title-headline">基本情報</div>
 	    			<ul class="list-group">
@@ -38,7 +25,7 @@
 							        <tr>
 								        <td>郵便番号<br>住所</td>
 								        <td>〒 <%= @user.zipcode %><br>
-								        	<%= @user.prefecture_id %> <%= @user.address %>
+								        	<%= @user.prefecture.prefecture_name %> <%= @user.address %>
 								        </td>
 							        </tr>
 							        <tr>

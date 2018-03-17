@@ -7,7 +7,7 @@ User.seed do |s|
 	s.email = "sample@sample.com"
 	s.zipcode = "1460092"
 	s.tel = "0312345678"
-	#s.prefecture_id = 
+	s.prefecture_id = 13
 	s.address = "大田区下丸子4-0-0"
 	s.password = "0123456"
 	s.nickname = "makoto"
@@ -24,7 +24,7 @@ User.seed do |s|
 	s.email = "sample2@sample2.com"
 	s.zipcode = "1460011"
 	s.tel = "0358658422"
-	#s.prefecture_id = 
+	s.prefecture_id = 13
 	s.address = "港区西麻布1-1-1"
 	s.password = "012345"
 	s.nickname = "hotei"
@@ -41,7 +41,7 @@ User.seed do |s|
 	s.email = "sample3@sample3.com"
 	s.zipcode = "0321011"
 	s.tel = "0358658422"
-	#s.prefecture_id = 
+	s.prefecture_id = 13
 	s.address = "目黒区中目黒1-1-1"
 	s.password = "333333"
 	s.nickname = "せっちゃん"

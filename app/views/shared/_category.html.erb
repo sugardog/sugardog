@@ -5,14 +5,13 @@
     	 	<div class="category-box">
 		    	<h3>Hello,User様</h3>
 		    	<h2>Category</h2>
-		    	<h3>
+		    	<ul>
 		    		<% genres.each do |genre| %>
-		    			<li><%= link_to genre_path(genre) do %>
-		    				<%= genre.genre_name %>
-		    			</li>
-		    				<% end %>
+		    			<li><%= link_to genre.genre_name, genre_path(genre) %></li>
 		    		<% end %>
-		    	</h3>
+		    	</ul>
     	  	</div>
 		</div>
 	</div>
+  </div>
+</div>

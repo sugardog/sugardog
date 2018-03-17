@@ -1,21 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-2">
-      <div class="side-bar">
-        <div class="category-box">
-          <h2>category</h2>
-          <h3>
-            <li><a href="" title="J-pop">J-pop</a></li>
-            <li><a href="" title="K-pop">K-pop</a></li>
-            <li><a href="" title="Hiphop">Hiphop</a></li>
-            <li><a href="" title="classic">classic</a></li>
-            <li><a href="" title="Kids">Kids</a></li>
-            <li><a href="" title="Anime">Anime</a></li>
-            <li><a href="" title="Sound-track">Sound-track</a></li>
-          </h3>
-        </div>
-      </div>
-    </div>
+    <%= render 'shared/category', genres: @genres %>
     <div class="col-lg-10">
       <div class="main-menu">
         <div class="title-headline">Sign Up</div>
