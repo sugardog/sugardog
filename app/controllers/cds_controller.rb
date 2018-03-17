@@ -12,10 +12,13 @@ def show
 end
 
 def new
+	@artists = Artist.all
+	@genres = Genre.all
 	@cd = Cd.new
 end
 
 def create
+
 	cds = Cd.all
 	cd = Cd.new(cd_params)
 	cd.save
@@ -39,7 +42,7 @@ def destroy
 end
 
 private
-def cd_paramd
+def cd_params
 	params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id)
 end
 
