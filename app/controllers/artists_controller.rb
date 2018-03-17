@@ -6,14 +6,21 @@ class ArtistsController < ApplicationController
 		@cd = Cd.new
 	end
 	def create
+		@artists = Artist.all
 		@artist = Artist.new(artist_params)
+
 		if @artist.save
 			@singer = Singer.new
 			@singer.singer_name = params[:artist][:artist_name]
 			@singer.singer_kana_name = params[:artist][:artist_kana_name]
 			@singer.save
 		end
-		redirect_to artists_path
+
+		if @artist.save
+  			redirect_to artists_path
+    	else
+			render :index
+		end
 	end
 
 	def index

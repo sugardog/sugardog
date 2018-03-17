@@ -1,0 +1,28 @@
+<div class="col-lg-10 col-lg-offset-1">
+    <div class="title-headline">USER INDEX</div>
+    <div class="col-lg-8 col-lg-offset-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> 姓 </th>
+                    <th> 名 </th>
+                    <th> カナ </th>
+                    <th> E-mail </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td> <%= user.last_name %> </td>
+                        <td> <%= user.first_name %> </td>
+                        <td> <%= user.kana_last_name %> <%=  user.kana_first_name%> </td>
+                        <td> <%= user.email %> </td>
+                        <td><%= link_to "show", user_path(user), class: "btn btn-success" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
