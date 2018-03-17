@@ -7,8 +7,10 @@ def index
 end
 
 def show
-	@cd = Cd.new
 	@cd = Cd.find(params[:id])
+	@cd_genres = CdGenre.all
+	@genre = Genre.find(params[:id])
+	@artist = Artist.find(params[:id])
 end
 
 def new
