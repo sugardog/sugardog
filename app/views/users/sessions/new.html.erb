@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-2">
-      <%= render 'shared/category', genres: @genres %>
+    <%= render 'shared/category', genres: @genres %>
     <div class="col-lg-10">
       <div class="main-menu">
         <div class="title-headline">Login</div>
@@ -10,30 +9,30 @@
             <div class="form-group">
               <label class="control-label col-sm-3 nav-text" for="e-mail">Eメール:</label>
               <div class="col-sm-6">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "e-mail", size: "40" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "e-mail" %>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-3 nav-text" for="password">パスワード:</label>
               <div class="col-sm-6">
-                <%= f.password_field :password, autocomplete: "off", placeholder: "password", size: "30" %>
+                <%= f.password_field :password, autocomplete: "off", placeholder: "password", class: "form-control" %>
               </div>
             </div>
-
-            <% if devise_mapping.rememberable? -%>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+            <div class="form-group">
+              <div class= "control-label col-sm-3 nav-text"></div>
+              <div class="col-sm-6", style="text-align: left;">
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                <% end -%>
               </div>
-            <% end -%>
-
+            </div>
             <div class="col-sm-9">
               <div class="right">
                 <%= f.submit "Log in", class: "btn btn-default create" %> </br>
                 <%= render "devise/shared/links" %>
               </div>
             </div>
-
           <% end %>
         </div>
       </div>

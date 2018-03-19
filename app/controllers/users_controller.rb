@@ -1,20 +1,15 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate_user!
+	before_action :authenticate_admin!
+	before_action :authenticate_user! , only: [:show, :edit, :update, :quit, :destroy]
 
 	def index
 		@users = User.all
 	end
 
-	def new
-	end
-
-	def create
-		user = User.new()
-	end
-
 	def show
 		@user = User.find(params[:id])
+		@admin = Admin.find(params[:id])
 		#@deliveries = @user.deliveries.page(params[:page])
 	end
 
@@ -28,7 +23,14 @@ class UsersController < ApplicationController
 		redirect_to user_path(user)
 	end
 
+	def quit
+		@user = User.find(params[:id])
+	end
+
 	def destroy
+		user = User.find(params[:id])
+		user.destroy
+		redirect_to cds_path
 	end
 
 	private

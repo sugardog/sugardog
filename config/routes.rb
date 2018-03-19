@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   		registrations: 'admins/registrations'
   	}
 
-
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'
+	get 'users/:id/quit' => 'users#quit', as: 'quit'
 
 
 	resources :users do
