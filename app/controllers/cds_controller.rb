@@ -7,24 +7,30 @@ def index
 end
 
 def show
-	@cd = Cd.new
 	@cd = Cd.find(params[:id])
-	@genre = Genre.find(params[:id])
-	@artist = Artist.find(params[:id])
 end
 
 def new
-	@artists = Artist.all
+	@cd_genres = CdGenre.all
 	@genres = Genre.all
+	@artists = Artist.all
 	@cd = Cd.new
 end
 
 def create
-
-	cds = Cd.all
 	cd = Cd.new(cd_params)
 	cd.save
-	redirect_to cds_path
+	genres = params[:cd][:cd_genre][:genre_id]
+	genres.each do |genre|
+		cd_genre = cd.cd_genres.new
+		# binding.pry
+		if genre.blank?
+		else
+			cd_genre.genre_id = genre
+			cd_genre.save
+		end
+	end
+	redirect_to new_cd_disc_path(cd)
 end
 
 def edit

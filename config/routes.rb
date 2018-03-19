@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
 	resources :deliveries
 	resources :cds do
-		resources :discs do
-			resources :songs
-		end
+		resources :discs, except: [:index, :show]
+			# resources :songs
+		# end
 	end
 	resources :carts
 	resources :histories
