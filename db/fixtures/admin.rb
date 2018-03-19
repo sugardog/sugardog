@@ -1,5 +1,5 @@
 Admin.seed do |s|
 	s.id = 1
-	s.admin_mail = "sugardog@sugardog.com"
-	s.admin_pass = "sugardog"
+	s.email = "sugardog@sd.com"
+	s.password = "sugardog"
 end
