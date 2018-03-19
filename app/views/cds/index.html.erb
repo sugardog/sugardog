@@ -1,0 +1,56 @@
+<%= render 'shared/category', genres: @genres %>
+	<div class="col-lg-10">
+		<div class="main-menu">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  		<ol class="carousel-indicators">
+		    		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		    		<li data-target="#myCarousel" data-slide-to="1"></li>
+		    		<li data-target="#myCarousel" data-slide-to="2"></li>
+		    		<li data-target="#myCarousel" data-slide-to="3"></li>
+		  		</ol>
+		  <!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+				    <% @pop_images.each_with_index do |pop_image, i| %>
+				   		<% if i == 0 %>
+				   			<div class="item active top_pop">
+				   				<%= attachment_image_tag pop_image,:image %>
+				   			</div>
+				    	<% else %>
+							<div class="item top_pop">
+				    			<%= attachment_image_tag pop_image,:image %>
+				    		</div>
+				   		<% end %>
+				    <% end %>
+				</div>
+		  <!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">前章へ</span>
+				</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				</a>
+			</div>
+			<h2>CDS</h2>
+			<% @cds.each do |cd| %>
+				<div class="cd-box">
+					<div class="cd_image">
+			   			<%= attachment_image_tag cd,:image %>
+			 		</div>
+					<table class="table">
+					    <thead>
+					      	<tr>
+					       		<td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
+					     	</tr>
+					  	</thead>
+					    <tr>
+                    	<td><%= link_to artist_path(cd.artist) do %><%= cd.artist.artist_name %><% end %></td>
+					    </tr>
+					</table>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
