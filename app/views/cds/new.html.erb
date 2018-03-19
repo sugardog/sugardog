@@ -13,6 +13,16 @@
         <div class="form-group">
           <label for="sel1" class="control-label col-sm-3" for="genre">ジャンル:</label>
           <div class="col-sm-9"> 
+            <%= f.fields_for :cd_genre do |cg| %>
+              <%# @genres.each do |g| %>
+                <%# binding.pry %>
+                <%#= cg.label :genre_id, g.genre_name %>
+              <%# end %>
+
+              <%= cg.collection_check_boxes(:genre_id, Genre.all, :id, :genre_name) do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+            <% end %>
+            <% end %> 
           </div>
         </div>
       </div>
@@ -20,7 +30,7 @@
         <div class="form-group">
           <label for="sel1" class="control-label col-sm-3" for="genre">アーティスト名:</label>
           <div class="col-sm-9"> 
-            <%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
+            <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :include_blank => true  %>
           </div>
         </div>
       </div>

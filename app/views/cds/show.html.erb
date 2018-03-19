@@ -25,7 +25,8 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><% @cd.cd_genres.each do |c_g| %><%= c_g.genre.genre_name %>  <% end %></td>
+              <td><% @cd.cd_genres.each do |c_g| %>
+                <%= c_g.genre.genre_name %>  <% end %></td>
             </tr>
             <tr>
               <td>曲数</td>
@@ -94,12 +95,16 @@
               </tr>
             </thead>
             <tbody>
+              <% @cd.discs.each do |c_d| %>
+                <% c_d.songs.each do |cds| %>
               <tr>
-                <td>1</td>
-                <td>モーニングコーヒー<br>(20th Anniversary Ver.)</td>
-                <td>モーニング娘。20th</td>
-                <td>5.23分</td>
+                <td><%= cds.order_num %></td>
+                <td><%= cds.song_name %></td>
+                <td><%= cds.singer.singer_name %></td>
+                <td><%= cds.minutes %></td>
               </tr>
+              <% end %>
+              <% end %>
             </tbody>
           </table>
         </div>

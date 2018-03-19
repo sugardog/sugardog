@@ -31,12 +31,17 @@
 		<% @artist.cds.each do |cd| %>
 			<div class="cd-box">
 				<div class="cd_image">
-					<%= attachment_image_tag cd,:image, placeholder:"image" %><br>
+					<%= link_to cd_path(cd) do %>
+						<%= attachment_image_tag cd,:image, placeholder:"image" %>
+					<% end %><br>
 				</div>
 			<table class="table">
              	<thead>
                 	<tr>
-                  		<td><%= cd.album_name %></a></td>
+                  		<td><%= link_to cd_path(cd) do %>
+                  				<%= cd.album_name %>
+                  			<% end %>
+                		</td>
               		</tr>
               	</thead>
               	<tbody>

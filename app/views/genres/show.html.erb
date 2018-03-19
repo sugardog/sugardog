@@ -5,7 +5,7 @@
     	<div class="genre-title top-space">
     		<%= @genre.genre_name %>
     	</div>
-    		<% @genre.cd_genres.each do |c_g| %>
+    		<% @genre.cds.each do |c_g| %>
     		<div class="cd-box">
 				      	<div class="cd_image">
 				       	<%= attachment_image_tag c_g.cd,:image %>
@@ -13,12 +13,12 @@
 				       	<table class="table">
 				   		<thead>
 				    	<tr>
-				        <td><%= c_g.cd.album_name %></td>
+				        <td><%= c_g.album_name %></td>
 				    	</tr>
 				    	</thead>
 				    	<tbody>
 				    	<tr>
-				    	<td><%= c_g.cd.artist.artist_name %></td>
+				    	<td><%= c_g.artist.artist_name %></td>
 				    	</tr>
 						</table>
 			</div>
