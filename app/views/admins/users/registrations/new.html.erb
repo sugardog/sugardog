@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'shared/category', genres: @genres %>
+    <div class="col-lg-10">
+      <div class="main-menu">
+        <div class="title-headline">Sign Up</div>
+        <div class="form-horizontal">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="image"> 姓:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :last_name, autofocus: true, class: "form-control", id: "inputName", placeholder:"last_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="kana_last_name"> カタカナ姓:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :kana_last_name, autofocus: true, class: "form-control", id: "inputName", placeholder: "kana_last_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="first_name"> 名:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :first_name, autofocus: true, class: "form-control", id: "inputName", placeholder: "first_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-sm-3 nav-text" for="kana_last_name"> カタカナ名:</label>
+              <div class="col-sm-6">
+                <%= f.text_field :kana_first_name, autofocus: true, class: "form-control", id: "inputName", placeholder: "kana_first_name" %>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="nickname"> ニックネーム:</label>
+            <div class="col-sm-6">
+              <%= f.text_field :nickname, autofocus: true, class: "form-control", id: "inputName", placeholder: "nickname" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="zipcode"> 郵便番号:</label>
+            <div class="col-sm-6">
+              <%= f.text_field :zipcode, autofocus: true, class: "form-control", id: "inputName", placeholder: "zipcode" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sel1" class="control-label col-sm-3" for="prefucture"> 都道府県:</label>
+            <div class="col-sm-6", style="text-align:left">
+              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :prefecture_name, prompt: "都道府県を選んで下さい", class: "form-control" ) %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="address"> 住所:</label>
+            <div class="col-sm-6">
+              <%= f.text_area :address, autofocus: true, class: "form-control", id: "inputName", placeholder: "address", row: "5" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="email"> メールアドレス:</label>
+            <div class="col-sm-6">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="password">パスワード:</label>
+            <div class="col-sm-6">
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "password" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 nav-text" for="password">パスワード確認:</label>
+            <div class="col-sm-6">
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "password" %>
+            </div>
+          </div>
+
+          <div class="col-sm-9">
+            <div class="right">
+              <%= f.submit "Sign up", class: "btn btn-default create" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+        <div class="col-sm-9">
+            <div class="right">
+              <%= render "devise/shared/links" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,12 +10,17 @@ Rails.application.routes.draw do
   		passwords: 'admins/passwords',
   		registrations: 'admins/registrations'
   	}
+  	namespace :admin do
+  		resources :users
+  		# resources :reviews
+  		# resources :histories
+  		# resources :deliveries
+  	end
 
 	root 'cds#index'
-
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'
-	get 'users/:id/quit' => 'users#quit', as: 'quit'
+	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 
 	resources :users do
 		resources :histories, only: [:index]
