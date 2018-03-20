@@ -46,6 +46,11 @@
 			            		<div class="nav-text white">login</div>
 			            	</div>
 			            <% end %>
+			            <%= link_to destroy_user_session_path,method: :delete do %>
+			            	<div class="nav-list-item">
+			            		<div class="nav-text white">Logout</div>
+			            	</div>
+			            <% end %>
 			            <%= link_to do %> <!-- user_path(current_user.id) -->
 			            	<div class="nav-list-item">
 			            		<div class="nav-text white">mymenu</div>
