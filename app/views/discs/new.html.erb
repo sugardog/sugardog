@@ -1,6 +1,6 @@
 <div class="col-sm-10 col-sm-offset-1">
   <div class="title-headline">ADD SONG</div>
-  <%= form_for [@cd, @disc] do |f| %>
+  <%= nested_form_for [@cd, @disc] do |f| %>
       <div class="form-groupl col-sm-8 col-sm-offset-2">
         <label class="control-label col-sm-3" for="disc_num">ディスクナンバー:</label>
         <div class="col-sm-7"> 
@@ -8,7 +8,7 @@
         </div>
       </div>
       <!-- ここからnested form!!! -->
-       <%= fields_for(@song) do |s| %>
+       <%= f.fields_for :songs do |s| %>
     <div class="form-groupl col-sm-8 col-sm-offset-2">
       <div style="text-align: center"><br>曲の登録</div>
       <label class="control-label col-sm-3" for="price">曲順:</label>
@@ -40,7 +40,9 @@
         <%= s.collection_select :singer_id, Singer.all, :id, :singer_name, :include_blank => true %>
       </div>
     </div>
-    <% end %>
+    <%= s.link_to_remove "Remove this" %>
+    <% end %> <%= f.link_to_add "Add song", :songs %>
+  <div class="actions">
     <!-- ここまでをnested formで繰り返したい -->
     <div class="col-sm-6 col-sm-offset-4">
       <div class="right"> 
@@ -53,10 +55,11 @@
     </div>
     <div class="form-group col-sm-6 col-sm-offset-3">
       <div class="right">
-	      <a href="song.html">
-          <button class="btn btn-success">disc追加</button>
-        </a>
-      <%= f.submit "deisc登録", class: "btn btn-primary" %>
+
+          <%= f.submit 'disc登録', name: 'create_disc', class: "btn btn-primary" %>
+          <%= f.submit 'disc追加', name: 'add_disc', class: "btn btn-success" %>
+
+
     </div>
   <% end %>
 </div>

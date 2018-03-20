@@ -18,7 +18,6 @@ class GenresController < ApplicationController
 		@genres = Genre.all
 		@genre = Genre.find(params[:id])
 		@cd_genres = CdGenre.all
-		@cd = Cd.find(params[:id])
 	end
 
 	def edit

@@ -9,26 +9,27 @@ class DiscsController < ApplicationController
 	def create
 		@cd = Cd.find(params[:cd_id])
 		@disc = Disc.new(disc_params)
-		@song = Song.new(song_params)
 		@disc.cd_id = @cd.id
-		@disc.save
-		@song.disc_id = @disc.id
-		@song.save
-		redirect_to cds_path
-		
+
+
+		if params[:add_disc]
+			@disc.save
+	    	redirect_to new_cd_disc_path(@cd)
+
+  		else params[:create_disc]
+  			@disc.save
+
+	    	redirect_to cds_path
 	end
+end
 
 	def destroy
-		
+
 	end
 
 private
 def disc_params
-	params.require(:disc).permit(:cd_id, :disc_num)
-	
+	params.require(:disc).permit(:cd_id, :disc_num, :songs_attributes => [:song_name, :song_kana_name, :order_num, :minutes, :disc_id, :singer_id, :_destroy])
+
 end
-	def song_params
-		params.require(:song).permit(:song_name, :song_kana_name, :order_num, :minutes, :disc_id, :singer_id)
-		
-	end
 end

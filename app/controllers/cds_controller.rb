@@ -23,7 +23,6 @@ def create
 	genres = params[:cd][:cd_genre][:genre_id]
 	genres.each do |genre|
 		cd_genre = cd.cd_genres.new
-		# binding.pry
 		if genre.blank?
 		else
 			cd_genre.genre_id = genre
