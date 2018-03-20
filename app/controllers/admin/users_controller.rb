@@ -1,9 +1,16 @@
 class Admin::UsersController < ApplicationController
 
+	# indexの時だけadminの認証がいる
+	before_action :authenticate_admin!, only: [:index]
 
-	before_action :authenticate_admin!, only: [:index] # indexの時だけadminの認証がいる
-	before_action :admin_user?, only: [:index] # indexの時だけ'admin_user?'を呼び出す
+	# indexの時だけ'admin_user?'を呼び出す
+	before_action :admin_user?, only: [:index]
+
+	# index以外のページをログインuserが見れるようにする
 	before_action :current_user?, except: [:index]
+
+	# ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否するメソッド
+	before_action :ensure_correct_user, only: [:show, :edit]
 
 	def index
 		@users = User.all
@@ -44,14 +51,23 @@ class Admin::UsersController < ApplicationController
 		params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :zipcode, :prefecture_id, :address, :tel, :email)
 	end
 
+	# adminでログインしていなければ、root_pathにリダイレクトされる
 	def admin_user?
-		redirect_to root_path unless admin_signed_in? # adminでログインしていなければ、root_pathにリダイレクトされる
+		redirect_to root_path unless admin_signed_in? # current_user.is_a?(Admin)
 	end
 
+	# admin又はuserでログインしていなければ、userのページは見れないようにする
 	def current_user?
 		redirect_to root_path unless user_signed_in? || admin_signed_in?
 	end
 
+	def ensure_correct_user
+		unless admin_signed_in? then                # adminでsigned_inしていないときに
+			if current_user.id != params[:id].to_i  # ログインuserのidと、見ようとしているページのidが一致していなければ
+				redirect_to root_path               # root_pathへリダイレクト
+			end
+		end
+	end
+
 
 end
-# current_user.is_a?(Admin)
