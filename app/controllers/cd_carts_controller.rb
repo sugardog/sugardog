@@ -1,2 +1,4 @@
 class CdCartsController < ApplicationController
+
+
 end

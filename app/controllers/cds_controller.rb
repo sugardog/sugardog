@@ -8,28 +8,38 @@ end
 
 def show
 	@cd = Cd.find(params[:id])
+	 params[:id].present?
+
 end
 
 def new
 	@cd_genres = CdGenre.all
 	@genres = Genre.all
 	@artists = Artist.all
-	@cd = Cd.new
+	
+
+	if params[:id].present?
+		@cd = Cd.find(params[:id]) 
+
+	else @cd = Cd.new
+	end
 end
 
 def create
-	cd = Cd.new(cd_params)
-	cd.save
-	genres = params[:cd][:cd_genre][:genre_id]
-	genres.each do |genre|
-		cd_genre = cd.cd_genres.new
-		if genre.blank?
-		else
-			cd_genre.genre_id = genre
-			cd_genre.save
+	@cd = Cd.new(cd_params)
+	if @cd.save
+		genres = params[:cd][:cd_genre][:genre_id]
+		genres.each do |genre|
+			cd_genre = @cd.cd_genres.new
+			unless genre.blank?
+				cd_genre.genre_id = genre
+				cd_genre.save
+			end
 		end
+		redirect_to new_cd_disc_path(@cd)
+	else
+		render :new
 	end
-	redirect_to new_cd_disc_path(cd)
 end
 
 def edit
@@ -38,13 +48,13 @@ end
 
 def update
 	cd = Cd.find(params[:id])
-	cd.destroy
+	cd.update(cd_params)
 	redirect_to cds_path
 end
 
 def destroy
 	cd = Cd.find(params[:id])
-	cd_destroy
+	cd.destroy
 	redirect_to cds_path
 end
 
