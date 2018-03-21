@@ -8,17 +8,19 @@
     		<% @genre.cds.each do |c_g| %>
     		<div class="cd-box">
 				      	<div class="cd_image">
-				       	<%= attachment_image_tag c_g.cd,:image %>
+				      	<%= link_to cd_path(c_g) do%>
+				       	<%= attachment_image_tag c_g,:image %>
+				       	<% end %>
 				       	</div>
 				       	<table class="table">
 				   		<thead>
 				    	<tr>
-				        <td><%= c_g.album_name %></td>
+				        <td><%= link_to c_g.album_name, cd_path(c_g) %></td>
 				    	</tr>
 				    	</thead>
 				    	<tbody>
 				    	<tr>
-				    	<td><%= c_g.artist.artist_name %></td>
+				    	<td><%= link_to c_g.artist.artist_name, artist_path(c_g) %></td>
 				    	</tr>
 						</table>
 			</div>

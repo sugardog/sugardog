@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   	}
 
 	root 'cds#index'
+	# get 'search', to: 'application#search'
 
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'

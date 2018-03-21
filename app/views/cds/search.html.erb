@@ -1,0 +1,38 @@
+<div class="col-lg-10">
+    <div class="main-menu">
+        <h2>検索結果<%= @cds.count %>件</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>image</th>
+                        <th>Title/Artist</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <% @cds.each do |f| %>
+                        <td>
+                        	<%= link_to cd_path(f) do %>
+                        	<div class="cd_image">
+                        	<%= attachment_image_tag f,:image %>
+ 	                        </div>
+                        	<% end %>
+                        </td>
+                        <td>
+                        	<%= link_to cd_path(f) do %>
+                        	<%= f.album_name %>
+                        	<% end %>/
+                        	<%= link_to artist_path(f.artist) do %>
+                        	<%= f.artist.artist_name %>
+                        	<% end %>
+                        </td>
+                        <td>
+                        	<%= f.price %>円
+                        </td>
+                    </tr>
+                        <% end %>
+                </tbody>
+            </table>
+	</div>
+</div>
