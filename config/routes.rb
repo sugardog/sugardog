@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   		registrations: 'admins/registrations'
   	}
   	namespace :admin do
-  		resources :users
+  		resources :users do
+  			resources :deliveries, except: [:index, :show]
+  		end
   		# resources :reviews
   		# resources :histories
-  		# resources :deliveries
   	end
 
 	root 'cds#index'
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
 		resources :histories, only: [:index]
 	end
 
-	resources :deliveries
 	resources :cds do
 		resources :discs, except: [:index, :show]
 			# resources :songs
@@ -41,11 +41,11 @@ Rails.application.routes.draw do
 		resource :favorites, only: [:create, :destroy]
 	end
 	resources :campaigns, except: [:show]
-	resources :prefectures, except: [:show]
+	resources :prefectures, except: [:new]
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
 	resources :cd_carts
-	resource :reviews, except: [:show]
+	resources :reviews, except: [:show]
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
 

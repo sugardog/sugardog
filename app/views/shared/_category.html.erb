@@ -1,7 +1,13 @@
 <div class="col-lg-2">
 	<div class="side-bar">
 	 	<div class="category-box">
-	    	<h3>Hello,User様</h3>
+	 		<% if admin_signed_in? %>
+	 			<h3>Hello,Admin</h3>
+	 		<% elsif user_signed_in? %>
+	 			<h3>Hello, <%= user.last_name %> <%= user.first_name %>様</h3>
+	 		<% else %>
+	    		<h3>Hello,ゲスト様</h3>
+	    	<% end %>
 	    	<h2>Category</h2>
 	    	<h3>
 	    		<% genres.each do |genre| %>
