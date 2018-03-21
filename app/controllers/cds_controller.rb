@@ -7,7 +7,9 @@ def index
 end
 
 def show
+	@user = User.find(params[:id])
 	@cd = Cd.find(params[:id])
+	@cd_carts = CdCart.all
 	 params[:id].present?
 
 end
@@ -27,6 +29,7 @@ end
 
 def create
 	@cd = Cd.new(cd_params)
+	@cd_carts = CdCart.new(cd_cart_params)
 	if @cd.save
 		genres = params[:cd][:cd_genre][:genre_id]
 		genres.each do |genre|
@@ -59,8 +62,12 @@ def destroy
 end
 
 private
-def cd_params
-	params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id)
-end
+	def cd_params
+		params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id)
+	end
+	def cd_cart_params
+		params.require(:cd_cart).permit(:cd_id, :count, :cart_id)
+	end
+
 
 end

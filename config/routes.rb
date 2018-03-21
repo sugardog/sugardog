@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 	resources :users do
 		resources :histories, only: [:index]
+			resource :cd_carts
 	end
 
 	resources :deliveries
@@ -30,7 +31,6 @@ Rails.application.routes.draw do
 	resources :prefectures, except: [:show]
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
-	resources :cd_carts
 	resource :reviews, except: [:show]
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]

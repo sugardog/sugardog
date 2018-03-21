@@ -57,25 +57,12 @@
         </tr>
         <tr>
           <td>
-            <%= form_for(@cd_cart) do |f| %>
-                
-            <% end %>
-              
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">1
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-              </ul>
-            </div>
+            <%= form_for [@user, @cd_cart] do |f| %>
+                <% f.number_field :count, class:"btn btn-default" %>
           </td>
           <td>
-            <a href="cart_index.html"><button class="btn btn-info fa fa-cart-plus">カートに入れる</button></a>
-          </td>
+            <% f.submit "カートに入れる", class:"btn btn-info" %>
+          </td><% end %>
         </tr>
       </table>
     </div>
