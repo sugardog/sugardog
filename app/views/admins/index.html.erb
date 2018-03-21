@@ -1,0 +1,23 @@
+<div class="col-lg-10 col-lg-offset-1">
+  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+  <h2 class="title_headline">CD INDEX</h2>
+  <% @cds.each do |cd| %>
+    <div class="cd-box">
+      <div class="cd_image">
+        <%= attachment_image_tag cd,:image %>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to artist_path(cd.artist) do %><%= cd.artist.artist_name %><% end %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

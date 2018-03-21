@@ -1,18 +1,13 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-2">
-    	<div class="side-bar">
-    	 	<div class="category-box">
-		    	<h3>Hello,User様</h3>
-		    	<h2>Category</h2>
-		    	<h3>
-		    		<% genres.each do |genre| %>
-		    			<li><%= link_to genre_path(genre) do %>
-		    				<%= genre.genre_name %>
-		    			</li>
-		    				<% end %>
-		    		<% end %>
-		    	</h3>
-    	  	</div>
-		</div>
+<div class="col-lg-2">
+	<div class="side-bar">
+	 	<div class="category-box">
+	    	<h3>Hello,User様</h3>
+	    	<h2>Category</h2>
+	    	<h3>
+	    		<% genres.each do |genre| %>
+	    			<li> <%= link_to genre.genre_name, genre_path(genre) %> </li>
+	    		<% end %>
+	    	</h3>
+	  	</div>
 	</div>
+</div>

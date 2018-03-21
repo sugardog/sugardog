@@ -2,33 +2,17 @@ class UsersController < ApplicationController
 
 	before_action :authenticate_user!
 
-	def index
-		@users = User.all
-	end
-
-	def new
-	end
-
-	def create
-		user = User.new()
-	end
-
-	def show
+	def quit
 		@user = User.find(params[:id])
-	end
-
-	def edit
-		@user = User.find(params[:id])
-	end
-
-	def update
-		
 	end
 
 	def destroy
+		user = User.find(params[:id])
+		user.destroy
+		if admin_signed_in?
+			redirect_to users_path
+		else
+			redirect_to cds_path
+		end
 	end
-
-	private
-
-
 end

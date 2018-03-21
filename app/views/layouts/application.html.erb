@@ -31,11 +31,36 @@
 						</form>
 					</div>
 			        <ul class="nav-list clearfix">
-			          	<%= link_to cds_path do %><div class="white nav-list-item"><div class="nav-text white">home</div></div><% end %>
-			            <a href="sign_up.html" class="nav-list-item"><div class="nav-text white">sign up</div></div></a>
-			            <a href="login.html" class="nav-list-item"><div class="nav-text white">login</div></div></a>
-			            <a href="user.html" class="nav-list-item"><div class="nav-text white">mymenu</div></a>
-			            <a href="cart_index.html" class="nav-list-big"><li class="fa fa-shopping-cart white" style="font-size: 45px"><br><div class="nav-text white">cart</div></li></a>
+			          	<%= link_to cds_path do %>
+			          		<div class="white nav-list-item">
+			          			<div class="nav-text white">home</div>
+			          		</div>
+			          	<% end %>
+			          	<%= link_to new_user_registration_path do %>
+			            	<div class="nav-list-item">
+			            		<div class="nav-text white">sign up</div>
+			            	</div>
+			            <% end %>
+			            <%= link_to new_user_session_path do %>
+			            	<div class="nav-list-item">
+			            		<div class="nav-text white">login</div>
+			            	</div>
+			            <% end %>
+			            <%= link_to destroy_user_session_path,method: :delete do %>
+			            	<div class="nav-list-item">
+			            		<div class="nav-text white">Logout</div>
+			            	</div>
+			            <% end %>
+			            <%= link_to do %> <!-- user_path(current_user.id) -->
+			            	<div class="nav-list-item">
+			            		<div class="nav-text white">mymenu</div>
+			            	</div>
+			            <% end %>
+			            <a href="cart_index.html" class="nav-list-big">
+			            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
+			            		<div class="nav-text white">cart</div>
+			            	</li>
+			            </a>
 			        </ul>
 				</nav>
 		    </header>

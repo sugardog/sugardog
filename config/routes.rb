@@ -1,12 +1,26 @@
 Rails.application.routes.draw do
-  	devise_for :users
+  	devise_for :users, controllers: {
+  		sessions: 'users/sessions',
+  		passwords: 'users/passwords',
+  		registrations: 'users/registrations'
+  	}
 
-  	devise_for :admins
+  	devise_for :admins, controllers: {
+  		sessions: 'admins/sessions',
+  		passwords: 'admins/passwords',
+  		registrations: 'admins/registrations'
+  	}
+  	namespace :admin do
+  		resources :users
+  		# resources :reviews
+  		# resources :histories
+  		# resources :deliveries
+  	end
 
 	root 'cds#index'
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'
-
+	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 
 	resources :users do
 		resources :histories, only: [:index]
