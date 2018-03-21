@@ -10,4 +10,11 @@ class Cd < ApplicationRecord
 
 	validates :album_name, :album_kana_name, :label, :price, :stock, :release_date, :artist_id, presence: true
 
+
+	# scope :get_by_album_name, -> (album_name) {
+	# 	where("album_name like ?", "%#{album_name}%")
+	# }
+	# scope :get_by_artist_name, -> (artist_name) {
+	# 	where("artist_name like ?", "%#{artist_name}%")
+	# }
 end

@@ -55,16 +55,18 @@
     <!-- ここまでをnested formで繰り返したい -->
     <div class="col-sm-6 col-sm-offset-4">
       <div class="right"> 
-        <div class="left"></div>
+
+        <div class="left">
+            <button type="submit", class="btn btn-success">まだsong追加する??</button>
+        </div>
       </div>
     </div>
     <div class="form-group col-sm-6 col-sm-offset-3">
       <div class="right">
-
-          <%= f.submit 'disc登録', name: 'create_disc', class: "btn btn-primary" %>
-          <%= f.submit 'disc追加', name: 'add_disc', class: "btn btn-success" %>
-
-
+         <%= link_to new_cd_disc_path do %>
+          <%= f.submit "disc追加", class: "btn btn-success" %>
+          <% end %>
+      <%= f.submit "disc登録", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

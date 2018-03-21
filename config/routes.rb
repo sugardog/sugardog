@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   	end
 
 	root 'cds#index'
+
+	# get 'search', to: 'application#search'
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
