@@ -1,0 +1,45 @@
+<div class="col-lg-4">
+    <div class="title-headline">都道府県別送料</div>
+    <%= form_for(@prefecture) do |f| %>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-4 nav-text" for="prefucture_name">都道府県:</label>
+                <div class="col-sm-8">
+                	<%= f.text_field :prefecture_name, class: "form-control", placeholder: "prefucture_name" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 nav-text" for="postage">送料:</label>
+                <div class="col-sm-8">
+                	<%= f.text_field :postage, class: "form-control", placeholder: "postage" %>
+                </div>
+            </div>
+        </div>
+    	<div class="right">
+        	<%= f.submit "create", class: "btn btn-warning" %>
+    	</div>
+    <% end %>
+</div>
+<div class="col-lg-8">
+    <div class="title-headline">PREFECTURE/POSTAGE INDEX</div>
+    <div class="col-lg-8 col-lg-offset-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>都道府県名</th>
+                    <th>送料</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<% @prefectures.each do |prefecture| %>
+                    <tr>
+                        <td> <%= prefecture.prefecture_name %> </td>
+                        <td> + <%= prefecture.postage %> 円 </td>
+                        <td> <%= link_to "edit", edit_prefecture_path(prefecture), class: "btn btn-success" %> </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

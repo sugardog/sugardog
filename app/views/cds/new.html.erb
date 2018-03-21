@@ -1,6 +1,14 @@
 <div class="col-sm-10 col-sm-offset-1">
   <div class="title-headline">ADD CD</div>
     <%= form_for(@cd) do |f| %>
+      <% if @cd.errors.any? %>
+        <div id="error_explanation" class="text-center">
+          <h4><%= @cd.errors.count %>件のエラーが発生しました。</h4>
+          <% @cd.errors.full_messages.each do |message| %>
+            <h6><%= message %></h6>
+          <% end %>
+        </div>
+      <% end %>
       <div class="col-sm-8 col-sm-offset-2"> <br>
         <div class="form-group">                                              
           <label class="control-label col-sm-3" for="image">ジャケットイメージ:</label>                        
@@ -14,10 +22,6 @@
           <label for="sel1" class="control-label col-sm-3" for="genre">ジャンル:</label>
           <div class="col-sm-9"> 
             <%= f.fields_for :cd_genre do |cg| %>
-              <%# @genres.each do |g| %>
-                <%# binding.pry %>
-                <%#= cg.label :genre_id, g.genre_name %>
-              <%# end %>
 
               <%= cg.collection_check_boxes(:genre_id, Genre.all, :id, :genre_name) do |b| %>
               <%= b.label { b.check_box + b.text } %>

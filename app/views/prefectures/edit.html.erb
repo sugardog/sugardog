@@ -1,0 +1,26 @@
+<div class="col-lg-8">
+    <div class="title-headline">都道府県別送料 編集画面</div>
+    <%= form_for(@prefecture) do |f| %>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-4 nav-text" for="prefucture_name">都道府県:</label>
+                <div class="col-sm-8">
+                	<%= f.text_field :prefecture_name, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 nav-text" for="postage">送料:</label>
+                <div class="col-sm-8">
+                	<%= f.text_field :postage, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+    	<div class="right">
+        	<%= f.submit "update", class: "btn btn-default create" %>
+    	</div>
+    <% end %>
+    <br>
+    <div class="right">
+    	<%= link_to "delete", prefecture_path(@prefecture), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+	</div>
+</div>

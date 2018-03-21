@@ -1,0 +1,97 @@
+<div class="col-sm-10 col-sm-offset-1">
+  <div class="title-headline">ADD CD</div>
+    <%= form_for(@cd) do |f| %>
+      <div class="col-sm-8 col-sm-offset-2"> <br>
+        <div class="form-group">                                              
+          <label class="control-label col-sm-3" for="image">ジャケットイメージ:</label>                        
+          <div class="col-sm-9">
+              <%= f.attachment_field :image %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label for="sel1" class="control-label col-sm-3" for="genre">ジャンル:</label>
+          <div class="col-sm-9"> 
+            <%= f.fields_for :cd_genre do |cg| %>
+
+              <%= cg.collection_check_boxes(:genre_id, Genre.all, :id, :genre_name) do |b| %>
+              <%= b.label { b.check_box + b.text } %>
+            <% end %>
+            <% end %> 
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label for="sel1" class="control-label col-sm-3" for="genre">アーティスト名:</label>
+          <div class="col-sm-9"> 
+            <%= f.collection_select :artist_id, Artist.all, :id, :artist_name, :include_blank => true  %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="album_name">アルバム名:</label>
+          <div class="col-sm-9">
+            <%= f.text_field :album_name, class: "form-control", placeholder: "album_name" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="album_kana_name">アルバム名(カナ):</label>
+          <div class="col-sm-9">
+            <%= f.text_field :album_kana_name, class: "form-control", placeholder: "album_kana_name" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="label">レーベル名:</label>
+          <div class="col-sm-9"> 
+            <%= f.text_field :label, class: "form-control", placeholder: "label" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="price">価格(税抜):</label>
+          <div class="col-sm-9"> 
+          <%=  f.text_field :price, class: "form-control", placeholder: "price" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="release_date">リリース日:</label>
+          <div class="col-sm-9"> 
+            <%= f.date_field :release_date, class: "form-control", placeholder: "release_date" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="comment">CD紹介:</label>
+          <div class="col-sm-9"> 
+            <%= f.text_area :cd_introduction, class: "form-control", placeholder: "introduction", row: "8" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="form-group">
+          <label class="control-label col-sm-3" for="stock">在庫数:</label>
+          <div class="col-sm-9"> 
+            <%= f.number_field :stock, class: "form-control", placeholder: "stock" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2"><br>
+        <div class="right">
+          <%= f.submit 'create', class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

@@ -1,121 +1,126 @@
-    <div class="col-lg-10">
-      <div class="main-menu">
-        <div class="album_title">
-        <h3><%= @cd.album_name %></h3>
+<div class="col-lg-10 col-lg-offset-1">
+  <div class="main-menu">
+    <div class="album_title">
+      <h3><%= @cd.album_name %></h3>
+    </div>
+    <div class="col-lg-6">
+      <div class="show_pic">
+        <%= attachment_image_tag @cd,:image %>
       </div>
-        <div class="col-lg-6">
-          <div class="show_pic">
-            <%= attachment_image_tag @cd,:image %></div>
-          <br>
-          <div class="star">★★★★☆</div>
-          <a href="review.html">ユーザーレビュー54件</a>
-        </div>
-        <div class="col-lg-6">
-
-
-            <table class="table">
-            <thead>
-              <td>アルバム名</td>
-              <td><%= @cd.album_name %></td>
-            </thead>
-            <tr>
-              <td>アーティスト名</td>
-              <td><%= link_to artist_path(@cd.artist) do %>
-                <%= @cd.artist.artist_name %><% end %></td>
-            </tr>
-            <tr>
-              <td>ジャンル</td>
-              <td><% @cd.cd_genres.each do |c_g| %>
-                <%= c_g.genre.genre_name %><br><% end %>
-                </td>
-            </tr>
-            <tr>
-              <td>総曲数</td>
-              <td>
-                <% @song_sum = 0 %>
-                <% @cd.discs.each do |c_d| %>
-                    <% @song_sum = @song_sum + c_d.songs.count %>
-                <% end %>
-                全部で<%= @song_sum %>曲
-              </td>
-            </tr>
-            <tr>
-              <td>ディスク別曲数</td>
-              <td><% @cd.discs.each do |c_d| %>
-                    DiscNo<%= c_d.disc_num %>
-                    全<%= c_d.songs.count %>曲<br><% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>リリース日</td>
-              <td><%= @cd.release_date %></td>
-            </tr>
-            <tr>
-              <td>レーベル</td>
-              <td><%= @cd.label %></td>
-            </tr>
-            <tr>
-              <td>価格</td>
-              <td><%= @cd.price %>円</td>
-            </tr>
-            <tr>
-              <td>在庫数</td>
-              <td>残り<%= @cd.stock %>点</td>
-            </tr>
-            <tr>
-              <td>
+      <br>
+      <div class="star">★★★★☆</div>
+      <a href="review.html">ユーザーレビュー54件</a>
+    </div>
+    <div class="col-lg-6">
+      <table class="table">
+        <thead>
+          <td>アルバム名</td>
+          <td><%= @cd.album_name %></td>
+        </thead>
+        <tr>
+          <td>アーティスト名</td>
+          <td><%= link_to artist_path(@cd.artist) do %>
+            <%= @cd.artist.artist_name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><% @cd.cd_genres.each do |c_g| %>
+                <%= c_g.genre.genre_name %>
+               <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>ディスク別曲数</td>
+          <td><%= @cd.discs.each do |c_d| %>
+            DiscNo<%= c_d.disc_num %>
+            全<%= c_d.songs.count %>曲<br><% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>リリース日</td>
+          <td><%= @cd.release_date %></td>
+        </tr>
+        <tr>
+          <td>レーベル</td>
+          <td><%= @cd.label %></td>
+        </tr>
+        <tr>
+          <td>価格</td>
+          <td><%= @cd.price %>円</td>
+        </tr>
+        <tr>
+          <td>在庫数</td>
+         <td>残り<%= @cd.stock %>点</td>
+        </tr>
+        <tr>
+          <td>
+            <%= form_for(@cd_cart) do |f| %>
+                
+            <% end %>
+              
             <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">1
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                </ul>
-              </div>
-              </td>
-              <td>
-                <a href="cart_index.html"><button class="btn btn-info fa fa-cart-plus">カートに入れる</button></a>
-            </td>
-            </tr>
-          </table>
-        </div>
-
-        <table class="table">
-
-          </table>
-          <table class="table">
-            <thead>
-              <th colspan="4">商品説明</th>
-            </thead>
-            <tr>
-              <td colspan="4"><%= @cd.cd_introduction %>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="4"></td>
-            </tr>
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>タイトル</th>
-                <th>アーティスト</th>
-                <th>時間</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @cd.discs.each do |c_d| %>
-                <% c_d.songs.each do |cds| %>
-              <tr>
-                <td><%= cds.order_num %></td>
-                <td><%= cds.song_name %></td>
-                <td><%= cds.singer.singer_name %></td>
-                <td><%= cds.minutes %></td>
-              </tr>
-              <% end %>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">1
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <a href="cart_index.html"><button class="btn btn-info fa fa-cart-plus">カートに入れる</button></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <table class="table">
+      <thead>
+        <th colspan="4">商品説明</th>
+      </thead>
+      <tr>
+        <td colspan="4"><%= @cd.cd_introduction %><br>
+          <div class="right">
+            <%= link_to "edit", edit_cd_path(id: @cd.id), class:"btn btn-success" %>
+            <%= link_to "destroy", cd_path(@cd.id), method: :delete, "data-confirm" => "are you sure?", class:"btn btn-danger" %>
+            <%= link_to "add disc", new_cd_disc_path(@cd), class:"btn btn-info" %>
+          </div>
+        </td>
+      </tr>
+      <thead>
+        <% @cd.discs.each do |c_d| %>
+        <tr>
+          <th colspan="4" style="background-color: #fff4f4">disc<%= c_d.disc_num %>
+            <div class="right">
+              <%= link_to "edit", edit_cd_disc_path(@cd, c_d), class:"btn btn-success" %>
+              <%= link_to cd_disc_path(@cd, c_d), method: :delete, "data-confirm" => "are you sure?" do %>
+                <div class="btn btn-danger">destroy</div>
+            <% end %>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th>No.</th>
+          <th>タイトル</th>
+          <th>アーティスト</th>
+          <th>時間</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% c_d.songs.each do |cds| %>
+          <tr>
+            <td><%= cds.order_num %></td>
+            <td><%= cds.song_name %></td>
+            <td><%= cds.singer.singer_name %></td>
+            <td><%= cds.minutes %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

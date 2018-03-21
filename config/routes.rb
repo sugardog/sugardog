@@ -10,19 +10,25 @@ Rails.application.routes.draw do
   		passwords: 'admins/passwords',
   		registrations: 'admins/registrations'
   	}
+  	namespace :admin do
+  		resources :users do
+  			resources :deliveries, except: [:index, :show]
+  		end
+  		# resources :reviews
+  		# resources :histories
+  	end
 
 	root 'cds#index'
-	# get 'search', to: 'application#search'
 
+	# get 'search', to: 'application#search'
 	get 'cds/search' => 'cds#search'
 	get 'cd_carts/:id/select' => 'cd_carts#select'
-	get 'users/:id/quit' => 'users#quit', as: 'quit'
+	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 
 	resources :users do
 		resources :histories, only: [:index]
 	end
 
-	resources :deliveries
 	resources :cds do
 		resources :discs, except: [:index, :show]
 			# resources :songs
@@ -37,11 +43,11 @@ Rails.application.routes.draw do
 		resource :favorites, only: [:create, :destroy]
 	end
 	resources :campaigns, except: [:show]
-	resources :prefectures, except: [:show]
+	resources :prefectures, except: [:new]
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
 	resources :cd_carts
-	resource :reviews, except: [:show]
+	resources :reviews, except: [:show]
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
 
