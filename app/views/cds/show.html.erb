@@ -28,16 +28,15 @@
           <td>ジャンル</td>
           <td><% @cd.cd_genres.each do |c_g| %>
                 <%= c_g.genre.genre_name %>
-              <% end %>
+               <% end %>
           </td>
         </tr>
         <tr>
-          <td>曲数</td>
-          <td>全8曲</td>
-        </tr>
-        <tr>
-          <td>収録時間</td>
-          <td>46分22秒</td>
+          <td>ディスク別曲数</td>
+          <td><%= @cd.discs.each do |c_d| %>
+            DiscNo<%= c_d.disc_num %>
+            全<%= c_d.songs.count %>曲<br><% end %>
+          </td>
         </tr>
         <tr>
           <td>リリース日</td>
@@ -53,7 +52,7 @@
         </tr>
         <tr>
           <td>在庫数</td>
-          <td>残り<%= @cd.stock %>点</td>
+         <td>残り<%= @cd.stock %>点</td>
         </tr>
         <tr>
           <td>
@@ -80,8 +79,6 @@
       </table>
     </div>
     <table class="table">
-    </table>
-    <table class="table">
       <thead>
         <th colspan="4">商品説明</th>
       </thead>
@@ -91,9 +88,9 @@
             <%= link_to "edit", edit_cd_path(id: @cd.id), class:"btn btn-success" %>
             <%= link_to "destroy", cd_path(@cd.id), method: :delete, "data-confirm" => "are you sure?", class:"btn btn-danger" %>
             <%= link_to "add disc", new_cd_disc_path(@cd), class:"btn btn-info" %>
-          </div>      
+          </div>
         </td>
-      </tr>      
+      </tr>
       <thead>
         <% @cd.discs.each do |c_d| %>
         <tr>
@@ -126,4 +123,4 @@
     </tbody>
   </table>
 </div>
-
+</div>
