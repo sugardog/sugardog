@@ -8,7 +8,7 @@ end
 
 def show
 	@cd = Cd.find(params[:id])
-	 params[:id].present?
+	 # params[:id].present?
 
 end
 

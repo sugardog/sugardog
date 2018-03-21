@@ -6,8 +6,7 @@ class Cd < ApplicationRecord
 	belongs_to :artist
 	has_many :cd_carts
 	has_many :carts, through: :cd_carts
-	belongs_to :user
-end
+
 
 	validates :album_name, :album_kana_name, :label, :price, :stock, :release_date, :artist_id, presence: true
 
