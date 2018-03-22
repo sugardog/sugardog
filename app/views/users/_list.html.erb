@@ -1,7 +1,11 @@
 <div class="col-lg-3">
 	<div class="side-bar">
 	 	<div class="category-box">
-	    	<h4>hello <%= user.last_name %> <%= user.first_name %>様!!</h4>
+	 		<% if admin_signed_in? %>
+	 			<h4>hello Admin様!!</h4>
+	 		<% else %>
+	    		<h4>hello <%= user.last_name %> <%= user.first_name %>様!!</h4>
+	    	<% end %>
 	    	<h2>my menu</h2>
 	    	<ol>
 		    	<li> <%= link_to "ユーザー情報の確認", admin_user_path(user) %> </li>

@@ -3,8 +3,10 @@ class DeliveriesController < ApplicationController
 		# admin 又は user でログインしていないとアクセス出来なくするメソッド
 		before_action :authenticate_user?
 
+		before_action :authenticate_admin?, only: [:new]
+
 		# ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否するメソッド
-		# before_action :ensure_correct_user, only: [:edit]
+		before_action :ensure_correct_user, only: [:edit]
 
 	def new
 		@delivery = Delivery.new
@@ -44,13 +46,23 @@ class DeliveriesController < ApplicationController
 		redirect_to root_path unless user_signed_in? || admin_signed_in?
 	end
 
-	# def ensure_correct_user
-	# 	unless admin_signed_in? then
-	# 		               # adminでsigned_inしていないときに
-	# 		if @user_signed_in.id != current_user.id  # ログインuserのidと、見ようとしているページのidが一致していなければ
-	# 			redirect_to root_path               # root_pathへリダイレクト
-	# 		end
-	# 	end
-	# end
+	def authenticate_admin?
+		if admin_signed_in?
+			redirect_to admin_users_path
+		end
+	end
+
+	def ensure_correct_user
+		@delivery = Delivery.find_by(id:params[:id])
+		if Delivery.exists?(params[:id])							 # Deliveryのレコードが存在しているかどうか、".exist?()"でチェックしている
+			unless admin_signed_in? then  							 # adminでsigned_inしていないときに
+				if @delivery.user_id != @current_user.id 			 # ログインuserのidと、見ようとしているページのuser_idが一致していなければ
+					redirect_to admin_user_path(current_user.id)	 # mymenuページへリダイレクト
+				end
+			end
+		else
+			redirect_to root_path									 # Deliveryのレコードが存在していなければ（又は削除されていたら）、topページへリダイレクト
+		end
+	end
 
 end
