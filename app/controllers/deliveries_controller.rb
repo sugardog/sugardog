@@ -3,6 +3,7 @@ class DeliveriesController < ApplicationController
 		# admin 又は user でログインしていないとアクセス出来なくするメソッド
 		before_action :authenticate_user?
 
+		# newページでadmin側が見ると、userのidが取れなくなりエラーになるので、しょうがなくnewアクションだけリダイレクトさせる
 		before_action :authenticate_admin?, only: [:new]
 
 		# ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否するメソッド
