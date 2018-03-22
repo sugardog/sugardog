@@ -40,7 +40,8 @@
 		        <nav class="clearfix">
 		       		<div class="title">sugerdog。</div>
 				 	<div class="search-box">
-					<dl><%= search_form_for @q, :url => {:controller => 'cds', :action => 'search'} do |f| %><%= f.search_field :album_name_or_album_kana_name_or_artist_artist_name_or_artist_artist_kana_name_cont, class: "form-control", placeholder: "検索" %>
+					<dl><%= search_form_for @q, :url => {:controller => '/cds', :action => 'search'} do |f| %>
+						<%= f.search_field :album_name_or_album_kana_name_or_artist_artist_name_or_artist_artist_kana_name_cont, class: "form-control", placeholder: "検索" %>
 						<%= f.submit %>
 						<% end %>
 <!-- 						<%#= form_tag(cds_path, method: 'get')  do %>
