@@ -11,11 +11,7 @@ Rails.application.routes.draw do
   		registrations: 'admins/registrations'
   	}
   	namespace :admin do
-  		resources :users do
-  			resources :deliveries, except: [:index, :show]
-  		end
-  		# resources :reviews
-  		# resources :histories
+  		resources :users
   	end
 
 	root 'cds#index'
@@ -25,9 +21,7 @@ Rails.application.routes.draw do
 	get 'cd_carts/:id/select' => 'cd_carts#select'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 
-	resources :users do
-		resources :histories, only: [:index]
-	end
+	resources :deliveries, except: [:index, :show]
 
 	resources :cds do
 		resources :discs, except: [:index, :show]
