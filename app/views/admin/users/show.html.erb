@@ -2,7 +2,7 @@
   <div class="row">
     <%= render 'users/list', user: @user %>
 	<div class="col-lg-9">
-	    <div class="main-menu"></br>
+	    <div class="main-menu"><br>
 	    	<div class="right">
 	    		<% if admin_signed_in? %>
 					<%= link_to "USER:destroy", admin_user_path(@user), method: :delete, class: "btn btn-danger" %>
@@ -43,35 +43,30 @@
 					</li>
 				</ul>
 				<%= link_to "退会のお手続きへ", quit_path(@user), class: "btn btn-default destroy" %>
-				</br>
-				<% if @user == current_user %>
+				<br>
+				<% if user_signed_in? %>
 					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 				<% end %>
 				<div class="title-headline">お届け先情報</div>
 			    <ul class="list-group">
-				    <li class="list-group-item list-group-item-warning">お届け先１</li>
-				    <li class="list-group-item">
-				  		〒 <%= %><br>
-				  							　茨城県つくば市沼田５７９<br>
-					  						  sugerdog。様<br>
-					  					      080-0000-0000<br>
-				        <div class="right">
-						  	<a href="delivery.html"><button class="btn btn-default edit">edit</button></a>
-							<a href="user.html"><button class="btn btn-default destroy">destroy</button></a>
-					    </div>
-				    </li>
-			    </ul>
-			    <ul class="list-group">
-				    <li class="list-group-item list-group-item-warning">お届け先2</li>
-				    <li class="list-group-item">〒300-4353<br>
-				   							　  茨城県つくば市沼田５７９<br>
-					  						  　sugerdog。様<br>
-					  					    	080-0000-0000<br>
-			    	    <div class="right">
-					   	<a href="delivery.html"><button class="btn btn-default edit">edit</button></a>
-  					    	<a href="user.html"><button class="btn btn-default destroy">destroy</button></a>
-					    </div>
-				    </li>
+			    	<% if Delivery.exists?(user_id: @user.id) %>
+				    	<% i = 0 %>
+					    <% @user.deliveries.each_with_index do |delivery, i| %>
+							    <li class="list-group-item list-group-item-warning">お届け先 <%= i + 1 %></li>
+							    <li class="list-group-item">
+							  		〒 <%= delivery.zipcode %><br>
+							  		<%= delivery.prefecture.prefecture_name %><%= delivery.address %><br>
+								  	<%= delivery.name %>様<br>
+								  	電話番号：<%=  delivery.tel %><br>
+							        <div class="right">
+									  	<%= link_to "edit", edit_delivery_path(delivery), class:"btn btn-default edit" %>
+										<%= link_to "destroy", delivery_path(delivery), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-default destroy" %>
+								    </div>
+							    </li>
+						<% end %>
+					<% else %>
+						<li class="list-group-item list-group-item-warning">追加のお届け先情報はまだありません。</li>
+					<% end %>
 			    </ul>
 			</div>
 		</div>

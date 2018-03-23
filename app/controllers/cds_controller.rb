@@ -18,6 +18,9 @@ end
 def show
 	@cd = Cd.find(params[:id])
 
+	 # params[:id].present?
+
+
 	# @songs = @cd.discs.songs(params[:song])
 end
 
@@ -31,6 +34,7 @@ end
 def search
 	@q = Cd.ransack(params[:q])
 	@cds = @q.result
+
 
 end
 

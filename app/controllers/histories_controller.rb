@@ -1,5 +1,24 @@
 class HistoriesController < ApplicationController
+
+	before_action :authenticate_user?
+	before_action :ensure_correct_user
+
 	def index
-		@genres = Genre.all
+		@histories = History.all
+    @genres = Genre.all
+	end
+
+	def show
+		
+	end
+
+	def destroy
+	end
+
+	private
+	def authenticate_user?
+	end
+
+	def ensure_correct_user
 	end
 end
