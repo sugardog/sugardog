@@ -5,6 +5,7 @@ class HistoriesController < ApplicationController
 
 	def index
 		@histories = History.all
+    @genres = Genre.all
 	end
 
 	def show

@@ -4,6 +4,8 @@
 	    <%= csrf_meta_tags %>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	    <!-- <link rel="stylesheet" href="jquery.raty.css"> -->
+	    <!-- <link rel="stylesheet" href="style.css"> -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <html lang="en">
@@ -16,6 +18,9 @@
 	</head>
     <!-- ここからコードを書きましょう -->
     <body>
+    	<!-- <script src="js/jquery-3.3.1.min.js"></script> -->
+		<!-- <script src="js/jquery.raty.js"></script> -->
+        <!-- <script src="js/application.js"></script> -->
     <!-- header -->
     	<% if admin_signed_in? %>
     		<header style="margin-top: -100px;">
@@ -131,6 +136,5 @@
 		    </nav>
 		</header> -->
     	<%= yield %>
-
     </body>
 </html>
