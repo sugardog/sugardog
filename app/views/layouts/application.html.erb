@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   	<head>
-	    <title>Sugardog</title>
 	    <%= csrf_meta_tags %>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	    <!-- <link rel="stylesheet" href="jquery.raty.css"> -->
+	    <!-- <link rel="stylesheet" href="style.css"> -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	    <html lang="en">
@@ -16,11 +17,17 @@
 		<title>sugerdog.</title>
 	</head>
     <!-- ここからコードを書きましょう -->
+
+    <body>
     <!-- header -->
     	<% if admin_signed_in? %>
+<<<<<<< HEAD
     		<header class="admin", style="margin-top: -100px">
+=======
+    		<header style="margin-top: -100px;">
+>>>>>>> c41156e43d17a5877fd5f3f30c1f388b12989225
 		    	<nav class="clearfix admin">
-		        	<div class="clearfix header_nav">
+		        	<div class="clearfix header_nav", style="margin: 0 auto; width: 85%;">
 			            <%= link_to "TOP", admins_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "CDの追加", new_cd_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "ユーザー一覧", admin_users_path, class: "admin_nav-list-item" %>
@@ -133,5 +140,7 @@
 		</header> -->
 
     	<%= yield %>
+
+    </body>
 
 </html>

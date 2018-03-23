@@ -1,150 +1,80 @@
 <div class="col-lg-8 col-lg-offset-2">
   <h2 class="title_headline">CART HISTORY</h2>
+    <!-- タブ・メニュー -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">受付</a></li>
+      <li><a data-toggle="tab" href="#menu1">準備中</a></li>
+      <li><a data-toggle="tab" href="#menu2">発送済</a></li>
+    </ul>
+    <!-- タブ内容 -->
 
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">受付</a></li>
-    <li><a data-toggle="tab" href="#menu1">準備中</a></li>
-    <li><a data-toggle="tab" href="#menu2">発送済</a></li>
-  </ul>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <h3>受付</h3>
+        <% @histories.each do |history| %>
+        <button class="list-group-item" data-toggle="collapse" data-target="#demo<%= history.id %>" style="background-color: pink">
+          <%= link_to admin_user_path(history.user.id) do %>
+            <%= history.user.last_name %> <%= history.user.first_name %>
+          <% end %>
+          <div class="right"><%#= history.created_at.strtime('%Y/%m/%d') %></div>
+        </button>
+        <div id="demo<%= history.id %>" class="collapse">
+          <div class="dropdown">
+            <%= select :status,:name,History.statuses.keys.to_a, class: "btn btn-primary dropdown-toggle" %>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="3"><div>商品内容</div></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% history.cd_histories.each do |c_h| %>
+              <tr>
+                <td><%# c_h. %><img class="cart_show_image" src="cd_image/rad2.jpg"></a></td>
+                <td><a href="cd_show.html"><%= c_h.cd.album_name %></a><br><a href='favorite_artist.html'>RADWIMPS</a></td>
+                <td><%= c_h.last_price %>円（税込)<br><a href="review_form.html"></a></td> 
+              </tr>
+              <% end %>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>受付</h3>
-      <button class="list-group-item" data-toggle="collapse" data-target="#demo" style="background-color: pink">
-        <a href="admin_user.html">takayuki</a>
-        <div class="right">2018/2/1</div>
-      </button>
-      <div id="demo" class="collapse">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">受付
-            <span class="caret"><br></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">準備中</a></li>
-            <li><a href="#">発送済</a></li>
-          </ul>
-        </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th colspan="3"><div>商品内容</div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="cd_show.html"><img class="cart_show_image" src="cd_image/rad2.jpg"></a></td>
-              <td><a href="cd_show.html">君の名は。</a><br><a href='favorite_artist.html'>RADWIMPS</a></td>
-              <td>2916円（税込)<br><a href="review_form.html"></a></td>
-            </tr>
-            <tr>
-              <td><a href="cd_show.html"><img class="cart_show_image" src="cd_image/aiko1.jpg"></a></td>
-              <td><a href="cd_show.html">May Dream</a><br><a href='favorite_artist.html'>aiko</a></td>
-              <td>3146円（税込)<br><a href="review_form.html"></a></td>
-            </tr>
-            <tr>
-              <td><a href="cd_show.html"><img class="cart_show_image" src="cd_image/momus2.jpg"></a></td>
-              <td><a href="cd_show.html">二十歳のモーニング娘。</a><br><a href='favorite_artist.html'>モーニング娘。</a></td>
-              <td>1543円（税込)<br><a href="review_form.html"></a></td>
-            </tr>
-            <tr>
-              <th colspan="2">小計</th>
-              <td>7605円(税込)</td>
-            </tr>
-            <tr>
-              <th colspan="2">代引手数料</th>
-              <td>324円(税込)</td>
-            </tr>
-            <tr>
-              <th colspan="2">合計</th>
-              <td>7929円(税込)</td>
-            </tr>
-            <tr>
-              <th colspan="3"><div>お手続内容</div></th>
-            </tr>
-            <tr>
-              <th>お支払方法</th>
-              <td colspan="2">代引き</td>
-            </tr>
-            <tr>
-              <th>お届け先</th>
-              <td colspan="2">佐藤犬代<br>
-                            〒150-0041<br>
-                            東京都渋谷区神南1丁目19番11号パークウェースクエア2 4階<br>
-                            03-6868-8470
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br>
-      <button class="list-group-item" data-toggle="collapse" data-target="#demo2" style="background-color: pink"><a href="admin_user.html">ayaka1094</a><div class="right">2018/3/3</div>
-      </button>
-      <div id="demo2" class="collapse">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">受付
-            <span class="caret"><br></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">準備中</a></li>
-            <li><a href="#">発送済</a></li>
-          </ul>
-        </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th colspan="3"><div>商品内容</div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="cd_show.html"><img class="cart_show_image" src="cd_image/aiko2.jpg"></a></td>
-              <td><a href="cd_show.html">泡のような愛だった。</a><br>aiko</td>
-              <td>2000円（税込)<br><a href="review_form.html"></a></td>
-            </tr>
-            <tr>
-              <td><a href="cd_show.html"><img class="cart_show_image" src="cd_image/aiko1.jpg"></a></td>
-              <td><a href="cd_show.html">May Dream</a><br>aiko</td>
-              <td>2000円（税込)<br><a href="review_form.html"></a></td>
-            </tr>
-            <tr>
-              <td><a href="cd_show.html"><img class="cart_show_image" src="cd_image/momus2.jpg"></a></td>
-              <td><a href="cd_show.html">二十歳のモーニング娘。</a><br>モーニング娘。</td>
-              <td>1500円（税込)<br><a href="review_form.html"></a></td>
-            </tr>
-            <tr>
-              <th colspan="2">小計</th>
-              <td>5500円(税込)</td>
-            </tr>
-            <tr>
-              <th colspan="2">代引手数料</th>
-              <td>324円(税込)</td>
-            </tr>
-            <tr>
-              <th colspan="2">合計</th>
-              <td>5824円(税込)</td>
-            </tr>
-            <tr>
-              <th colspan="3"><div>お手続内容</div></th>
-            </tr>
-            <tr>
-              <th>お支払方法</th>
-              <td colspan="2">代引き</td>
-            </tr>
-            <tr>
-              <th>お届け先</th>
-              <td colspan="2">佐藤犬代<br>
+              <tr>
+                <th colspan="2">小計</th>
+                <td>7605円(税込)</td>
+              </tr>
+              <tr>
+                <th colspan="2">代引手数料</th>
+                <td>324円(税込)</td>
+              </tr>
+              <tr>
+                <th colspan="2">合計</th>
+                <td>7929円(税込)</td>
+              </tr>
+              <tr>
+                <th colspan="3"><div>お手続内容</div></th>
+              </tr>
+              <tr>
+                <th>お支払方法</th>
+                <td colspan="2">代引き</td>
+              </tr>
+              <tr>
+                <th>お届け先</th>
+                <td colspan="2">佐藤犬代<br>
                               〒150-0041<br>
                               東京都渋谷区神南1丁目19番11号パークウェースクエア2 4階<br>
                               03-6868-8470
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
       </div>
     </div>
+  <% end %>
+  <div id="menu1" class="tab-pane fade">
+    <h3> 準備中 </h3>
   </div>
-  <div id="menu1" class="tab-pane fade"></div>
   <div id="menu2" class="tab-pane fade">
-    <h3>発送済</h3>
+    <h3> 発送済 </h3>
   </div>
 </div>
