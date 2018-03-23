@@ -47,13 +47,10 @@
           </div>
           <div class="list-group-item">お支払い方法は代引きのみですよ
         </div>
+      </div>
         <div class="right">
           <%= link_to "変更する", cart_path, class:"btn btn-default edit"  %>
-          <%= link_to "購入内容の確認へ",   %>
-
-        <a href="cart_show.html">
-          <button class="btn btn-default create">進む</button>
-        </a>
+          <%= link_to "購入内容の確認へ", { :controller => :carts, :action => :confirm }, class:"btn btn-default create" %>
       </div>
     </div>
   </div>
