@@ -33,9 +33,9 @@ class DiscsController < ApplicationController
 	def update
 		@cd = Cd.find(params[:cd_id])
 		@disc = Disc.find(params[:id])
-		@songs = disc.songs
+		@songs = @disc.songs
 		@disc.update(disc_params)
-		redirect_to cd_path(cd)
+		redirect_to cd_path(@cd)
 	end
 
 

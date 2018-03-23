@@ -1,0 +1,71 @@
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2 class="buy_title">delivery</h2>
+
+
+
+
+            <div class="list-group">
+              <div class="list-group-item address radio">
+                <label>
+                  <input type="radio" name="radioName" value="radioA">ご自宅
+                </label>
+              </div>
+              <div class="list-group-item"><%= @user.last_name %><%= @user.first_name %>様<br>
+                                           〒<%= @user.zipcode %><br>
+                                           <%= @user.prefecture.prefecture_name %>
+                                           <%= @user.address %><br>
+                                           <%= @user.tel %>
+              </div>
+            </div>
+            <div class="list-group">
+              <a href="#" class="list-group-item address radio">
+                <label>
+                  <input type="radio" name="radioName" value="radioA">その他お届け先情報
+                </label>
+              </a>
+              <div class="list-group-item">
+              </div>
+              <div class="right" style="margin-top: 30px">
+                <a href="delivery.html"><button class="btn btn-default write">お届け先を追加</button></a>
+              </div>
+            </div>
+            <h2 class="buy_title">Pay</h2>
+            <div class="list-group">
+              <a href="#" class="list-group-item pay radio">
+                <label>
+                  <input type="radio" name="radioName" value="radioA"> クレジット
+                </label>
+              </a>
+              <div class="list-group-item">佐藤犬代<br>
+                                           〒150-0041<br>
+                                           東京都渋谷区神南1丁目19番11号パークウェースクエア2 4階<br>
+                                           03-6868-8470
+              </div>
+            </div>
+            <div class="list-group">
+              <a href="#" class="list-group-item pay radio">
+                <label>
+                  <input type="radio" name="radioName" value="radioA"> 代引き
+                </label>
+              </a>
+              <div class="list-group-item">受取可能な店舗・ロッカーを探す<br>
+                                           お近くのコンビニ・郵便局店頭、はこぽすロッカーで商品をお受け取りいただけます<br>
+                                           ※受取り手数料：108円
+              </div>
+            </div>
+            <div class="right">
+            <a href="cart_index.html">
+              <button class="btn btn-default edit">戻る</button>
+            </a>
+            <a href="cart_show.html">
+              <button class="btn btn-default create">進む</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>

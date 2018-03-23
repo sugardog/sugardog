@@ -57,12 +57,14 @@
         </tr>
         <tr>
           <td>
-            <%= form_for [@user, @cd_cart] do |f| %>
-                <% f.number_field :count, class:"btn btn-default" %>
-          </td>
+            <%= form_for(@cd_cart, url: cd_cd_carts_path(@cd.id), method: :post) do |f| %>
+              <%= f.number_field :count, class:"btn btn-default" %>
+                      </td>
           <td>
-            <% f.submit "カートに入れる", class:"btn btn-info" %>
-          </td><% end %>
+            <%= f.submit "カートに入れる", class:"btn btn-info" %>
+            <% end %>
+
+          </td>
         </tr>
       </table>
     </div>

@@ -37,7 +37,9 @@
 			<% @cds.each do |cd| %>
 				<div class="cd-box">
 					<div class="cd_image">
-			   			<%= attachment_image_tag cd,:image %>
+						<%= link_to cd_path(cd) do %>
+			   				<%= attachment_image_tag cd,:image %>
+			   			<% end %>
 			 		</div>
 					<table class="table">
 					    <thead>
