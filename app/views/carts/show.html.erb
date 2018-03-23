@@ -28,9 +28,11 @@
                         <%= cc.cd.artist.artist_name %>
                       <% end %>
                   </td>
-                  <td style="width: 200px; text-align: right"><% sub_total = cc.cd.price * cc.count %>
-                        <% sum = sum+sub_total %>
-                      <%= number_with_delimiter(sub_total) %>円（税抜)</td> 
+                  <td style="width: 200px; text-align: right">
+                    <% sub_total = cc.cd.price * cc.count %>
+                    <% sum = sum+sub_total %>
+                    <%= number_with_delimiter(sub_total) %>円（税抜)
+                  </td> 
                   <td style="width: 20px">
                     <%= f.number_field :count, class:"btn btn-default btn-block" %><br><br>
                     <div class="right">
