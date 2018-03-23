@@ -19,12 +19,14 @@ Rails.application.routes.draw do
 
 	# get 'search', to: 'application#search'
 	get 'cds/search' => 'cds#search'
-	get 'cd_carts/:id/select' => 'cd_carts#select'
+	get 'carts/:id/select' => 'carts#select'
+	get 'carts/:id/confirm' => 'carts#confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 
 	resources :deliveries, except: [:index, :show]
 
 	resources :cds do
+		resource :cd_carts
 		resources :discs, except: [:index, :show]
 			# resources :songs
 		# end
@@ -41,8 +43,8 @@ Rails.application.routes.draw do
 	resources :prefectures, except: [:new]
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
-	resources :cd_carts
-	resources :reviews, except: [:show]
+	resource :reviews, except: [:show]
+
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
 

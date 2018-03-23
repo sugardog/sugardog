@@ -17,7 +17,7 @@ end
 
 def show
 	@cd = Cd.find(params[:id])
-
+	@cd_cart = CdCart.new
 	 # params[:id].present?
 
 
@@ -34,8 +34,6 @@ end
 def search
 	@q = Cd.ransack(params[:q])
 	@cds = @q.result
-
-
 end
 
 def new

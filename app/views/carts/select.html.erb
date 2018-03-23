@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <h2 class="buy_title">delivery</h2>
+      <div class="list-group">
+        <div class="list-group-item address radio">
+          <label>
+            <input type="radio" name="radioName" value="radioA">ご自宅
+          </label>
+        </div>
+        <div class="list-group-item">
+          〒<%= @user.zipcode %><br>
+          <%= @user.prefecture.prefecture_name %>
+          <%= @user.address %><br>
+          <%= @user.tel %><br>
+          <%= @user.last_name %><%= @user.first_name %>様
+        </div>
+      </div>
+
+      <% @user.deliveries.each_with_index do |d,i| %>
+        <div class="list-group">
+          <div class="list-group-item address radio">
+            <label>
+              <input type="radio" name="radioName" value="radioA">その他お届け先情報<%= i %>
+            </label>
+          </div>
+          <div class="list-group-item">
+            <%= d.prefecture.prefecture_name %>
+            〒<%= d.zipcode %>
+            <%= d.address %>
+            <%= d.tel %>
+            <%= d.name %>
+          </div>
+          <% end %>
+          <div class="right" style="margin-top: 30px">
+            <%= link_to "お届け先情報を追加", new_delivery_path, class:"btn btn-default write" %>
+          </div>
+        </div>
+
+
+        <h2 class="buy_title">Pay</h2>
+        <div class="list-group">
+          <div class="list-group-item pay radio">
+            <label>
+              代引き
+            </label>
+          </div>
+          <div class="list-group-item">お支払い方法は代引きのみですよ
+        </div>
+        <div class="right">
+          <%= link_to "変更する", cart_path, class:"btn btn-default edit"  %>
+          <%= link_to "購入内容の確認へ",   %>
+
+        <a href="cart_show.html">
+          <button class="btn btn-default create">進む</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>

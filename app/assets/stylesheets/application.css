@@ -36,7 +36,7 @@ dt .search-form {
 	border: 1px solid;
 	border-color: #ffd7d9;
 }
-dd .search-button {
+ .search-button {
 	width: 40px;
 	height: 30px;
 	float: left;
@@ -250,7 +250,7 @@ a:hover {
 th {
 	text-align: center;
 }
-.cart_image {
+.cart_image img {
 	width: 100px;
 	height: 100px;
 }

@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td>ディスク別曲数</td>
-          <td><%= @cd.discs.each do |c_d| %>
+          <td><% @cd.discs.each do |c_d| %>
             DiscNo<%= c_d.disc_num %>
             全<%= c_d.songs.count %>曲<br><% end %>
           </td>
@@ -56,24 +56,13 @@
         </tr>
         <tr>
           <td>
-            <%= form_for(@cd_cart) do |f| %>
-                
-            <% end %>
-              
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">1
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-              </ul>
-            </div>
-          </td>
+            <%= form_for(@cd_cart, url: cd_cd_carts_path(@cd.id), method: :post) do |f| %>
+              <%= f.number_field :count, class:"btn btn-default" %>
+                      </td>
           <td>
-            <a href="cart_index.html"><button class="btn btn-info fa fa-cart-plus">カートに入れる</button></a>
+            <%= f.submit "カートに入れる", class:"btn btn-info" %>
+            <% end %>
+
           </td>
         </tr>
       </table>

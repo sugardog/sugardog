@@ -13,14 +13,12 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	    <%= javascript_include_tag 'application' %>
 		<title>sugerdog.</title>
 	</head>
     <!-- ここからコードを書きましょう -->
+
     <body>
-    	<!-- <script src="js/jquery-3.3.1.min.js"></script> -->
-		<!-- <script src="js/jquery.raty.js"></script> -->
-        <!-- <script src="js/application.js"></script> -->
     <!-- header -->
     	<% if admin_signed_in? %>
     		<header style="margin-top: -100px;">
@@ -29,7 +27,7 @@
 			            <%= link_to "TOP", admins_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "CDの追加", new_cd_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "ユーザー一覧", admin_users_path, class: "admin_nav-list-item" %>
-			            <%= link_to "アーティスト設定", new_artist_path, class: "admin_nav-list-item" %>
+			            <%= link_to "アーティスト設定", artists_path, class: "admin_nav-list-item" %>
 			            <%= link_to "ジャンル設定", genres_path, class: "admin_nav-list-item" %>
 			            <%= link_to "キャンペーン設定", campaigns_path, class: "admin_nav-list-item" %>
 			            <%= link_to "送料設定", prefectures_path, class: "admin_nav-list-item" %>
@@ -135,6 +133,9 @@
 		    	</div>
 		    </nav>
 		</header> -->
+
     	<%= yield %>
+
     </body>
+
 </html>
