@@ -4,12 +4,36 @@ def index
 	@genres = Genre.all
 	@pop_images = PopImage.all
 	@cd = Cd.new
+	# @q = Cd.eager_load(artist: :artist_name).ransack(params[:q])
+	# if params[:album_name].present?
+	# 	@cds = @cds.get_by_album_name params[:album_name]
+	# 	render 'search'
+	# end
+	# if params[:articst_name].present?
+	# 	@cds = @cds.artist.get_by_artist_artist_name params[:artist_name]
+	# 	render 'serach'
+	# end
 end
 
 def show
 	@cd = Cd.find(params[:id])
 	@cd_cart = CdCart.new
+	 # params[:id].present?
 
+
+	# @songs = @cd.discs.songs(params[:song])
+end
+
+
+
+# def search
+# 	@cds = @cds.get_by_album_name params[:album_name]
+# 	@cds = @cds.artist.get_by_artist_name params[:artist_name]
+# end
+
+def search
+	@q = Cd.ransack(params[:q])
+	@cds = @q.result
 end
 
 def new

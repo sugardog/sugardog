@@ -9,7 +9,10 @@ end
 def select
 
 	@user = User.find(current_user[:id])
+	@deliveries = Delivery.all
+end
 
-
+def confirm
+	
 end
 end

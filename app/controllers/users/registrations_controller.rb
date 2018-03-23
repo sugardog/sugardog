@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+    before_action :ransack
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -9,6 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @genres = Genre.all
     super
   end
+
+    def ransack
+    @q = Cd.ransack(params[:q])
+  end
+
 
   # POST /resource
   # def create

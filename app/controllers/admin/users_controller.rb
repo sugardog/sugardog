@@ -18,8 +18,6 @@ class Admin::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-
-		#@deliveries = @user.deliveries.page(params[:page])
 	end
 
 	def edit
