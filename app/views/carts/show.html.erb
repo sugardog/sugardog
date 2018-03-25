@@ -14,7 +14,6 @@
           </thead>
           <tbody><% sum = 0 %>
             <% @cart.cd_carts.each do |cc| %>
-
               <%= form_for(cc, url: cd_cd_carts_path(cc.id), method: :patch) do |f| %>
                 <tr>
                   <td><%= link_to cd_path(cc.cd.id), class:"cart_image" do %>
@@ -32,9 +31,9 @@
                     <% sub_total = cc.cd.price * cc.count %>
                     <% sum = sum+sub_total %>
                     <%= number_with_delimiter(sub_total) %>円（税抜)
-                  </td> 
+                  </td>
                   <td style="width: 20px">
-                    <%= f.number_field :count, class:"btn btn-default btn-block" %><br><br>
+                    <%= f.number_field :count, class:"btn btn-default btn-block", min:"1" %><br><br>
                     <div class="right">
                       <%= f.submit '数量確定', class:"btn btn-default" %>
                     </div>
@@ -44,23 +43,24 @@
                 </tr>
               <% end %>
             <% end %>
-                  <tr>
-                    <td></td>
-                    <td>合計</td>
-                    <td style="text-align: right">                     
-                      <%= number_with_delimiter(sum) %>円(税抜)
-                    </td>
-                    <td>3点</td>
-                    <td>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="right">
-                <%= link_to "買い物を続ける", cds_path, class:"btn btn-default edit" %>
-                <%= link_to "購入手続きへ進む", { :controller => :carts, :action => :select }, class:"btn btn-default create" %>
-              </div>
-            </div>
+            <tr>
+              <td></td>
+              <td>合計</td>
+              <td style="text-align: right">
+                <%= number_with_delimiter(sum) %>円(税抜)
+              </td>
+              <td><%= @cart.cd_carts.count %>点</td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="right">
+          <%= link_to "買い物を続ける", cds_path, class:"btn btn-default edit" %>
+          <%= link_to "購入手続きへ進む", { :controller => :carts, :action => :select }, class:"btn btn-default create" %>
         </div>
+      </div>
     </div>
-    
+  </div>
+</div>
+

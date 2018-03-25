@@ -4,7 +4,7 @@
     <div class="form-groupl col-sm-8 col-sm-offset-2">
       <label class="control-label col-sm-3" for="disc_num">ディスクナンバー:</label>
       <div class="col-sm-7"> 
-        <%= f.number_field :disc_num, class: "num form-control", placeholder: "disc_num" %><br>
+        <%= f.number_field :disc_num, class: "num form-control", placeholder: "disc_num", min:"1" %><br>
         <% if @disc.errors.any? %>
           <div id="error_explanation" class="text-center">
             <h4><%= @disc.errors.count %>件のエラーが発生しました。</h4>
@@ -21,7 +21,7 @@
         <div style="text-align: center"><br>曲の登録</div>
         <label class="control-label col-sm-3" for="price">曲順:</label>
           <div class="col-sm-7">
-            <%= s.number_field :order_num, class: "num form-control", placeholder: "order_num" %> 
+            <%= s.number_field :order_num, class: "num form-control", placeholder: "order_num", min:"1" %> 
           </div>
       </div>
       <div class="form-group col-sm-8 col-sm-offset-2">
@@ -60,8 +60,9 @@
       </div>
       <div class="form-group col-sm-6 col-sm-offset-3">
         <div class="right">
-          <%= f.submit 'disc登録', name: 'create_disc', class: "btn btn-primary" %>
           <%= f.submit 'disc追加', name: 'add_disc', class: "btn btn-success" %>
+          <%= f.submit 'disc登録', name: 'create_disc', class: "btn btn-primary" %>
+         
         </div>
       </div>
     </div>
