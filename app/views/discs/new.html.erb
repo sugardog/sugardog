@@ -1,72 +1,70 @@
 <div class="col-sm-10 col-sm-offset-1">
   <div class="title-headline">ADD SONG</div>
   <%= nested_form_for [@cd, @disc] do |f| %>
-      <div class="form-groupl col-sm-8 col-sm-offset-2">
-        <label class="control-label col-sm-3" for="disc_num">ディスクナンバー:</label>
-        <div class="col-sm-7"> 
-          <%= f.number_field :disc_num, class: "num form-control", placeholder: "disc_num" %><br>
-          <% if @disc.errors.any? %>
-            <div id="error_explanation" class="text-center">
-              <h4><%= @disc.errors.count %>件のエラーが発生しました。</h4>
-              <% @disc.errors.full_messages.each do |message| %>
-                <h6><%= message %></h6>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <!-- ここからnested form!!! -->
-      <%= f.fields_for :songs do |s| %>
-
     <div class="form-groupl col-sm-8 col-sm-offset-2">
-      <div style="text-align: center"><br>曲の登録</div>
-      <label class="control-label col-sm-3" for="price">曲順:</label>
-        <div class="col-sm-7">
-          <%= s.number_field :order_num, class: "num form-control", placeholder: "order_num" %> 
-        </div>
-    </div>
-    <div class="form-group col-sm-8 col-sm-offset-2">
-      <label class="control-label col-sm-3" for="song_name">曲名:</label>
-      <div class="col-sm-7">
-        <%= s.text_field :song_name, class: "form-control", placeholder: "song_name" %>
-      </div>
-    </div>
-    <div class="form-group col-sm-8 col-sm-offset-2">
-      <label class="control-label col-sm-3" for="song_kana_name">曲名(カナ):</label>
-      <div class="col-sm-7">
-        <%= s.text_field :song_kana_name, class: "form-control", placeholder: "song_kana_name" %>
-      </div>
-    </div>
-    <div class="form-group col-sm-8 col-sm-offset-2">
-      <label class="control-label col-sm-3" for="time">時間:</label>
-      <div class="col-sm-7">
-        <%= s.time_field :minutes, class: "form-control", placeholder: "minutes" %>
-      </div>
-    </div>
-    <div class="form-group col-sm-8 col-sm-offset-2">
-      <label class="control-label col-sm-3" for="singer_name">アーティスト名:</label>
+      <label class="control-label col-sm-3" for="disc_num">ディスクナンバー:</label>
       <div class="col-sm-7"> 
-        <%= s.collection_select :singer_id, Singer.all, :id, :singer_name, :include_blank => true %>
+        <%= f.number_field :disc_num, class: "num form-control", placeholder: "disc_num" %><br>
+        <% if @disc.errors.any? %>
+          <div id="error_explanation" class="text-center">
+            <h4><%= @disc.errors.count %>件のエラーが発生しました。</h4>
+            <% @disc.errors.full_messages.each do |message| %>
+              <h6><%= message %></h6>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
-    <%= s.link_to_remove "Remove this" %>
-    <% end %> <%= f.link_to_add "Add song", :songs %>
-  <div class="actions">
-    <!-- ここまでをnested formで繰り返したい -->
-    <div class="col-sm-6 col-sm-offset-4">
-      <div class="right"> 
-
-        <div class="left">
-            <button type="submit", class="btn btn-success">まだsong追加する??</button>
+<!-- ここからnested form!!! -->
+    <%= f.fields_for :songs do |s| %>
+      <div class="form-groupl col-sm-8 col-sm-offset-2">
+        <div style="text-align: center"><br>曲の登録</div>
+        <label class="control-label col-sm-3" for="price">曲順:</label>
+          <div class="col-sm-7">
+            <%= s.number_field :order_num, class: "num form-control", placeholder: "order_num" %> 
+          </div>
+      </div>
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <label class="control-label col-sm-3" for="song_name">曲名:</label>
+        <div class="col-sm-7">
+          <%= s.text_field :song_name, class: "form-control", placeholder: "song_name" %>
         </div>
       </div>
-    </div>
-    <div class="form-group col-sm-6 col-sm-offset-3">
-      <div class="right">
-         <%= link_to new_cd_disc_path do %>
-          <%= f.submit "disc追加", class: "btn btn-success" %>
-          <% end %>
-      <%= f.submit "disc登録", class: "btn btn-primary" %>
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <label class="control-label col-sm-3" for="song_kana_name">曲名(カナ):</label>
+        <div class="col-sm-7">
+          <%= s.text_field :song_kana_name, class: "form-control", placeholder: "song_kana_name" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <label class="control-label col-sm-3" for="time">時間:</label>
+        <div class="col-sm-7">
+          <%= s.time_field :minutes, class: "form-control", placeholder: "minutes" %>
+        </div>
+      </div>
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <label class="control-label col-sm-3" for="singer_name">アーティスト名:</label>
+        <div class="col-sm-7"> 
+          <%= s.collection_select :singer_id, Singer.all, :id, :singer_name, :include_blank => true %>
+        </div>
+      </div>
+      <%= s.link_to_remove "Remove this" %>
+    <% end %>
+    <%= f.link_to_add "Add song", :songs %>
+    <div class="actions">
+      <!-- ここまでをnested formで繰り返したい -->
+      <div class="col-sm-6 col-sm-offset-4">
+        <div class="right"> 
+          <div class="left"></div>
+        </div>
+      </div>
+      <div class="form-group col-sm-6 col-sm-offset-3">
+        <div class="right">
+          <%= f.submit 'disc登録', name: 'create_disc', class: "btn btn-primary" %>
+          <%= f.submit 'disc追加', name: 'add_disc', class: "btn btn-success" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
+
