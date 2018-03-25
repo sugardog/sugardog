@@ -10,21 +10,9 @@ class ReviewsController < ApplicationController
 		redirect_to cds_path
 	end
 
-	def index
-	end
-
-	def edit
-	end
-
-	def update
-	end
-
-	def destroy
-	end
-
 
 	private
 	def review_params
-		require(:revirew).permit(:comment, :star)
+		require(:review).permit(:comment, :star)
 	end
 end

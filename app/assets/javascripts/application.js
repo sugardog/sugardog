@@ -21,7 +21,7 @@
 $(document).ready(function() {
 	$('.star-rating').raty({
     	// size: 36,
-    	number: 1,
+    	number: 5,
     	path: "/assets/",
     	readOnly: true,
     	// starOff: 'star-off.png',
