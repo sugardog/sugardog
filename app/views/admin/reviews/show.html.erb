@@ -1,0 +1,29 @@
+ <%= render 'users/list', user: @user %>
+  <div class="col-lg-10 col-lg-offset-1">
+    <h2 class="title_headline">REVIEW HISTORY</h2>
+    <h3>新着</h3>
+    <table class="table">
+       <thead>
+          <tr>
+            <th>cd</th>
+            <th>user</th>
+            <th>review/comments</th>
+          </tr>
+       </thead>
+      <tbody class="review_index">
+          <tr>
+            <td class="review_user">
+              <div class="review_img_box">
+              <%= attachment_image_tag @cd, :image %>
+              </div>
+              <%= @cd.artist.artist_name %>
+            </td>
+              <td><% @user.user_name %></td>
+            <td>
+              <div class="star-rating"><div class="data-score"><%= @review.star %></div><br>
+              <div class="review_date">投稿日:<%= @review.created_at %><br>
+              </div>
+             </td>
+         </tbody>
+     </table>
+  </div>

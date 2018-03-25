@@ -14,21 +14,27 @@
                         <% @cds.each do |f| %>
                         <td>
                         	<%= link_to cd_path(f) do %>
-                        	<div class="cd_image">
+                        	<div class="cart_image">
                         	<%= attachment_image_tag f,:image %>
  	                        </div>
                         	<% end %>
                         </td>
                         <td>
                         	<%= link_to cd_path(f) do %>
-                        	<%= f.album_name %>
-                        	<% end %>/
-                        	<%= link_to artist_path(f.artist) do %>
-                        	<%= f.artist.artist_name %>
+                        	<div class="search_album_name"><%= f.album_name %></div>
                         	<% end %>
+                            <%= link_to artist_path(f.artist) do %>
+                            <div class="search_artist_name">
+                        	<%= f.artist.artist_name %><br>
+                        	<% end %>
+                            </div>
+                            <div class="search_other">
+                            発売日：<%= f.release_date %><br>
+                            レーベル：<%= f.label %><br>
+                            </div>
                         </td>
                         <td>
-                        	<%= f.price %>円
+                        	<%= number_with_delimiter(f.price)  %>円
                         </td>
                     </tr>
                         <% end %>
