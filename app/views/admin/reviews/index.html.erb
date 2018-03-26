@@ -1,0 +1,46 @@
+<div class="col-lg-10 col-lg-offset-1">
+    <h2 class="title_headline">REVIEW HISTORY</h2>
+    <h3>新着</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Cd</th>
+            <th>User</th>
+            <th>Review/Comments</th>
+            <th>Date</th>
+            <th>Delete/Edit</th>
+          </tr>
+        </thead>
+        <tbody class="review_index">
+          <% @reviews.each do |review| %>
+          <tr>
+            <td class="review_user">
+             <div class="review_img_box">
+              <%= attachment_image_tag review.cd, :image %><br>
+             </div>
+              <%= review.cd.album_name %><br>
+              <%= review.cd.artist.artist_name %>
+            </td>
+            <td>
+              <%= review.user.nickname %>
+            </td>
+            <td>
+              <span class="star-rating" data-score= <%= review.star %>></span><br>
+              <%= review.comment %>
+            </td>
+            <td>
+              <div class="review_date"><%= review.created_at.strftime('%Y/%m/%d')  %><br>
+              </div>
+            </td>
+            <td>
+              <%= link_to "Destroy", admin_review_path(review), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？'} %><br>
+              <% if user_signed_in? %>
+                <%= link_to "Edit", admin_review_path(review), class:"btn btn-success", style: "margin-top: 5px;" %>
+              <% end %>
+            </td>
+            <% end %>
+          </tr>
+         </tbody>
+    </table>
+</div>
+

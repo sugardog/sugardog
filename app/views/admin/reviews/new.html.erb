@@ -21,14 +21,15 @@
 							</thead>
 		            	</table>
 		            	<div class="form-horizontal">
-						  <div class="form-group">
-						  <%= form_for(@review) do |f| %>
-						  <div class="review_text">総合評価</div>
-						     <img src="/assets/star-on.png">
-  						  <%= f.number_field :star, :min => 1, :max => 5 %><br>
+<!-- 						  <span class="star-rating" data-score=5></span>
+ -->						  <div class="form-group">
+						  <div class="review_text">レビューを書く</div>
 						    <label for="comment">Comment:</label>
-  						  <%= f.text_area :comment, class: "form-control" %><br>
-						  <%= f.submit "投稿", class: "btn btn-success", style: "padding-bottom: 5px"%>
+						  <%= form_for(@review) do |f| %>
+  						  <%= f.text_area :comment %><br>
+  						   <span class="star-rating" data-score=1></span>
+  						  <%= f.number_field :star, :min => 1, :max => 5 %><br>
+						  <%= f.submit "投稿", class: "btn btn-success" %>
 						  <% end %>
 						  </div>
 						</div>

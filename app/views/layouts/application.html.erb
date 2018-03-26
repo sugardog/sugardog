@@ -21,8 +21,10 @@
     <body>
     <!-- header -->
     	<% if admin_signed_in? %>
-    		<header style="margin-top: -100px;">
+
+    		<header class="admin", style="margin-top: -100px">
 		    	<nav class="clearfix admin">
+
 		        	<div class="clearfix header_nav", style="margin: 0 auto;">
 			            <%= link_to "TOP", admins_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "CDの追加", new_cd_path, class: "admin_nav-list-item" %>
@@ -31,7 +33,7 @@
 			            <%= link_to "ジャンル設定", genres_path, class: "admin_nav-list-item" %>
 			            <%= link_to "キャンペーン設定", campaigns_path, class: "admin_nav-list-item" %>
 			            <%= link_to "送料設定", prefectures_path, class: "admin_nav-list-item" %>
-			            <%= link_to "レビュー履歴", reviews_path, class: "admin_nav-list-item" %>
+			            <%= link_to "レビュー履歴", admin_reviews_path, class: "admin_nav-list-item" %>
 			            <%= link_to "購入履歴", histories_path, class: "admin_nav-list-item" %> <!-- 後で変更あり -->
 			            <%= link_to "Topイメージ設定", pop_images_path, class: "admin_nav-list-item" %>
 			            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"admin_logout" %>
@@ -44,12 +46,18 @@
 		       		<div class="title">sugerdog。</div>
 				 	<div class="search-box">
 
-					<dl><%= search_form_for @q, :url => {:controller => '/cds', :action => 'search'} do |f| %>
-						<%= f.search_field :album_name_or_album_kana_name_or_artist_artist_name_or_artist_artist_kana_name_cont, class: "form-control", placeholder: "検索" %>
-						<%= f.submit %>
+					<dl>
+						<%= search_form_for @q, :url => {:controller => '/cds', :action => 'search'} do |f| %>
+							<dt>
+								<%= f.search_field :album_name_or_album_kana_name_or_artist_artist_name_or_artist_artist_kana_name_cont, class: "form-control search-form", placeholder: "search" %>
+							</dt>
+							<dd>
+								<%= button_tag :type => "submit", :class =>"search-button fa fa-search" do %>
+								<% end %>
+							</dd>
 						<% end %>
-
 					</dl>
+
 					</div>
 					<% if user_signed_in? %>
 						<ul class="nav-list clearfix">
@@ -106,11 +114,13 @@
 				            		<div class="nav-text white">mymenu</div>
 				            	</div>
 				            <% end %>
-				            <a href="cart_index.html" class="nav-list-big">
-				            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
-				            		<div class="nav-text white">cart</div>
-				            	</li>
-				            </a>
+				            <%= link_to cds_path do %>
+				            	<div class="nav-list-big">
+				            		<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
+				            			<div class="nav-text white">cart</div>
+				            		</li>
+				            	</div>
+				            <% end %>
 				        </ul>
 				    <% end %>
 			    </nav>
@@ -136,7 +146,9 @@
 		</header> -->
 
     	<%= yield %>
+    	<footer>
+©sugardog
+    	</footer>
 
-    </body>
-
+</body>
 </html>

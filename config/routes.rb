@@ -13,14 +13,17 @@ Rails.application.routes.draw do
 
   	namespace :admin do
   		resources :users
+  		resources :reviews, exept: [:new, :create]
   	end
 
 	root 'cds#index'
 
 	# get 'search', to: 'application#search'
+	get 'cds/about_us' => 'cds#about_us'
+	get 'carts/sorry' => 'carts#sorry'
 	get 'cds/search' => 'cds#search'
 	get 'carts/:id/select' => 'carts#select'
-	get 'carts/:id/confirm' => 'carts#confirm'
+	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 	get 'users/:id/history' => 'users#history', as: 'user_history'
 
@@ -44,7 +47,7 @@ Rails.application.routes.draw do
 	resources :prefectures, except: [:new]
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
-	resource :reviews, except: [:show]
+	resources :reviews, only: [:new, :create]
 
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]

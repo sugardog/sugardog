@@ -1,62 +1,55 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h2 class="buy_title">delivery</h2>
-      <div class="list-group">
-        <div class="list-group-item address radio">
-          <label>
-            <input type="radio" name="radioName" value="radioA">ご自宅
-          </label>
-        </div>
-        <div class="list-group-item">
-          〒<%= @user.zipcode %><br>
-          <%= @user.prefecture.prefecture_name %>
-          <%= @user.address %><br>
-          <%= @user.tel %><br>
-          <%= @user.last_name %><%= @user.first_name %>様
-        </div>
+<div class="col-lg-6 col-lg-offset-3">
+  <h2 class="buy_title">delivery</h2>
+  <%= form_for(@history, url: confirm_path(@user.cart)) do |f| %>
+    <div class="list-group">
+      <div class="list-group-item address radio">
+        <label>
+          <%= f.radio_button :delivery_id, 0, checked: "checked" %>
+          ご自宅
+        </label>
       </div>
-
-      <% @user.deliveries.each_with_index do |d,i| %>
-        <div class="list-group">
-          <div class="list-group-item address radio">
-            <label>
-              <input type="radio" name="radioName" value="radioA">その他お届け先情報<%= i %>
-            </label>
-          </div>
-          <div class="list-group-item">
-            <%= d.prefecture.prefecture_name %>
-            〒<%= d.zipcode %>
-            <%= d.address %>
-            <%= d.tel %>
-            <%= d.name %>
-          </div>
-          <% end %>
-          <div class="right" style="margin-top: 30px">
-            <%= link_to "お届け先情報を追加", new_delivery_path, class:"btn btn-default write" %>
-          </div>
-        </div>
-
-
-        <h2 class="buy_title">Pay</h2>
-        <div class="list-group">
-          <div class="list-group-item pay radio">
-            <label>
-              代引き
-            </label>
-          </div>
-          <div class="list-group-item">お支払い方法は代引きのみですよ
-        </div>
-        <div class="right">
-          <%= link_to "変更する", cart_path, class:"btn btn-default edit"  %>
-          <%= link_to "購入内容の確認へ",   %>
-
-        <a href="cart_show.html">
-          <button class="btn btn-default create">進む</button>
-        </a>
+      <div class="list-group-item">
+        〒<%= f.label :zipcode, @user.zipcode %><br>
+        <%= f.label :prefecture_id, @user.prefecture.prefecture_name %><br>
+        <%= f.label :address, @user.address %><br>
+        <%= f.label :tel, @user.tel %><br>
+        <%= f.label :last_name, @user.last_name %>
+        <%= f.label :first_name, @user.first_name %>様
       </div>
     </div>
+
+    <% @user.deliveries.each.with_index(1) do |d,i| %>
+    <div class="list-group">
+      <div class="list-group-item address radio">
+        <label>
+          <%= f.radio_button :delivery_id, i %>
+          その他お届け先情報<%= i %>
+        </label>
+      </div>
+    <div class="list-group-item">
+      〒<%= f.label :zipcode, d.zipcode %>
+      <%= f.label :prefecture_id, d.prefecture.prefecture_name %>
+      <%= f.label :address, d.address %>
+      <%= f.label :tel, d.tel %>
+      <%= f.label :name, d.name %>様
+    </div>
+  <% end %>
+  <div class="right" style="margin-top: 30px">
+    <%= link_to "お届け先情報を追加", new_delivery_path, class:"btn btn-default write" %>
   </div>
+</div>
+<h2 class="buy_title">Pay</h2>
+  <div class="list-group">
+    <div class="list-group-item pay radio">
+      <label>代引き</label>
+    </div>
+    <div class="list-group-item">お支払い方法は代引きのみですよ</div>
+  </div>
+  <div class="right">
+    <%= link_to "変更する", cart_path, class:"btn btn-default edit" %>
+    <%= f.submit '購入内容の確認へ', name: 'address', class:"btn btn-default create"  %>
+  <% end %>
+</div>
 </div>
 <br>
 <br>
