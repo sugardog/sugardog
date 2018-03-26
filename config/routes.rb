@@ -19,9 +19,11 @@ Rails.application.routes.draw do
 	root 'cds#index'
 
 	# get 'search', to: 'application#search'
+	get 'cds/about_us' => 'cds#about_us'
+	get 'carts/sorry' => 'carts#sorry'
 	get 'cds/search' => 'cds#search'
 	get 'carts/:id/select' => 'carts#select'
-	get 'carts/:id/confirm' => 'carts#confirm'
+	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 
 	resources :deliveries, except: [:index, :show]

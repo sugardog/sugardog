@@ -1,1 +1,90 @@
-confirm.html.erb
+ <div class="container">
+    <div class="row">
+      	<div class="col-lg-8 col-lg-offset-2">
+        	<table class="table">
+          		<tr>
+            		<th colspan="3">
+            			<div class="cart_show_title">購入内容のご確認</div>
+            		</th>
+          		</tr>
+          		<% sum = 0 %>
+          		<%= form_for(@history) do |f| %>
+						<% @cart.cd_carts.each do |cc| %>
+							<%= f.fields_for :cd_histories do |ch| %>
+								<%= ch.hidden_field :cd_id, :value => cc.cd.id %>
+								<%= ch.hidden_field :count, :value => cc.count %>
+								<%= ch.hidden_field :last_price, :value =>cc.cd.price %>
+							<% end %>
+				              	<tr>
+		                			<td><%= link_to cd_path(cc.cd.id), class:"cart_show_image" do %>
+		                        			<%= attachment_image_tag cc.cd, :image %>
+		                    			<% end %>
+									</td>
+				                	<td><%= link_to cd_path(cc.cd.id), class:"cart_image" do %>
+				                        	<%= cc.cd.album_name %>
+				                    	<% end %><br>
+				                    	<%= link_to artist_path(cc.cd.artist_id) do %>
+				                        	<%= cc.cd.artist.artist_name %>
+				                    	<% end %>
+				                    </td>
+		                	<td><% sub_total = cc.cd.price * cc.count %>
+		                    	<% sum = sum+sub_total %>
+		                    	<%= number_with_delimiter(sub_total) %>円（税抜)
+		                	</td>
+		             	</tr>
+        			<% end %>
+		            <tr>
+		                <th colspan="2">小計</th>
+		                <td><%= number_with_delimiter(sum) %>円(税抜)</td>
+		            </tr>
+		            <tr>
+		                <th colspan="2">代引手数料</th>
+		                <td>324円(税込)</td>
+		            </tr>
+		            <tr>
+		                <th colspan="2">送料 to <%= @delivery.prefecture.prefecture_name %></th>
+		                <td><%= @delivery.prefecture.postage %>円(税込)</td>
+		            </tr>
+		            <tr>
+		                <th colspan="2">合計</th>
+		                <td><% total_price = (sum + @delivery.prefecture.postage + 324 ) %>
+		                	<%= number_with_delimiter(total_price) %>円(税込)</td>
+		            </tr>
+		               	<tr>
+		                <th colspan="3">
+		                	<div class="cart_show_title">お手続内容</div>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>お支払方法</th>
+		                <td colspan="2">代引き</td>
+		            </tr>
+		            <tr>
+		                <th>お届け先</th>
+		                <td colspan="2">
+		                	<%= @delivery.zipcode %><br>
+		                	<%= @delivery.prefecture.prefecture_name %><br>
+		                	<%= @delivery.address %><br>
+		                	<%= @delivery.tel %><br>
+		                	<%= @name %><br>
+
+				            <%= f.hidden_field :total_price, :value => total_price %>
+		                	<%= f.hidden_field :prefecture_id, :value => @delivery.prefecture_id %>
+		                	<%= f.hidden_field :zipcode, :value => @delivery.zipcode %>
+		                	<%= f.hidden_field :address, :value => @delivery.address %>
+		                	<%= f.hidden_field :tel, :value => @delivery.tel %>
+		                	<%= f.hidden_field :name, :value => @name %>
+		                	<%= f.hidden_field :user_id, :value => @user.id %>
+		                </td>
+	              	</tr>
+	              	<tr>
+	                	<th colspan="3">
+	                		<%= link_to '内容を変更する', cart_path(@user.cart), class:"btn btn-default edit" %>
+		                  	<%= f.submit '購入を確定する', class:"btn btn-default create" %>
+	                	</th>
+	              	</tr>
+	            <% end %>
+	        </table>
+	    </div>
+	</div>
+</div>

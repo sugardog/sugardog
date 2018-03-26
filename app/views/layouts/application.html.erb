@@ -44,12 +44,19 @@
 		        <nav class="clearfix">
 		       		<div class="title">sugerdog。</div>
 				 	<div class="search-box">
-						<dl>
+
+					<dl>
 						<%= search_form_for @q, :url => {:controller => '/cds', :action => 'search'} do |f| %>
-							<%= f.search_field :album_name_or_album_kana_name_or_artist_artist_name_or_artist_artist_kana_name_cont, class: "form-control", placeholder: "アーティスト・曲名(部分一致)" %>
-							<%= f.submit %>
+							<dt>
+								<%= f.search_field :album_name_or_album_kana_name_or_artist_artist_name_or_artist_artist_kana_name_cont, class: "form-control search-form", placeholder: "search" %>
+							</dt>
+							<dd>
+								<%= button_tag :type => "submit", :class =>"search-button fa fa-search" do %>
+								<% end %>
+							</dd>
 						<% end %>
-						</dl>
+					</dl>
+
 					</div>
 					<% if user_signed_in? %>
 						<ul class="nav-list clearfix">
@@ -106,11 +113,13 @@
 				            		<div class="nav-text white">mymenu</div>
 				            	</div>
 				            <% end %>
-				            <a href="cart_index.html" class="nav-list-big">
-				            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
-				            		<div class="nav-text white">cart</div>
-				            	</li>
-				            </a>
+				            <%= link_to cds_path do %>
+				            	<div class="nav-list-big">
+				            		<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
+				            			<div class="nav-text white">cart</div>
+				            		</li>
+				            	</div>
+				            <% end %>
 				        </ul>
 				    <% end %>
 			    </nav>
@@ -136,9 +145,9 @@
 		</header> -->
 
     	<%= yield %>
+    	<footer>
+©sugardog
+    	</footer>
 
-    </body>
-<footer>
-	
-</footer>
+</body>
 </html>
