@@ -4,6 +4,18 @@
     </div>
     <div class="title-headline">USER INDEX</div>
     <div class="col-lg-8 col-lg-offset-2">
+            <dl>
+            <div class="user-search-box">
+                <%= search_form_for(@q, :url => {:controller => '/admin/users', :action => 'index'}) do |f| %>
+                    <dt><%= f.search_field :kana_first_name_or_kana_last_name_eq, class: "form-control search-form", placeholder: "カナ入力 (姓or名の完全一致)" %>
+                    </dt>
+                    <dd class=search-button>
+                    <%= button_tag :type => "submit", :class =>" search-button fa fa-search" do %>
+                    <% end %>
+                    </dd>
+                    </div>
+                </dl>
+                <% end %>
         <table class="table">
             <thead>
                 <tr>
@@ -15,13 +27,13 @@
                 </tr>
             </thead>
             <tbody>
-                <% @users.each do |user| %>
+                <% @searches.each do |search| %>
                     <tr>
-                        <td> <%= user.last_name %> </td>
-                        <td> <%= user.first_name %> </td>
-                        <td> <%= user.kana_last_name %> <%= user.kana_first_name%> </td>
-                        <td> <%= user.email %> </td>
-                        <td> <%= link_to "show", admin_user_path(user), class: "btn btn-success" %> </td>
+                        <td> <%= search.last_name %> </td>
+                        <td> <%= search.first_name %> </td>
+                        <td> <%= search.kana_last_name %> <%= search.kana_first_name%> </td>
+                        <td> <%= search.email %> </td>
+                        <td> <%= link_to "show", admin_user_path(search), class: "btn btn-success" %> </td>
                     </tr>
                 <% end %>
             </tbody>

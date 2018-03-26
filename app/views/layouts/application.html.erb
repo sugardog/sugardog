@@ -23,7 +23,8 @@
     	<% if admin_signed_in? %>
     		<header class="admin", style="margin-top: -100px">
 		    	<nav class="clearfix admin">
-		        	<div class="clearfix header_nav">
+
+		        	<div class="clearfix header_nav", style="margin: 0 auto;">
 			            <%= link_to "TOP", admins_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "CDの追加", new_cd_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "ユーザー一覧", admin_users_path, class: "admin_nav-list-item" %>
@@ -31,7 +32,7 @@
 			            <%= link_to "ジャンル設定", genres_path, class: "admin_nav-list-item" %>
 			            <%= link_to "キャンペーン設定", campaigns_path, class: "admin_nav-list-item" %>
 			            <%= link_to "送料設定", prefectures_path, class: "admin_nav-list-item" %>
-			            <%= link_to "レビュー履歴", reviews_path, class: "admin_nav-list-item" %>
+			            <%= link_to "レビュー履歴", admin_reviews_path, class: "admin_nav-list-item" %>
 			            <%= link_to "購入履歴", histories_path, class: "admin_nav-list-item" %> <!-- 後で変更あり -->
 			            <%= link_to "Topイメージ設定", pop_images_path, class: "admin_nav-list-item" %>
 			            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"admin_logout" %>
@@ -55,6 +56,7 @@
 							</dd>
 						<% end %>
 					</dl>
+
 					</div>
 					<% if user_signed_in? %>
 						<ul class="nav-list clearfix">

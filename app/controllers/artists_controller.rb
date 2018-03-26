@@ -24,20 +24,20 @@ class ArtistsController < ApplicationController
 	end
 
 	def index
-		@artists = Artist.all
 		@artist =Artist.new
 	  	if params[:id].present?
 	    	@artist = Artist.find(params[:id])
 	  	else
 	   		@artist = Artist.new
 	  	end
+	  	@q = Artist.ransack(params[:q])
+	  	@searches = @q.result
 	end
 	def show
 	   @genres = Genre.all
        @artist = Artist.find(params[:id])
        @cds = Cd.all
        @cd = Cd.new
-       
 	end
 
 	def destroy

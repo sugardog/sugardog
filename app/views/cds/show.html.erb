@@ -49,7 +49,7 @@
         </tr>
         <tr>
           <td>価格</td>
-          <td><%= @cd.price %>円</td>
+          <td><%= number_with_delimiter(@cd.price) %>円</td>
         </tr>
         <% if @cd.stock <= 0 %>
           <tr >
