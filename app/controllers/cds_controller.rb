@@ -1,4 +1,9 @@
 class CdsController < ApplicationController
+
+def about_us
+	
+end
+
 def index
 	@cds = Cd.all
 	@genres = Genre.all

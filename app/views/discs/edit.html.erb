@@ -4,7 +4,7 @@
       <div class="form-groupl col-sm-8 col-sm-offset-2">
         <label class="control-label col-sm-3" for="disc_num">ディスクナンバー:</label>
         <div class="col-sm-7"> 
-          <%= f.number_field :disc_num, class: "num form-control", placeholder: "disc_num" %>
+          <%= f.number_field :disc_num, class: "num form-control", placeholder: "disc_num",  min:"1" %>
         </div>
       </div>
       <!-- ここからnested form!!! -->
@@ -13,7 +13,7 @@
       <div style="text-align: center"><br>曲の登録</div>
       <label class="control-label col-sm-3" for="price">曲順:</label>
         <div class="col-sm-7">
-          <%= s.number_field :order_num, class: "num form-control", placeholder: "order_num" %> 
+          <%= s.number_field :order_num, class: "num form-control", placeholder: "order_num", min:"1" %> 
         </div>
     </div>
     <div class="form-group col-sm-8 col-sm-offset-2">
