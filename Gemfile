@@ -66,7 +66,8 @@ gem 'kaminari'
 gem 'nested_form'
 gem 'seed-fu'
 gem 'kakurenbo-puti'
-
+gem 'rails-i18n'
+gem 'social-share-button'
 # Imagemagickをインストール
 # refileを使用する際に必要なツールを読み込みます。
 # ターミナルで以下のコマンドを実行してください。

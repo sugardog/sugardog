@@ -7,7 +7,7 @@ class User < ApplicationRecord
     belongs_to :prefecture
     has_one :cart
     has_many :artists, through: :favorites, dependent: :destroy
-    has_many :favorites
+    has_many :favorites, dependent: :destroy
     has_many :deliveries, dependent: :destroy
     has_many :cds, through: :reviews
     has_many :reviews

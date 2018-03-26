@@ -1,0 +1,7 @@
+ .share-buttons{
+      list-style: none;
+ }
+
+ .share-buttons li{
+      display: inline;
+ }

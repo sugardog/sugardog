@@ -4,9 +4,9 @@
         <% if @artist.errors.any? %>
             <div id="error_explanation" class="text-center">
                 <h4><%= @artist.errors.count %>件のエラーが発生しました。</h4>
-                    <% @artist.errors.full_messages.each do |message| %>
-                        <h6><%= message %></h6>
-                    <% end %>
+                <% @artist.errors.full_messages.each do |message| %>
+                    <h6><%= message %></h6>
+                <% end %>
             </div>
         <% end %>
 

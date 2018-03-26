@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 *{
 	margin: 0;
@@ -308,6 +309,8 @@ dl .user-search-box {
   border-radius: 20px;
   padding-top: 5px;
   border-color: #8e8e8e94;
+  transition-property: all;
+  transition: 0.3s linear;
 }
 .cd-box:hover {
   border-color: #ff00819e;
@@ -409,7 +412,7 @@ th {
 .artist_introduct {
 	margin:50px 0 30px 0;
 }
-.artist_index {
+.artist_index img {
 	width: 150px;
 	height:150px;
 	border-radius: 50%;

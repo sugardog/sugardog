@@ -4,7 +4,10 @@
 	 		<% if admin_signed_in? %>
 	 			<h3>Hello,Admin</h3>
 	 		<% elsif user_signed_in? %>
-	 			<h3>Hello, user様</h3>
+	 			<h4 style="text-align: center">Hello</h4>
+	 			<h3 style="text-align: center"><%= current_user.last_name %>
+	 				<%= current_user.first_name %>
+	 			</h3>
 
 	 		<% else %>
 	    		<h3>Hello,ゲスト様</h3>
