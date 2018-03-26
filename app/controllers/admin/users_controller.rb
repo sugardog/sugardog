@@ -13,7 +13,13 @@ class Admin::UsersController < ApplicationController
 	before_action :ensure_correct_user, only: [:show, :edit]
 
 	def index
-		@users = User.all
+		# @users = User.all
+		@q = User.ransack(params[:q])
+		if params[:q].present?
+			@searches = @q.result
+		else
+			@searches = User.all
+		end
 	end
 
 	def show

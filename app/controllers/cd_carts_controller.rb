@@ -18,8 +18,6 @@ class CdCartsController < ApplicationController
 			@cd_cart.save
 			redirect_to cart_path(@cart.id) 
 
-
-			
 		else
 			@cart = Cart.new
 			@cart.user_id = current_user.id

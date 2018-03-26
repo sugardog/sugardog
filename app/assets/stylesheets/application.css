@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 *{
 	margin: 0;
@@ -254,6 +255,10 @@ a:hover {
 	font-size: 15px;
 }
 /*nav_admin finish*/
+dl .user-search-box {
+	text-align: center;
+}
+
 .search-box {
 	width: 300px;
 	height: 80px;
@@ -373,7 +378,7 @@ th {
 	margin-bottom: 20px;
 }
 .review_text {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 .review_user {
 	width: 100px;
@@ -416,8 +421,8 @@ th {
 .side-bar {
 	float: right;
 }
-.review_img_box {
-	width: 250px;
+.review_img_box img {
+	width: 150px;
 	height: 150px;
 	text-align: center;
 	font-size: 12px;
@@ -450,6 +455,7 @@ th {
 .search-album-name {
 	width: 500px;
 	font-size: 20px;
+	margin-top: 30px;
 }
 .search-artist-name {
 	width: 500px;

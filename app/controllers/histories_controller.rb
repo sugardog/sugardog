@@ -1,14 +1,19 @@
 class HistoriesController < ApplicationController
 
-	before_action :authenticate_user?
-	before_action :ensure_correct_user
+	# indexの時だけadminの認証がいる
+	before_action :authenticate_admin?, only: [:index, :update]
+
+	# ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否するメソッド
+	# before_action :ensure_correct_user
 
 	def index
 		@histories = History.all
 	end
 
-	def show
-		
+	def update
+		history = History.find(params[:id])
+		history.update(history_params)
+		redirect_to histories_path
 	end
 	def create
 		@user = User.find(current_user[:id])
@@ -22,22 +27,25 @@ class HistoriesController < ApplicationController
 				@history.save
 				cc.cd.update(stock: cc.cd.stock - cc.count)
 				@user.cart.cd_carts.delete_all
-				return redirect_to cds_path, flash: {notice: 'お買い上げありがとうございます。'}
 			end
 		end
+
+		redirect_to cds_path, flash: {thank: 'お買い上げありがとうございます。'}
 	end
 
 	def destroy
+		history = History.find(params[:id])
+		history.destroy
+		redirect_to user_history_path(current_user)
+
 	end
+
 
 	private
-	def authenticate_user?
-	end
 
-	def ensure_correct_user
+	def authenticate_admin?
+		redirect_to root_path unless  admin_signed_in?
 	end
-
-private
 
 	def history_params
 		params.require(:history).permit(:total_price, :prefecture_id, :zipcode, :address, :tel, :name, :user_id, :status,
@@ -45,3 +53,4 @@ private
 	end
 
 end
+

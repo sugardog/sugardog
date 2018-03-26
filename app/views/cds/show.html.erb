@@ -49,7 +49,7 @@
         </tr>
         <tr>
           <td>価格</td>
-          <td><%= @cd.price %>円</td>
+          <td><%= number_with_delimiter(@cd.price) %>円</td>
         </tr>
         <% if @cd.stock <= 0 %>
           <tr >
@@ -64,21 +64,34 @@
             <td>残り<%= @cd.stock %>点</td>
           </tr>
           <tr>
-            <td>        
-              <%= form_for(@cd_cart, url: cd_cd_carts_path(@cd.id), method: :post) do |f| %>
-                <%= f.number_field :count, class:"btn btn-default", min:"1", value: "1", max:@cd.stock  %>
+            <td>
+              <% if user_signed_in? %>
+                <%= form_for(@cd_cart, url: cd_cd_carts_path(@cd.id), method: :post) do |f| %>
+                  <%= f.number_field :count, class:"btn btn-default", min:"1", value: "1", max:@cd.stock  %>
+                    </td>
+                    <td>
+                      <%= f.submit "カートに入れる", class:"btn btn-info" %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% else %>
+              <input type="number", class="btn btn-default">
                   </td>
-                  <td>
-                    <%= f.submit "カートに入れる", class:"btn btn-info" %>
-                  </td>
-                </tr>
+                    <td>
+                      <%= link_to "カートに入れる", new_user_registration_path, class:"btn btn-info"  %>
+                    </td>
+                  </tr>
               <% end %>
         <% end %>
       </table>
     </div>
     <table class="table">
       <thead>
-        <th colspan="4">商品説明</th>
+        <th colspan="4">商品説明
+          <div style="text-align: right;">
+            <%= social_share_button_tag(@cd.album_name) %>
+          </div>
+        </th>
       </thead>
       <tr>
         <td colspan="4"><%= @cd.cd_introduction %><br>

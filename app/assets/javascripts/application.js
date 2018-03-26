@@ -13,11 +13,12 @@
 //= require rails-ujs
 //= require_tree .
 //= require jquery_nested_form
+//= require social-share-button
 
 $(document).ready(function() {
 	$('.star-rating').raty({
     	// size: 36,
-    	number: 1,
+    	number: 5,
     	path: "/assets/",
     	readOnly: true,
     	// starOff: 'star-off.png',

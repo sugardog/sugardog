@@ -4,9 +4,9 @@
         <% if @artist.errors.any? %>
             <div id="error_explanation" class="text-center">
                 <h4><%= @artist.errors.count %>件のエラーが発生しました。</h4>
-                    <% @artist.errors.full_messages.each do |message| %>
-                        <h6><%= message %></h6>
-                    <% end %>
+                <% @artist.errors.full_messages.each do |message| %>
+                    <h6><%= message %></h6>
+                <% end %>
             </div>
         <% end %>
 
@@ -43,6 +43,18 @@
 <!-- </form> -->
 <div class="col-lg-7">
     <div class="title-headline">ARTIST INDEX</div>
+        <dl>
+            <div class="search-box">
+                <%= search_form_for(@q, :url => {:controller => '/artists', :action => 'index'}) do |f| %>
+                    <dt><%= f.search_field :artist_name_or_artist_kana_name_cont, class: "form-control search-form", placeholder: "アーティスト名(カナOK)部分一致" %>
+                    </dt>
+                    <dd class=search-button>
+                    <%= button_tag :type => "submit", :class =>" search-button fa fa-search" do %>
+                    <% end %>
+                    </dd>
+                    </div>
+                </dl>
+                <% end %>
     <table class="table">
         <thead>
             <tr>
@@ -53,19 +65,19 @@
             </tr>
         </thead>
         <tbody>
-            <% @artists.each do |artist| %>
+            <% @searches.each do |search| %>
                 <tr>
-                    <td><%= link_to artist_path(artist) do %>
-                            <%= artist.artist_name %>
+                    <td><%= link_to artist_path(search) do %>
+                            <%= search.artist_name %>
                         <% end %>
                         </td>
-                    <td><%= artist.artist_kana_name %></td>
-                    <td><%= link_to artists_path(id: artist.id) do %>
+                    <td><%= search.artist_kana_name %></td>
+                    <td><%= link_to artists_path(id: search.id) do %>
                         <div class="btn btn-success">edit</div>
                         <% end %>
                     </td>
                     <td>
-                        <%= link_to artist_path(artist.id), method: :delete, "data-confirm" => "are you sure?" do %>
+                        <%= link_to artist_path(search.id), method: :delete, "data-confirm" => "are you sure?" do %>
                             <div class="btn btn-danger">destroy</div>
                         <% end %>
                     </td>
