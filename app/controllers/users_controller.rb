@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def history
+		@user = current_user
+	end
+
 	def destroy
 		user = User.find(params[:id])
 		user.destroy
@@ -15,4 +19,5 @@ class UsersController < ApplicationController
 			redirect_to cds_path
 		end
 	end
+
 end
