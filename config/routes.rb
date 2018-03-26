@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 	get 'carts/:id/select' => 'carts#select'
 	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
+	get 'users/:id/favorites' => 'favorites#favorite', as: "favorites"
 
 	resources :deliveries, except: [:index, :show]
 
