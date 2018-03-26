@@ -24,8 +24,8 @@ User.seed do |s|
 	s.email = "sample2@sample2.com"
 	s.zipcode = "1460011"
 	s.tel = "0358658422"
-	s.prefecture_id = 13
-	s.address = "港区西麻布1-1-1"
+	s.prefecture_id = 1
+	s.address = "札幌市1-1-1"
 	s.password = "012345"
 	s.nickname = "hotei"
 	#s.cart_id = 
@@ -41,8 +41,8 @@ User.seed do |s|
 	s.email = "sample3@sample3.com"
 	s.zipcode = "0321011"
 	s.tel = "0358658422"
-	s.prefecture_id = 13
-	s.address = "目黒区中目黒1-1-1"
+	s.prefecture_id = 47
+	s.address = "那覇市1-1-1"
 	s.password = "333333"
 	s.nickname = "せっちゃん"
 	#s.cart_id = 
@@ -58,8 +58,8 @@ User.seed do |s|
 	s.email = "ika@gmail.com"
 	s.zipcode = "0987654"
 	s.tel = "0358658422"
-	#s.prefecture_id = 
-	s.address = "港区六本木1-1-1"
+	s.prefecture_id = 8
+	s.address = "つくば市1-1-1"
 	s.password = "888888"
 	s.nickname = "きこちゃん"
 	#s.cart_id = 
@@ -75,7 +75,7 @@ User.seed do |s|
 	s.email = "choco@gmail.com"
 	s.zipcode = "1432222"
 	s.tel = "09011112222"
-	#s.prefecture_id = 
+	s.prefecture_id = 10
 	s.address = "津市栗間町屋町1-1-1"
 	s.password = "888888"
 	s.nickname = "haruka"
@@ -92,7 +92,7 @@ User.seed do |s|
 	s.email = "amerikandog@gmail.com"
 	s.zipcode = "1432222"
 	s.tel = "09033332222"
-	#s.prefecture_id = 
+	s.prefecture_id = 5
 	s.address = "名古屋市千種区1-1-1"
 	s.password = "888888"
 	s.nickname = "みっちゃん"

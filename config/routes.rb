@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 	get 'carts/:id/select' => 'carts#select'
 	get 'carts/:id/confirm' => 'carts#confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
+	get 'users/:id/history' => 'users#history', as: 'user_history'
 
 	resources :deliveries, except: [:index, :show]
 
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
 		# end
 	end
 	resources :carts
-	resources :histories
+	resources :histories, except: [:show]
 	resources :genres, except: [:new]
 	resources :pop_images, except: [:edit,:update,:show, :new]
 	resources :songs

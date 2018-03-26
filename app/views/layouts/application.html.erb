@@ -21,13 +21,9 @@
     <body>
     <!-- header -->
     	<% if admin_signed_in? %>
-<<<<<<< HEAD
-    		<header class="admin", style="margin-top: -100px">
-=======
     		<header style="margin-top: -100px;">
->>>>>>> c41156e43d17a5877fd5f3f30c1f388b12989225
 		    	<nav class="clearfix admin">
-		        	<div class="clearfix header_nav", style="margin: 0 auto; width: 85%;">
+		        	<div class="clearfix header_nav", style="margin: 0 auto;">
 			            <%= link_to "TOP", admins_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "CDの追加", new_cd_path, class: "admin_nav-list-item" %>
 			        	<%= link_to "ユーザー一覧", admin_users_path, class: "admin_nav-list-item" %>
