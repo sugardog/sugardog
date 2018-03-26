@@ -48,7 +48,6 @@ Rails.application.routes.draw do
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
 	resources :reviews, only: [:new, :create]
-
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
 

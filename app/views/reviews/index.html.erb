@@ -4,23 +4,23 @@
           <h3>Review</h3>
         </div>
         <div class="col-lg-6">
-            <%= attachment_image_tag @reviews.cd,:image %>
+            <%= attachment_image_tag @cd,:image %>
               <thead>
                 <td>アルバム名</td>
-                <td><%= @reviews.cd.album_name %></td>
+                <td><%= @cd.album_name %></td>
               </thead>
               <tr>
                 <td>アーティスト名</td>
-                <td><%= @reviews.cd.artist.artist_name %></td>
+                <td><%= @cd.artist.artist_name %></td>
               </tr>
               <tr>
               <tr>
                 <td>価格</td>
-                <td><%= number_with_delimiter(@reviews.cd.price)%>円</td>
+                <td><%= number_with_delimiter(@cd.price)%>円</td>
               </tr>
               <tr>
                 <td>在庫数</td>
-                <td>残り<%= @reviews.cd.stock %>個</td>
+                <td>残り<%= @cd.stock %>個</td>
               </tr>
               <tr>
                 <td>
