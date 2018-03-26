@@ -5,12 +5,17 @@
     </div>
     <div class="col-lg-6">
       <div class="show_pic">
-        <%= attachment_image_tag @cd,:image %>
+        <%= attachment_image_tag @cd,:image %><br>
       </div>
-      <br>
       <div class="star">★★★★☆</div>
-      <a href="review.html">ユーザーレビュー54件</a>
-    </div>
+        <% if @cd.reviews.present? %>
+         <%= link_to cd_reviews_path(@cd) do %>
+         <p>ユーザーレビュー<%= @cd.reviews.count %>件</p>
+         <% end %>
+        <% else %>
+         <p>記入されたレビューはありません</p>
+        <% end %>
+      </div>
     <div class="col-lg-6">
       <table class="table">
         <thead>

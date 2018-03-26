@@ -10,6 +10,10 @@ class ReviewsController < ApplicationController
 		redirect_to cds_path
 	end
 
+	def index
+		@reviews = Review.all
+	end
+
 
 	private
 	def review_params
