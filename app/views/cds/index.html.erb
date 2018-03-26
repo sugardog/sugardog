@@ -33,6 +33,15 @@
 				    <span class="sr-only">Next</span>
 				</a>
 			</div>
+			 <% if flash[:notice] %>
+             <div class="thanks">
+             	<div style="font-size: 30px">THANK YOU</div>
+             	<div style="font-size: 20px"><%= current_user.nickname %>様<br></div>
+             	この度はSugardog。をご利用いただき、<br>
+             	誠にありがとうございます。<br>
+             	商品の用意が出来次第発送させていただきますので<br>
+             	もう少々お待ちくださいませ。</div>
+            <% end %>
 			<h2>CDS</h2>
 			<% @cds.each do |cd| %>
 				<div class="cd-box">

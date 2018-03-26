@@ -14,16 +14,19 @@ class HistoriesController < ApplicationController
 	def create
 		@user = User.find(current_user[:id])
 		@history = History.new(history_params)
-		@history.save
 		@cc = @user.cart.cd_carts
 		@cc.each do |cc|
-			cc.cd.update(stock: cc.cd.stock - cc.count)
+
+			if  cc.cd.stock - cc.count <= 0
+				return redirect_to cart_path(@user.cart),flash: {notice: '大変申し訳ございません。売り切れの商品がございます。'}
+			else
+				@history.save
+				cc.cd.update(stock: cc.cd.stock - cc.count)
+				@user.cart.cd_carts.delete_all
+				return redirect_to cds_path, flash: {notice: 'お買い上げありがとうございます。'}
+			end
 		end
-		@user.cart.cd_carts.delete_all
-		redirect_to cds_path
 	end
-
-
 
 	def destroy
 	end
