@@ -37,6 +37,7 @@ class ArtistsController < ApplicationController
        @artist = Artist.find(params[:id])
        @cds = Cd.all
        @cd = Cd.new
+       @rankings = Ranking.all
 	end
 
 	def destroy

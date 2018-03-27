@@ -109,33 +109,33 @@
         <tr>
           <th colspan="4" style="background-color: #fff4f4">disc<%= c_d.disc_num %>
             <% if admin_signed_in? %>
-            <div class="right">
-              <%= link_to "edit", edit_cd_disc_path(@cd, c_d), class:"btn btn-success" %>
-              <%= link_to cd_disc_path(@cd, c_d), method: :delete, "data-confirm" => "are you sure?" do %>
-                <div class="btn btn-danger">destroy</div>
+              <div class="right">
+                <%= link_to "edit", edit_cd_disc_path(@cd, c_d), class:"btn btn-success" %>
+                <%= link_to cd_disc_path(@cd, c_d), method: :delete, "data-confirm" => "are you sure?" do %>
+                  <div class="btn btn-danger">destroy</div>
                 <% end %>
-            <% end %>
-            </div>
-          </th>
-        </tr>
-        <tr>
-          <th>No.</th>
-          <th>タイトル</th>
-          <th>アーティスト</th>
-          <th>時間</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% c_d.songs.each do |cds| %>
-          <tr>
-            <td><%= cds.order_num %></td>
-            <td><%= cds.song_name %></td>
-            <td><%= cds.singer.singer_name %></td>
-            <td><%= cds.minutes %></td>
+              <% end %>
+              </div>
+            </th>
           </tr>
+          <tr>
+            <th>No.</th>
+            <th>タイトル</th>
+           <th>アーティスト</th>
+            <th>時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% c_d.songs.each do |cds| %>
+            <tr>
+              <td><%= cds.order_num %></td>
+              <td><%= cds.song_name %></td>
+              <td><%= cds.singer.singer_name %></td>
+              <td><%= cds.minutes %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 </div>
