@@ -52,6 +52,13 @@ class Admin::UsersController < ApplicationController
 		end
 	end
 
+	# 論理削除で退会させた人を復元させる
+	def restore
+		user = User.find(params[:id])
+		user.restore
+		redirect_to admin_users_path
+	end
+
 
 	private
 	def user_params

@@ -6,6 +6,14 @@
 			<div class="col-lg-7 col-lg-offset-2">
 				<div class="title-headline">お届け先住所の追加</div>
 				<div class="form-horizontal">
+					<% if @delivery.errors.any? %>
+        				<div id="error_explanation" class="text-center">
+          					<h4><%= @delivery.errors.count %>件のエラーが発生しました。</h4>
+          					<% @delivery.errors.full_messages.each do |message| %>
+            					<h6><%= message %></h6>
+          					<% end %>
+          				</div>
+          			<% end %>
 					<%= form_for(@delivery) do |f| %>
 						<div class="form-group">
 						    <label class="control-label col-sm-3" for="zipcode">郵便番号:</label>

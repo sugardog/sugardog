@@ -1,5 +1,13 @@
 <div class="col-lg-4">
     <div class="title-headline">都道府県別送料</div>
+        <% if @prefecture.errors.any? %>
+            <div id="error_explanation" class="text-center">
+                <h4><%= @prefecture.errors.count %>件のエラーが発生しました。</h4>
+                <% @prefecture.errors.full_messages.each do |message| %>
+                    <h6><%= message %></h6>
+                <% end %>
+            </div>
+        <% end %>
     <%= form_for(@prefecture) do |f| %>
         <div class="form-horizontal">
             <div class="form-group">

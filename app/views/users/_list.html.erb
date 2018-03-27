@@ -13,7 +13,7 @@
 		    	<li> <%= link_to "お届け先追加", new_delivery_path %> </li>
 		    	<li> <%= link_to "パスワード変更", edit_user_registration_path %> </li>
 		    	<li> <%= link_to "購入履歴", user_history_path(user) %> </li>
-		    	<li> <%= link_to "お気に入りアーティスト", admin_user_path(user) %> </li> <!-- path未設定 -->　
+		    	<li> <%= link_to "お気に入りアーティスト", favorites_path(user) %> </li>
 		    	<li> <%= link_to "my review", admin_reviews_path %></li>
 		    </ol>
     	</div>

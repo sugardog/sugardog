@@ -32,8 +32,8 @@
                         <td> <%= search.kana_last_name %> <%= search.kana_first_name%> </td>
                         <td> <%= search.email %> </td>
                         <td> <%= link_to "show", admin_user_path(search), class: "btn btn-success" %> </td>
-                        <% if search.exists?(user_id: @user.id) %>
-                            <td> <i class="fab fa-font-awesome-flag">退会者</i> </td>
+                        <% if search[:soft_destroyed_at].present? %>
+                            <td style="color: red;"> <span class="glyphicon glyphicon-alert"></span> 退会者 </td>
                         <% end %>
                     </tr>
                 <% end %>

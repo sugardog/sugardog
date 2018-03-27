@@ -17,9 +17,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @genres = Genre.all
+    
+    super
+  end
 
   # GET /resource/edit
   def edit
@@ -27,10 +29,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # PUT /resource
-  def update
-    super
-    redirect_to admin_user_path(current_user)
-  end
+  # def update
+  #   super
+  #   redirect_to admin_user_path(current_user)
+  # end
 
   # DELETE /resource
   # def destroy

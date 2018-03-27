@@ -1,0 +1,80 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      admin: 管理者
+      artist: アーティスト
+      cart: カート
+      delivery: お届け先住所
+      disc: ディスク
+      favorite: お気に入り
+      genre: ジャンル
+      history: 購入履歴
+      PopImage: トップ画像
+      review: レビュー
+      prefecture: 都道府県
+      singer: 歌手
+      song: 曲
+      cd: CD
+
+    attributes:
+      cd:
+        cd_id: CDID
+        album_name: アルバム名
+        album_kana_name: アルバム名(カタカナ)
+        label: レーベル名
+        price: 価格
+        stock: 在庫
+        image_id: ジャケット画像
+        release_date: 発売日
+        cd_introduction: CD紹介
+        artist_id: アーティスト
+        created_at: 登録日時
+        updated_at: 更新日時
+        artist: アーティスト名
+      disc:
+        disc_num: ディスク番号
+      disc/songs:
+        song_name: 曲名
+        song_kana_name: 曲名(カタカナ)
+        order_num: 曲順
+        minutes: 時間
+        disc_id: ディスク
+        singer_id: 歌手
+        singer: 歌手
+      artist:
+        artist_name: アーティスト名
+        artist_kana_name: アーティスト名(カタカナ)
+        introduction: アーティスト紹介
+        image_id: 画像
+        created_at: 登録日時
+        updated_at: 更新日時
+      genre:
+        genre_name: ジャンル名
+      prefecture:
+        prefecture_name: 都道府県名
+        postage: 送料
+      delivery:
+        prefecture: 都道府県名
+        address: 住所
+        zipcode: 郵便番号
+        tel: 電話番号
+        name: お名前
+      user:
+        first_name: 名
+        last_name: 姓
+        kana_first_name: 名(カタカナ)
+        kana_last_name: 姓(カタカナ)
+        zipcode: 郵便番号
+        address: 住所
+        tel: 電話番号
+        prefecture_id: 都道府県
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+
+
+
+
+
+

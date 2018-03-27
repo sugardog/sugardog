@@ -12,6 +12,16 @@ class User < ApplicationRecord
     has_many :reviews
     has_many :histories
 
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :kana_first_name, presence: true
+    validates :kana_last_name, presence: true
+    validates :zipcode, presence: true
+    validates :tel, presence: true , length: { minimum: 6 } # 6文字以上
+    validates :prefecture_id, presence: true
+    validates :address, presence: true
+    validates :nickname, presence: true
+
     # kakurenbo-putiを使えるようにする
     soft_deletable
 

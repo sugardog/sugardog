@@ -76,11 +76,13 @@
 				            		<div class="nav-text white">mymenu</div>
 				            	</div>
 				            <% end %>
-				            <a href="cart_index.html" class="nav-list-big">
-				            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
-				            		<div class="nav-text white">cart</div>
-				            	</li>
-				            </a>
+				            <%= link_to cart_path(current_user.id) do %>
+					            <div class="nav-list-big">
+					            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
+					            		<div class="nav-text white">cart</div>
+					            	</li>
+					            </div>
+				            <% end %>
 				        </ul>
 				    <% else %>
 				    	<ul class="nav-list clearfix">
@@ -116,7 +118,6 @@
 			    </nav>
 			</header>
 		<% end %>
-
     	<%= yield %>
     	<footer>
 			<p>©sugardog</p>

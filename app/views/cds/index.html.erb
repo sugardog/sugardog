@@ -33,14 +33,17 @@
 				    <span class="sr-only">Next</span>
 				</a>
 			</div>
-			 <% if flash[:notice] %>
-             <div class="thanks">
-             	<div style="font-size: 30px">THANK YOU</div>
-             	<div style="font-size: 20px"><%#= current_user.nickname %>様<br></div>
-             	この度はSugardog。をご利用いただき、<br>
-             	誠にありがとうございます。<br>
-             	商品の用意が出来次第発送させていただきますので<br>
-             	もう少々お待ちくださいませ。</div>
+			<% if user_signed_in? %>
+				 <% if flash[:thank] %>
+		            <div class="thanks">
+		             	<div style="font-size: 30px">THANK YOU</div>
+		             	<div style="font-size: 20px"><%= current_user.nickname %>様<br></div>
+		             	この度はSugardog。をご利用いただき、<br>
+		             	誠にありがとうございます。<br>
+		             	商品の用意が出来次第発送させていただきますので<br>
+		             	もう少々お待ちくださいませ。
+		            </div>
+	            <% end %>
             <% end %>
 			<h2>CDS</h2>
 			<% @cds.each do |cd| %>
@@ -53,7 +56,10 @@
 					<table class="table">
 					    <thead>
 					      	<tr>
-					       		<td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
+					       		<td><%= link_to cd_path(cd) do %>
+					       				<%= cd.album_name %>
+					       			<% end %>
+				       			</td>
 					     	</tr>
 					  	</thead>
 					    <tr>
