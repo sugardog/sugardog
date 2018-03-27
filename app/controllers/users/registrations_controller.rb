@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     @genres = Genre.all
     @rankings = Ranking.all
+    @rankings = Ranking.order("rank asc")
     super
   end
 

@@ -38,6 +38,7 @@ class ArtistsController < ApplicationController
        @cds = Cd.all
        @cd = Cd.new
        @rankings = Ranking.all
+       @rankings = Ranking.order("rank asc")
 	end
 
 	def destroy

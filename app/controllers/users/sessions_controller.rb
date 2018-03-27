@@ -7,6 +7,7 @@ class Users::SessionsController < Devise::SessionsController
   def new
     @genres = Genre.all
     @rankings = Ranking.all
+    @rankings = Ranking.order("rank asc")
     super
   end
 
