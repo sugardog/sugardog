@@ -31,15 +31,17 @@
                       <% history.cd_histories.each do |c_h| %>
                         <tr>
                           <td>
-                            <div class="cart_show_image">
-                              <%= link_to cd_path(c_h.cd) do %>
+                            <%= link_to cd_path(c_h.cd) do %>
+                              <div class="cart_show_image">
                                 <%= attachment_image_tag c_h.cd, :image %>
-                              <% end %>
-                            </div>
+                              </div>
+                            <% end %>
                           </td>
-                          <td> <%= c_h.cd.album_name %><br><%= c_h.cd.artist.artist_name %> </td>
-                          <td> <%= c_h.last_price %> 円（税込) <br>
-                            <%= link_to "write review", new_review_path, class: "btn btn-default write" %>
+                          <td><%= c_h.cd.album_name %><br>
+                              <%= c_h.cd.artist.artist_name %>
+                          </td>
+                          <td><%= c_h.last_price %> 円（税込) <br>
+                              <%= link_to "write review", new_review_path, class: "btn btn-default write" %>
                           </td>
                         </tr>
                       <% end %>
