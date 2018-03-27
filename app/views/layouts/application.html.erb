@@ -66,16 +66,6 @@
 				          			<div class="nav-text white">home</div>
 				          		</div>
 				          	<% end %>
-				          	<!-- <%= link_to new_user_registration_path do %>
-				            	<div class="nav-list-item">
-				            		<div class="nav-text white">sign up</div>
-				            	</div>
-				            <% end %>
-				            <%= link_to new_user_session_path do %>
-				            	<div class="nav-list-item">
-				            		<div class="nav-text white">login</div>
-				            	</div>
-				            <% end %> -->
 				            <%= link_to destroy_user_session_path,method: :delete do %>
 				            	<div class="nav-list-item">
 				            		<div class="nav-text white">Logout</div>
@@ -127,27 +117,9 @@
 			</header>
 		<% end %>
 
-		<!-- ここからadmin header -->
-		  <!--       <header class="admin">
-		    <nav class="clearfix admin">
-		    	<div class="clearfix header_nav">
-		        <a href="admin.html"><div class="admin_nav-list-item">TOP</div></a>
-		    		<a href="cd_form.html"><div class="admin_nav-list-item">CDの追加</div></a>
-		        <a href="user_index.html"><div class="admin_nav-list-item">ユーザー<br>一覧</div></a>
-		        <a href="artist.html"><div class="admin_nav-list-item">アーティスト<br>設定</div></a>
-		        <a href="genre.html"><div class="admin_nav-list-item">ジャンル<br>設定</div></a>
-		        <a href="campaign.html"><div class="admin_nav-list-item">キャンペーン<br>設定</div></a>
-		        <a href="postage.html"><div class="admin_nav-list-item">送料設定</div></a>
-		        <a href="review_history.html"><div class="admin_nav-list-item">レビュー<br>履歴</div></a>
-		        <a href="cart_history.html"><div class="admin_nav-list-item">購入履歴</div></a>
-		        <a href="top_image_edit.html"><div class="admin_nav-list-item">Topイメージ<br>設定</div></a>
-		    	</div>
-		    </nav>
-		</header> -->
-
     	<%= yield %>
     	<footer>
-©sugardog
+			<p>©sugardog</p>
     	</footer>
 
 </body>

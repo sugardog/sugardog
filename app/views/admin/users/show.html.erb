@@ -44,9 +44,6 @@
 				</ul>
 				<%= link_to "退会のお手続きへ", quit_path(@user), class: "btn btn-default destroy" %>
 				<br>
-				<% if user_signed_in? %>
-					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-				<% end %>
 				<div class="title-headline">お届け先情報</div>
 			    <ul class="list-group">
 			    	<% if Delivery.exists?(user_id: @user.id) %>

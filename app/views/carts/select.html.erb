@@ -19,37 +19,37 @@
     </div>
 
     <% @user.deliveries.each.with_index(1) do |d,i| %>
-    <div class="list-group">
-      <div class="list-group-item address radio">
-        <label>
-          <%= f.radio_button :delivery_id, i %>
-          その他お届け先情報<%= i %>
-        </label>
+      <div class="list-group">
+        <div class="list-group-item address radio">
+          <label>
+            <%= f.radio_button :delivery_id, i %>
+            その他お届け先情報<%= i %>
+          </label>
+        </div>
+        <div class="list-group-item">
+          〒<%= f.label :zipcode, d.zipcode %>
+          <%= f.label :prefecture_id, d.prefecture.prefecture_name %>
+          <%= f.label :address, d.address %>
+          <%= f.label :tel, d.tel %>
+          <%= f.label :name, d.name %>様
+        </div>
       </div>
-    <div class="list-group-item">
-      〒<%= f.label :zipcode, d.zipcode %>
-      <%= f.label :prefecture_id, d.prefecture.prefecture_name %>
-      <%= f.label :address, d.address %>
-      <%= f.label :tel, d.tel %>
-      <%= f.label :name, d.name %>様
-    </div>
+    <% end %>
+        <div class="right" style="margin-top: 30px">
+          <%= link_to "お届け先情報を追加", new_delivery_path, class:"btn btn-default write" %>
+        </div>
+        <h2 class="buy_title">Pay</h2>
+          <div class="list-group">
+            <div class="list-group-item pay radio">
+              <label>代引き</label>
+            </div>
+            <div class="list-group-item">お支払い方法は代引きのみですよ</div>
+          </div>
+          <div class="right">
+            <%= link_to "変更する", cart_path, class:"btn btn-default edit" %>
+            <%= f.submit '購入内容の確認へ', name: 'address', class:"btn btn-default create"  %>
+          </div>
   <% end %>
-  <div class="right" style="margin-top: 30px">
-    <%= link_to "お届け先情報を追加", new_delivery_path, class:"btn btn-default write" %>
-  </div>
-</div>
-<h2 class="buy_title">Pay</h2>
-  <div class="list-group">
-    <div class="list-group-item pay radio">
-      <label>代引き</label>
-    </div>
-    <div class="list-group-item">お支払い方法は代引きのみですよ</div>
-  </div>
-  <div class="right">
-    <%= link_to "変更する", cart_path, class:"btn btn-default edit" %>
-    <%= f.submit '購入内容の確認へ', name: 'address', class:"btn btn-default create"  %>
-  <% end %>
-</div>
 </div>
 <br>
 <br>

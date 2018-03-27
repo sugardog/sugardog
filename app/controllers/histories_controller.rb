@@ -42,21 +42,12 @@ class HistoriesController < ApplicationController
 
 	private
 
-	def history_params
-		params.require(:history).permit(:user_id, :delivery_id, :totol_price, :soft_destroyed_at, :status)
-	end
-
 	def authenticate_admin?
 		redirect_to root_path unless  admin_signed_in?
 	end
 
-
 	# def ensure_correct_user
 	# end
-end
-
-private
-
 	def history_params
 		params.require(:history).permit(:total_price, :prefecture_id, :zipcode, :address, :tel, :name, :user_id, :status,
 			cd_histories_attributes: [:id, :history_id, :cd_id, :count, :last_price])

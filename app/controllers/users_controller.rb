@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 	def quit
-		@user = User.find(params[:id])
+		@user = current_user
 	end
 
 	def history
