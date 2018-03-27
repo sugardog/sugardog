@@ -8,6 +8,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @genres = Genre.all
+    @rankings = Ranking.all
+    @rankings = Ranking.order("rank asc")
     super
   end
 

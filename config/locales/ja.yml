@@ -72,6 +72,9 @@ ja:
         nickname: ニックネーム
         email: メールアドレス
         password: パスワード
+      ranking:
+        rank: ランク
+        cd: CD
 
 
 

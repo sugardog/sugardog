@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   	devise_for :users, controllers: {
   		sessions: 'users/sessions',
   		passwords: 'users/passwords',
@@ -52,5 +53,6 @@ Rails.application.routes.draw do
 
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
+	resources :rankings, only: [:index, :destroy, :create]
 
 end

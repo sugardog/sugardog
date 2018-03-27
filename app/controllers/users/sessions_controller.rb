@@ -6,6 +6,8 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     @genres = Genre.all
+    @rankings = Ranking.all
+    @rankings = Ranking.order("rank asc")
     super
   end
 
