@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   	devise_for :users, controllers: {
   		sessions: 'users/sessions',
   		passwords: 'users/passwords',
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
 	get 'carts/:id/select' => 'carts#select'
 	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
+	get 'users/:id/favorites' => 'favorites#favorite', as: "favorites"
 	get 'users/:id/history' => 'users#history', as: 'user_history'
 
 	resources :deliveries, except: [:index, :show]
@@ -50,5 +52,6 @@ Rails.application.routes.draw do
 	resources :admins
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
+	resources :rankings, only: [:index, :destroy, :create]
 
 end

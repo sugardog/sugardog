@@ -14,11 +14,10 @@ class ArtistsController < ApplicationController
 			@singer.singer_name = params[:artist][:artist_name]
 			@singer.singer_kana_name = params[:artist][:artist_kana_name]
 			@singer.save
-		end
-
-		if @artist.save
   			redirect_to artists_path
     	else
+    		@q = Artist.ransack(params[:q])
+    		@searches = @q.result
 			render :index
 		end
 	end
@@ -38,6 +37,8 @@ class ArtistsController < ApplicationController
        @artist = Artist.find(params[:id])
        @cds = Cd.all
        @cd = Cd.new
+       @rankings = Ranking.all
+       @rankings = Ranking.order("rank asc")
 	end
 
 	def destroy

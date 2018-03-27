@@ -7,8 +7,9 @@ class Cd < ApplicationRecord
 	has_many :cd_carts
 	has_many :carts, through: :cd_carts
 	has_many :reviews
+	belongs_to :ranking
 
-	validates :album_name, :album_kana_name, :label, :price, :stock, :release_date, :artist_id, presence: true
+	validates :album_name, :album_kana_name, :label, :price, :stock, :release_date, presence: true
 
 
 end

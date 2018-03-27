@@ -10,6 +10,7 @@ class DiscsController < ApplicationController
 		@cd = Cd.find(params[:cd_id])
 		@disc = Disc.new(disc_params)
 		@disc.cd_id = @cd.id
+  			# binding.pry
 		if params[:add_disc]
 			if @disc.save
 	    		redirect_to new_cd_disc_path(@cd)
@@ -35,6 +36,7 @@ class DiscsController < ApplicationController
 		@disc = Disc.find(params[:id])
 		@songs = @disc.songs
 		@disc.update(disc_params)
+		# binding.pry
 		redirect_to cd_path(@cd)
 	end
 

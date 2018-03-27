@@ -1,20 +1,49 @@
 <div class="col-lg-2">
 	<div class="side-bar">
-	 	<div class="category-box">
-	 		<% if admin_signed_in? %>
-	 			<h3>Hello,Admin</h3>
-	 		<% elsif user_signed_in? %>
-	 			<h3>Hello, user様</h3>
+ 		<% if admin_signed_in? %>
+ 			<h3>Hello,Admin</h3>
+ 		<% elsif user_signed_in? %>
+ 			<h4 style="text-align: center">Hello</h4>
+ 			<h3 style="text-align: center"><%= current_user.last_name %>
+ 				<%= current_user.first_name %>様
+ 			</h3>
 
-	 		<% else %>
-	    		<h3>Hello,ゲスト様</h3>
-	    	<% end %>
-	    	<h2>Category</h2>
-	    	<h3>
-	    		<% genres.each do |genre| %>
-	    			<li> <%= link_to genre.genre_name, genre_path(genre) %> </li>
-	    		<% end %>
-	    	</h3>
-	  	</div>
+ 		<% else %>
+    		<h3>Hello,ゲスト様</h3>
+    	<% end %>
+    	<h2>Category</h2>
+    	<h3>
+    		<% genres.each do |genre| %>
+    			<li> <%= link_to genre.genre_name, genre_path(genre) %> </li>
+    		<% end %>
+    	</h3>
+		<table class="table">
+    		<thead>
+    			<tr>
+    				<th><h3>RANKING</h3></th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<% @rankings.each do |r| %>
+	    			<tr style="text-align: center">
+	    				<td>
+	    					<div class="ranking"><%= r.rank %></div><br>
+		    					<div class="cd_image", style="text-align: center">
+		    						<%= link_to cd_path(r.cd) do %>
+			    						<%= attachment_image_tag r.cd,:image %>
+			    					<% end %>
+	    						</div><br>
+	    						<%= link_to cd_path(r.cd) do %>
+	    							<%= r.cd.album_name %>
+	    						<% end %><br>
+	    						<%= link_to artist_path(r.cd.artist) do %>
+	    							<%= r.cd.artist.artist_name %>
+	    						<% end %>
+	    					</div>
+	    				</td>
+	    			</tr>
+    			<% end %>
+    		</tbody>
+    	</table>
 	</div>
 </div>

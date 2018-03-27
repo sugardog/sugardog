@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 *{
 	margin: 0;
@@ -288,12 +289,6 @@ dl .user-search-box {
 	text-align: center;
 	margin: 0 auto;
 }
-
-.category-box {
-	width: 100%;
-	margin: 130px auto;
-}
-
 /*main*/
 .cd-box {
   float: left;
@@ -308,6 +303,8 @@ dl .user-search-box {
   border-radius: 20px;
   padding-top: 5px;
   border-color: #8e8e8e94;
+  transition-property: all;
+  transition: 0.3s linear;
 }
 .cd-box:hover {
   border-color: #ff00819e;
@@ -409,7 +406,7 @@ th {
 .artist_introduct {
 	margin:50px 0 30px 0;
 }
-.artist_index {
+.artist_index img {
 	width: 150px;
 	height:150px;
 	border-radius: 50%;
@@ -528,4 +525,10 @@ th {
 	padding-top: 20px;
 	margin-top: 30px;
 	border-radius: 50%;
+}
+.ranking {
+	border-style: double;
+	border-color: #ffd7d9;
+	border-radius: 50%;
+	font-size: 20px;
 }
