@@ -1,102 +1,111 @@
-<div class="col-lg-9">
-      <div class="main-menu">
-        <div class="album_title">
-          <h3>Review</h3>
-        </div>
-        <div class="col-lg-6">
-            <%= attachment_image_tag @cd,:image %>
-              <thead>
-                <td>アルバム名</td>
-                <td><%= @cd.album_name %></td>
-              </thead>
-              <tr>
-                <td>アーティスト名</td>
-                <td><%= @cd.artist.artist_name %></td>
-              </tr>
-              <tr>
-              <tr>
-                <td>価格</td>
-                <td><%= number_with_delimiter(@cd.price)%>円</td>
-              </tr>
-              <tr>
-                <td>在庫数</td>
-                <td>残り<%= @cd.stock %>個</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">1
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                    </ul>
-                  </div>
-                </td>
-                <td>
-                  <a href="cart_index.html"><button class="btn btn-info fa fa-cart-plus">カートに入れる</button></a>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="col-lg-6">
-            <div class="review_text">総合評価
-              <div class="star">★★★★☆</div>4.0点<br>
-              レビュー<%= @cd.reviews.count %>件
-            </div>
-              <div class="col-lg-2 col-lg-offset-1">
-              <div class="review_star">★5</div>
-              <div class="review_star">★4</div>
-              <div class="review_star">★3</div>
-              <div class="review_star">★2</div>
-              <div class="review_star">★1</div>
-            </div>
-            <div class="col-lg-6"> 
-              <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 11%"></div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 12%"></div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 3%"></div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 2%"></div>
-              </div>
-            </div>
-            <div class="col-lg-2">
-              <div class="review_to"><a href="">70件</a><br></div>
-              <div class="review_to"><a href="">11件</a><br></div>
-              <div class="review_to"><a href="">12件</a><br></div>
-              <div class="review_to"><a href="">3件</a><br></div>
-              <div class="review_to"><a href="">2件</a></div>
-            </div>
-          </div> 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>name</th>
-                  <th>review/comments</th>
-                </tr>
-              </thead>
-              <tbody class="review_index">
-                <tr>
-                  <td></td>
-                  <td class="review_user"><div class="review_star">★★★★★星5</div><div class="review_date"></div><br>
-                      注文してから2日もしないうちに届きました。
-                      CDのみならポストに投函されるんでしょうが、特典のクリアファイルが付いているからか、
-                      大きな箱に入って、クリアファイルが折れないように丁寧に梱包されてきました。<br>
-                      <div class="review_date">2017/2/3</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
+<%= render 'shared/category', genres: @genres %>
+  <div class="col-lg-9">
+    <div class="main-menu">
+      <div class="album_title">
+        <h3>Review</h3>
       </div>
+      <div class="col-lg-6">
+        <div class="review_pic">
+        <%= attachment_image_tag @cd,:image %></div><br>
+        <table class="table review_table">
+          <thead>
+            <tr>
+              <td>アルバム名:</td>
+              <td><%= @cd.album_name %></td>
+            <tr>
+          </thead>
+          <tr>
+            <td>アーティスト名:</td>
+            <td><%= @cd.artist.artist_name %></td>
+          </tr>
+          <tr>
+            <td>価格:</td>
+            <td><%= number_with_delimiter(@cd.price)%>円</td>
+          </tr>
+          <tr>
+            <td>在庫数:</td>
+            <td>残り<%= @cd.stock %>個</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <%= link_to "CD詳細ページへ戻る", cd_path(@cd), class: "btn btn-info" %>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-lg-6">
+        <div class="review_text">総合評価
+          <% sum = 0 %>
+          <% @cd.reviews.each do |c| %>
+            <% sum += c.star %>
+          <% end %>
+          <% star = sum / @cd.reviews.count %>
+            <div class="star-rating" data-score=<%= star.round %>></div>
+            <%= sum / @cd.reviews.count %>点<br>
+                レビュー<%= @cd.reviews.count %>件
+              </div>
+
+              <div class="col-lg-2 col-lg-offset-1">
+                <div class="review_star">★5</div>
+                <div class="review_star">★4</div>
+                <div class="review_star">★3</div>
+                <div class="review_star">★2</div>
+                <div class="review_star">★1</div>
+              </div>
+              <div class="col-lg-6">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: <%= @star5.count.to_f / @cd.reviews.count.to_f * 100 %>%">
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: <%= @star4.count.to_f / @cd.reviews.count.to_f * 100 %>%">
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: <%= @star3.count.to_f / @cd.reviews.count.to_f * 100 %>%">
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<%= @star2.count.to_f / @cd.reviews.count.to_f * 100 %>%">
+                  </div>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<%= @star1.count.to_f / @cd.reviews.count.to_f * 100 %>%">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2">
+                <div class="review_to"><%= @star5.count %>件<br></div>
+                <div class="review_to"><%= @star4.count %>件<br></div>
+                <div class="review_to"><%= @star3.count %>件<br></div>
+                <div class="review_to"><%= @star2.count %>件<br></div>
+                <div class="review_to"><%= @star1.count %>件</div>
+              </div>
+            </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Review/Comments</th>
+            </tr>
+          </thead>
+          <tbody class="review_index">
+            <% @cd.reviews.each do |f| %>
+              <tr>
+                <td>
+                  <%= f.user.nickname %>様
+                </td>
+                <td>
+                 <span class="star-rating" data-score=<%= f.star %>></span><br>
+                 <%= f.comment %><br>
+                  <div class="review_date"><%= f.created_at.strftime('%Y/%m/%d')  %>
+                   <% if current_user.id = f.user_id %>
+                    <%#= link_to "edit", edit_cd_review_path(f.id), class: "btn btn-success"%>
+                   <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
