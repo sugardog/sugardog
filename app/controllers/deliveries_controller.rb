@@ -14,10 +14,13 @@ class DeliveriesController < ApplicationController
 	end
 
 	def create
-		delivery = Delivery.new(delivery_params)
-		delivery.user_id = current_user.id
-		delivery.save
-		redirect_to admin_user_path(current_user.id)
+		@delivery = Delivery.new(delivery_params)
+		@delivery.user_id = current_user.id
+		if @delivery.save
+		   redirect_to admin_user_path(current_user.id)
+		else
+			render :new
+		end
 	end
 
 	def edit
@@ -25,8 +28,8 @@ class DeliveriesController < ApplicationController
 	end
 
 	def update
-		delivery = Delivery.find(params[:id])
-		delivery.update(delivery_params)
+		@delivery = Delivery.find(params[:id])
+		@delivery.update(delivery_params)
 		redirect_to admin_user_path(current_user.id)
 	end
 

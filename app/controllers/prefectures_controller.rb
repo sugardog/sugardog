@@ -12,14 +12,18 @@ class PrefecturesController < ApplicationController
 	end
 
 	def create
-		prefecture = Prefecture.new(prefecture_params)
-		prefecture.save
-		redirect_to prefectures_path
+		@prefectures = Prefecture.all
+		@prefecture = Prefecture.new(prefecture_params)
+		if 	@prefecture.save
+			redirect_to prefectures_path
+		else
+			render :index
+		end
 	end
 
 	def update
-		prefecture = Prefecture.find(params[:id])
-		prefecture.update(prefecture_params)
+		@prefecture = Prefecture.find(params[:id])
+		@prefecture.update(prefecture_params)
 		redirect_to prefectures_path
 	end
 
