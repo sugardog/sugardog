@@ -289,12 +289,6 @@ dl .user-search-box {
 	text-align: center;
 	margin: 0 auto;
 }
-
-.category-box {
-	width: 100%;
-	margin: 130px auto;
-}
-
 /*main*/
 .cd-box {
   float: left;
@@ -360,7 +354,7 @@ th {
 	color: #fb0;
 	margin-top: 20px;
 }
-.review_pic {
+.review_pic img {
 	width: 150px;
 	height: 150px;
 
@@ -531,4 +525,10 @@ th {
 	padding-top: 20px;
 	margin-top: 30px;
 	border-radius: 50%;
+}
+.ranking {
+	border-style: double;
+	border-color: #ffd7d9;
+	border-radius: 50%;
+	font-size: 20px;
 }

@@ -43,6 +43,7 @@
                             </td>
                             <td><%= c_h.last_price %> 円（税込) <br>
                                 <%= link_to "write review", new_review_path, class: "btn btn-default write" %>
+                                <%= link_to "write review", new_cd_review_path(c_h.cd), class: "btn btn-default write" %>
                             </td>
                           </tr>
                         <% end %>

@@ -5,12 +5,22 @@
     </div>
     <div class="col-lg-6">
       <div class="show_pic">
-        <%= attachment_image_tag @cd,:image %>
+        <%= attachment_image_tag @cd,:image %><br>
       </div>
-      <br>
-      <div class="star">★★★★☆</div>
-      <a href="review.html">ユーザーレビュー54件</a>
-    </div>
+      <% sum = 0 %>
+          <% @cd.reviews.each do |c| %>
+            <% sum += c.star %>
+          <% end %>
+          <% star = sum / @cd.reviews.count %>
+            <div class="star-rating" data-score=<%= star.round %>></div>
+        <% if @cd.reviews.present? %>
+         <%= link_to cd_reviews_path(@cd) do %>
+         <p>ユーザーレビュー<%= @cd.reviews.count %>件</p>
+         <% end %>
+        <% else %>
+         <p>記入されたレビューはありません</p>
+        <% end %>
+      </div>
     <div class="col-lg-6">
       <table class="table">
         <thead>
@@ -65,6 +75,7 @@
           </tr>
           <tr>
             <td>
+
               <% if user_signed_in? %>
                 <%= form_for(@cd_cart, url: cd_cd_carts_path(@cd.id), method: :post) do |f| %>
                   <%= f.number_field :count, class:"btn btn-default", min:"1", value: "1", max:@cd.stock  %>
@@ -109,33 +120,33 @@
         <tr>
           <th colspan="4" style="background-color: #fff4f4">disc<%= c_d.disc_num %>
             <% if admin_signed_in? %>
-            <div class="right">
-              <%= link_to "edit", edit_cd_disc_path(@cd, c_d), class:"btn btn-success" %>
-              <%= link_to cd_disc_path(@cd, c_d), method: :delete, "data-confirm" => "are you sure?" do %>
-                <div class="btn btn-danger">destroy</div>
+              <div class="right">
+                <%= link_to "edit", edit_cd_disc_path(@cd, c_d), class:"btn btn-success" %>
+                <%= link_to cd_disc_path(@cd, c_d), method: :delete, "data-confirm" => "are you sure?" do %>
+                  <div class="btn btn-danger">destroy</div>
                 <% end %>
-            <% end %>
-            </div>
-          </th>
-        </tr>
-        <tr>
-          <th>No.</th>
-          <th>タイトル</th>
-          <th>アーティスト</th>
-          <th>時間</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% c_d.songs.each do |cds| %>
-          <tr>
-            <td><%= cds.order_num %></td>
-            <td><%= cds.song_name %></td>
-            <td><%= cds.singer.singer_name %></td>
-            <td><%= cds.minutes %></td>
+              <% end %>
+              </div>
+            </th>
           </tr>
+          <tr>
+            <th>No.</th>
+            <th>タイトル</th>
+           <th>アーティスト</th>
+            <th>時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% c_d.songs.each do |cds| %>
+            <tr>
+              <td><%= cds.order_num %></td>
+              <td><%= cds.song_name %></td>
+              <td><%= cds.singer.singer_name %></td>
+              <td><%= cds.minutes %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 </div>

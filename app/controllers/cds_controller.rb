@@ -9,6 +9,7 @@ def index
 	@genres = Genre.all
 	@pop_images = PopImage.all
 	@cd = Cd.new
+	@rankings = Ranking.order("rank asc")
 	# @q = Cd.eager_load(artist: :artist_name).ransack(params[:q])
 	# if params[:album_name].present?
 	# 	@cds = @cds.get_by_album_name params[:album_name]
@@ -45,7 +46,6 @@ def new
 	@cd_genres = CdGenre.all
 	@genres = Genre.all
 	@artists = Artist.all
-	
 
 	if params[:id].present?
 		@cd = Cd.find(params[:id]) 
