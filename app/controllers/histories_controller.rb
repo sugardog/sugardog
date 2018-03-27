@@ -15,6 +15,7 @@ class HistoriesController < ApplicationController
 		history.update(history_params)
 		redirect_to histories_path
 	end
+
 	def create
 		@user = User.find(current_user[:id])
 		@history = History.new(history_params)

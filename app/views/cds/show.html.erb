@@ -5,12 +5,22 @@
     </div>
     <div class="col-lg-6">
       <div class="show_pic">
-        <%= attachment_image_tag @cd,:image %>
+        <%= attachment_image_tag @cd,:image %><br>
       </div>
-      <br>
-      <div class="star">★★★★☆</div>
-      <a href="review.html">ユーザーレビュー54件</a>
-    </div>
+      <% sum = 0 %>
+          <% @cd.reviews.each do |c| %>
+            <% sum += c.star %>
+          <% end %>
+          <% star = sum / @cd.reviews.count %>
+            <div class="star-rating" data-score=<%= star.round %>></div>
+        <% if @cd.reviews.present? %>
+         <%= link_to cd_reviews_path(@cd) do %>
+         <p>ユーザーレビュー<%= @cd.reviews.count %>件</p>
+         <% end %>
+        <% else %>
+         <p>記入されたレビューはありません</p>
+        <% end %>
+      </div>
     <div class="col-lg-6">
       <table class="table">
         <thead>
@@ -65,6 +75,7 @@
           </tr>
           <tr>
             <td>
+
               <% if user_signed_in? %>
                 <%= form_for(@cd_cart, url: cd_cd_carts_path(@cd.id), method: :post) do |f| %>
                   <%= f.number_field :count, class:"btn btn-default", min:"1", value: "1", max:@cd.stock  %>
