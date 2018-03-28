@@ -63,6 +63,7 @@
             <td>在庫数</td>
             <td>残り<%= @cd.stock %>点</td>
           </tr>
+           <% end %>
           <tr>
             <td>
               <% if user_signed_in? %>
@@ -74,6 +75,14 @@
                     </td>
                   </tr>
                 <% end %>
+                <% elsif admin_signed_in? %>
+                  <td colspan="2">
+                  <%= form_for(@cd) do |f| %>
+                    <%= f.select :status,Cd.statuses.keys, {}, {class: "btn btn-info dropdown-toggle"} %>
+                    <%= f.submit "ステータスを更新", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+              </tr>
               <% else %>
               <input type="number", class="btn btn-default">
                   </td>
@@ -82,7 +91,7 @@
                     </td>
                   </tr>
               <% end %>
-        <% end %>
+       
       </table>
     </div>
     <table class="table">

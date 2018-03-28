@@ -46,7 +46,8 @@
 	            <% end %>
             <% end %>
 			<h2>CDS</h2>
-			<% @cds.each do |cd| %>
+			<% sell = @cds.where(status: 0) %>
+			<% sell.each do |cd| %>
 				<div class="cd-box">
 					<div class="cd_image">
 						<%= link_to cd_path(cd) do %>

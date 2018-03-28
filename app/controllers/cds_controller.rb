@@ -79,7 +79,7 @@ end
 def update
 	cd = Cd.find(params[:id])
 	cd.update(cd_params)
-	redirect_to cds_path
+	redirect_to admins_path
 end
 
 def destroy
@@ -90,7 +90,7 @@ end
 
 private
 def cd_params
-	params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id)
+	params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id, :status)
 end
 
 end

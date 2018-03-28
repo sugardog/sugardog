@@ -18,6 +18,8 @@ class GenresController < ApplicationController
 		@genres = Genre.all
 		@genre = Genre.find(params[:id])
 		@cd_genres = CdGenre.all
+		@rankings = Ranking.all
+       @rankings = Ranking.order("rank asc")
 	end
 
 	def edit
