@@ -24,6 +24,7 @@ class CartsController < ApplicationController
 			@delivery = current_user
 			@name = current_user.last_name + current_user.first_name
 		else
+			# binding.pry
 			@delivery = @user.deliveries.find(delivery_id)
 			@name = @delivery.name
 		end
