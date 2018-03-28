@@ -5,88 +5,94 @@
       <div class="col-lg-10 col-lg-offset-1">
         <div class="main-menu">
           <h3>購入履歴</h3>
-          <% @user.histories.each do |history| %>
-            <button class="list-group-item" data-toggle="collapse" data-target="#demo<%= history.id %>" style="background-color: #cecece7d">
-              <%= history.created_at.strftime('%Y/%m/%d') %>
-            </button>
-            <div id="demo<%= history.id %>" class="collapse">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <div class="status_label">
-                    <% if history.status_before_type_cast == 0 %>  <!-- enumの元の値を取得する -->
-                      <span class="label label-info"> ただ今受付け中です。 </span>
-                    <% elsif history.status_before_type_cast == 1 %>
-                      <span class="label label-success"> この商品はただ今準備中です。 </span>
-                    <% else %>
-                      <span class="label label-warning"> この商品は出荷済みです。 </span>
-                    <% end %>
-                  </div>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th colspan="3">商品内容</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% history.cd_histories.each do |c_h| %>
+          <% if History.exists?(user_id: @user.id) %>
+            <% @user.histories.reverse_each do |history| %>
+              <button class="list-group-item" data-toggle="collapse" data-target="#demo<%= history.id %>" style="background-color: #cecece7d">
+                <%= history.created_at.strftime('%Y/%m/%d') %>
+              </button>
+              <div id="demo<%= history.id %>" class="collapse">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <div class="status_label">
+                      <% if history.status_before_type_cast == 0 %>  <!-- enumの元の値を取得する -->
+                        <span class="label label-info"> ただ今受付け中です。 </span>
+                      <% elsif history.status_before_type_cast == 1 %>
+                        <span class="label label-success"> この商品はただ今準備中です。 </span>
+                      <% else %>
+                        <span class="label label-warning"> この商品は出荷済みです。 </span>
+                      <% end %>
+                    </div>
+                    <table class="table">
+                      <thead>
                         <tr>
-                          <td>
-                            <%= link_to cd_path(c_h.cd) do %>
-                              <div class="cart_show_image">
-                                <%= attachment_image_tag c_h.cd, :image %>
-                              </div>
-                            <% end %>
-                          </td>
-
-                          <td> <%= c_h.cd.album_name %><br><%= c_h.cd.artist.artist_name %> </td>
-                          <td> <%= c_h.last_price %> 円（税込) <br>
+                          <th colspan="3">商品内容</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% history.cd_histories.each do |c_h| %>
+                          <tr>
+                            <td>
+                              <%= link_to cd_path(c_h.cd) do %>
+                                <div class="cart_show_image">
+                                  <%= attachment_image_tag c_h.cd, :image %>
+                                </div>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= c_h.cd.album_name %><br>
+                              <%= c_h.cd.artist.artist_name %>
+                            </td>
+                            <td>
+                              <%= c_h.last_price %> 円（税込) <br>
                               <%= link_to "write review", new_cd_review_path(c_h.cd), class: "btn btn-default write" %>
-
-                          </td>
-                        </tr>
-                      <% end %>
-                      <tr>
-                        <th colspan="2">小計</th>
-                        <td> <%= history.total_price %> 円(税込) </td>
-                      </tr>
-                      <tr>
-                        <th colspan="2">代引手数料</th>
-                        <td> <%#= history.prefecture.postage %> 円(税込) </td>
-                      </tr>
-                      <tr>
-                        <th colspan="2">合計</th>
-                        <td> <%= history.total_price %> 円(税込) </td>
-                      </tr>
-                       <tr>
-                        <th colspan="3">お手続内容</th>
-                      </tr>
-                      <tr>
-                        <th>お支払方法</th>
-                        <td colspan="2">代引き</td>
-                      </tr>
-                      <tr>
-                        <th>お届け先</th>
-                        <td colspan="2">佐藤犬代<br>
-                                        〒150-0041<br>
-                                        東京都渋谷区神南1丁目19番11号パークウェースクエア2 4階<br>
-                                        03-6868-8470
-                        </td>
-                      </tr>
-                      <% if history.status_before_type_cast == 0 %>
+                            </td>
+                          </tr>
+                        <% end %>
                         <tr>
-                          <td colspan="3">
-                            <div class="status_label">
-                              <%= link_to "destroy", "/histories/#{history.id}", method: :delete, "data-confirm" => "本当に注文をキャンセルしますか？", class: "btn btn-default destroy" %>
-                            </div>
+                          <th colspan="2">小計</th>
+                          <td> <%= history.total_price %> 円(税込) </td>
+                        </tr>
+                        <tr>
+                          <th colspan="2">代引手数料</th>
+                          <td> <%#= history.prefecture.postage %> 円(税込) </td>
+                        </tr>
+                        <tr>
+                          <th colspan="2">合計</th>
+                          <td> <%= history.total_price %> 円(税込) </td>
+                        </tr>
+                         <tr>
+                          <th colspan="3">お手続内容</th>
+                        </tr>
+                        <tr>
+                          <th>お支払方法</th>
+                          <td colspan="2">代引き</td>
+                        </tr>
+                        <tr>
+                          <th>お届け先</th>
+                          <td colspan="2">佐藤犬代<br>
+                                          〒150-0041<br>
+                                          東京都渋谷区神南1丁目19番11号パークウェースクエア2 4階<br>
+                                          03-6868-8470
                           </td>
                         </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
-                </li>
-              </ul>
-            </div>
-            <br>
+                        <% if history.status_before_type_cast == 0 %>
+                          <tr>
+                            <td colspan="3">
+                              <div class="status_label">
+                                <%= link_to "destroy", "/histories/#{history.id}", method: :delete, "data-confirm" => "本当に注文をキャンセルしますか？", class: "btn btn-default destroy" %>
+                              </div>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </li>
+                </ul>
+              </div>
+              <br>
+            <% end %>
+          <% else %>
+            <p class="list-group-item list-group-item-warning">お客様がご購入された商品はまだございません。</p>
           <% end %>
         </div>
       </div>

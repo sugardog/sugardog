@@ -66,16 +66,6 @@
 				          			<div class="nav-text white">home</div>
 				          		</div>
 				          	<% end %>
-				          	<!-- <%= link_to new_user_registration_path do %>
-				            	<div class="nav-list-item">
-				            		<div class="nav-text white">sign up</div>
-				            	</div>
-				            <% end %>
-				            <%= link_to new_user_session_path do %>
-				            	<div class="nav-list-item">
-				            		<div class="nav-text white">login</div>
-				            	</div>
-				            <% end %> -->
 				            <%= link_to destroy_user_session_path,method: :delete do %>
 				            	<div class="nav-list-item">
 				            		<div class="nav-text white">Logout</div>
@@ -86,11 +76,13 @@
 				            		<div class="nav-text white">mymenu</div>
 				            	</div>
 				            <% end %>
-				            <a href="cart_index.html" class="nav-list-big">
-				            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
-				            		<div class="nav-text white">cart</div>
-				            	</li>
-				            </a>
+				            <%#= link_to cart_path(current_user.cart) do %>
+					            <div class="nav-list-big">
+					            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
+					            		<div class="nav-text white">cart</div>
+					            	</li>
+					            </div>
+				            <%# end %>
 				        </ul>
 				    <% else %>
 				    	<ul class="nav-list clearfix">
@@ -128,7 +120,7 @@
 		<% end %>
     	<%= yield %>
     	<footer>
-©sugardog
+			<p>©sugardog</p>
     	</footer>
 
 </body>

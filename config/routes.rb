@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 	get 'users/:id/favorites' => 'favorites#favorite', as: "favorites"
 	get 'users/:id/history' => 'users#history', as: 'user_history'
+	get 'admin/users/:id/restore' => 'admin/users#restore', as: 'admin_user_restore' # 論理削除で退会させた人を復元させる
 
 	resources :deliveries, except: [:index, :show]
 

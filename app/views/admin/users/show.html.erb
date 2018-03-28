@@ -5,7 +5,11 @@
 	    <div class="main-menu"><br>
 	    	<div class="right">
 	    		<% if admin_signed_in? %>
-					<%= link_to "USER:destroy", admin_user_path(@user), method: :delete, class: "btn btn-danger" %>
+					<% if @user[:soft_destroyed_at].present? %>
+						<%= link_to "退会者を復活させる", admin_user_restore_path(@user), class: "btn btn-warning" %>
+					<% else %>
+						<%= link_to "USER:destroy", admin_user_path(@user), method: :delete, class: "btn btn-danger" %>
+					<% end %>
 				<% end %>
 	    	</div>
 	    	<div class="col-lg-8 col-lg-offset-2">
@@ -42,11 +46,10 @@
 					    </table>
 					</li>
 				</ul>
-				<%= link_to "退会のお手続きへ", quit_path(@user), class: "btn btn-default destroy" %>
-				<br>
 				<% if user_signed_in? %>
-					<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+					<%= link_to "退会のお手続きへ", quit_path(@user), class: "btn btn-default destroy" %>
 				<% end %>
+				<br>
 				<div class="title-headline">お届け先情報</div>
 			    <ul class="list-group">
 			    	<% if Delivery.exists?(user_id: @user.id) %>

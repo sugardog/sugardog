@@ -19,19 +19,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @genres = Genre.all
+    @rankings = Ranking.all
+    @rankings = Ranking.order("rank asc")
+    super
+  end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    redirect_to admin_user_path(current_user)
+    super
+  end
 
   # DELETE /resource
   # def destroy
