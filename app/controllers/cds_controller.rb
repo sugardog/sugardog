@@ -81,13 +81,13 @@ end
 def update
 	cd = Cd.find(params[:id])
 	cd.update(cd_params)
-	redirect_to admins_path
+	redirect_to cd_path(cd)
 end
 
 def destroy
 	cd = Cd.find(params[:id])
 	cd.destroy
-	redirect_to cds_path
+	redirect_to admins_path
 end
 
 private

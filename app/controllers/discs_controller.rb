@@ -21,7 +21,7 @@ class DiscsController < ApplicationController
 	    	end
   		elsif params[:create_disc]
   			if @disc.save
-	    		redirect_to cds_path
+	    		redirect_to cd_path(@cd)
 	    	else
 	    		render :new
 	    	end
