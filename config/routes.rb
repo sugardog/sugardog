@@ -21,13 +21,14 @@ Rails.application.routes.draw do
 
 	# get 'search', to: 'application#search'
 	get 'cds/about_us' => 'cds#about_us'
-	get 'carts/sorry' => 'carts#sorry'
+	get 'cds/greeting' => 'cds#greeting'
 	get 'cds/search' => 'cds#search'
 	get 'carts/:id/select' => 'carts#select'
 	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 	get 'users/:id/favorites' => 'favorites#favorite', as: "favorites"
 	get 'users/:id/history' => 'users#history', as: 'user_history'
+	get 'admin/users/:id/restore' => 'admin/users#restore', as: 'admin_user_restore' # 論理削除で退会させた人を復元させる
 
 	resources :deliveries, except: [:index, :show]
 

@@ -1,21 +1,18 @@
 <div class="col-lg-10 col-lg-offset-1">
-    <div style="text-align: right;">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-    </div>
     <div class="title-headline">USER INDEX</div>
     <div class="col-lg-8 col-lg-offset-2">
-            <dl>
-            <div class="user-search-box">
-                <%= search_form_for(@q, :url => {:controller => '/admin/users', :action => 'index'}) do |f| %>
-                    <dt><%= f.search_field :kana_first_name_or_kana_last_name_eq, class: "form-control search-form", placeholder: "カナ入力 (姓or名の完全一致)" %>
-                    </dt>
-                    <dd class=search-button>
-                    <%= button_tag :type => "submit", :class =>" search-button fa fa-search" do %>
-                    <% end %>
-                    </dd>
-                    </div>
-                </dl>
+        <dl>
+        <div class="user-search-box">
+            <%= search_form_for(@q, :url => {:controller => '/admin/users', :action => 'index'}) do |f| %>
+                <dt><%= f.search_field :kana_first_name_or_kana_last_name_eq, class: "form-control search-form", placeholder: "カナ入力 (姓or名の完全一致)" %>
+                </dt>
+                <dd class=search-button>
+                <%= button_tag :type => "submit", :class =>" search-button fa fa-search" do %>
                 <% end %>
+                </dd>
+                </div>
+            </dl>
+            <% end %>
         <table class="table">
             <thead>
                 <tr>
@@ -23,6 +20,7 @@
                     <th> 名 </th>
                     <th> カナ </th>
                     <th> E-mail </th>
+                    <th> </th>
                     <th> </th>
                 </tr>
             </thead>
@@ -34,6 +32,9 @@
                         <td> <%= search.kana_last_name %> <%= search.kana_first_name%> </td>
                         <td> <%= search.email %> </td>
                         <td> <%= link_to "show", admin_user_path(search), class: "btn btn-success" %> </td>
+                        <% if search[:soft_destroyed_at].present? %>
+                            <td style="color: red;"> <span class="glyphicon glyphicon-alert"></span> 退会者 </td>
+                        <% end %>
                     </tr>
                 <% end %>
             </tbody>
