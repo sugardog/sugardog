@@ -1,5 +1,8 @@
 class SongsController < ApplicationController
 
+	# adminの認証
+	before_action :authenticate_admin?
+
 	def new
 		@cd = Cd.find(params[:cd_id])
 		@song = Song.new
@@ -36,5 +39,12 @@ class SongsController < ApplicationController
 def disc_params
 	params.require(:disc).permit(:disc_num)
 	
+
 end
+
+	# adminでログインしていなければ、root_pathにリダイレクトされる
+	def authenticate_admin?
+		redirect_to root_path unless admin_signed_in?
+	end
+
 end

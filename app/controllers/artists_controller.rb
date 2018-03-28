@@ -1,5 +1,8 @@
 class ArtistsController < ApplicationController
 
+	# adminの認証
+	before_action :authenticate_admin?, except: [:index, :show]
+
 	def new
 		@artist = Artist.new
 		@singer = Singer.new
@@ -65,6 +68,11 @@ class ArtistsController < ApplicationController
     def singer_params
         params.require(:singer).permit(:singer_name, :singer_kana_name)
 
+    end
+
+	# adminでログインしていなければ、root_pathにリダイレクトされる
+    def authenticate_admin?
+		redirect_to root_path unless admin_signed_in?
     end
 
 

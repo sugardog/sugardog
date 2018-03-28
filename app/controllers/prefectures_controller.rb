@@ -1,6 +1,6 @@
 class PrefecturesController < ApplicationController
 
-	before_action :authenticate_admin!
+	before_action :authenticate_admin?
 
 	def index
 		@prefectures = Prefecture.all
@@ -37,5 +37,9 @@ class PrefecturesController < ApplicationController
 
 	def prefecture_params
 		params.require(:prefecture).permit(:prefecture_name, :postage)
+	end
+
+	def authenticate_admin?
+		redirect_to root_path unless admin_signed_in?
 	end
 end

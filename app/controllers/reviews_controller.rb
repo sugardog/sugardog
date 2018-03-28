@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+	before_action :authenticate_user?
+
 	def new
 		@cd = Cd.find(params[:cd_id])
 		@review = Review.new
@@ -28,4 +31,10 @@ class ReviewsController < ApplicationController
 	def review_params
 		params.require(:review).permit(:comment, :star, :user_id, :cd_id)
 	end
+
+	# admin又はuserでログインしていなければ、ページは見れないようにする
+	def authenticate_user?
+		redirect_to root_path unless user_signed_in? || admin_signed_in?
+	end
+
 end

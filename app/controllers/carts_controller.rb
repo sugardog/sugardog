@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
 
+	before_action :admin_user?
+
 	def show
 		@cds = Cd.all
 		@cart = Cart.find(params[:id])
@@ -26,5 +28,11 @@ class CartsController < ApplicationController
 			@name = @delivery.name
 		end
 	end
+
+	private
+	def admin_user?
+		redirect_to root_path unless user_signed_in? || admin_signed_in?
+	end
+
 
 end

@@ -1,4 +1,7 @@
 class CdCartsController < ApplicationController
+
+	before_action :admin_user?
+
 	def new
 		@carts = Cart.all
 		@cd_carts = CdCart.all
@@ -63,6 +66,10 @@ private
 	end
 	def cd_cart_params
 		params.require(:cd_cart).permit(:cd_id, :count, :cart_id)
+	end
+
+	def admin_user?
+		redirect_to root_path unless user_signed_in? || admin_signed_in?
 	end
 
 end
