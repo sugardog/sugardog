@@ -1,6 +1,6 @@
 class History < ApplicationRecord
 
-	enum status:{受付中: 0,準備中: 1,発送済み: 2}
+	enum status:{受付中: 0,準備中: 1,発送済み: 2, キャンセル: 3}
 
 	attr_accessor :delivery_id
 	has_many :cds, through: :cd_histories

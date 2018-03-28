@@ -76,7 +76,7 @@
 }
 .we {
 	width: 700px;
-	height: 500px;
+	height: 200px;
 	background-color: #f1a9c775;
 	margin: 0 auto;
 	color: #fff;
@@ -634,4 +634,10 @@ th {
 	border-radius: 50%;
 	font-size: 30px;
 	color: #cececef7;
+}
+.ce {
+	width: 150px;
+	float: right;
+	border-radius: 50%;
+	margin: 30px 100px 20px 0;
 }

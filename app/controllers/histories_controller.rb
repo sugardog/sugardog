@@ -1,10 +1,10 @@
 class HistoriesController < ApplicationController
 
 	# indexの時だけadminの認証がいる
-	before_action :authenticate_admin?, only: [:index, :update]
+	before_action :authenticate_admin!, only: [:index]
 
 	# index以外のページをログインuserが見れるようにする
-	before_action :authenticate_user?, except: [:index, :update]
+	before_action :authenticate_user?, except: [:index]
 
 	def index
 		@histories = History.all
@@ -13,7 +13,12 @@ class HistoriesController < ApplicationController
 	def update
 		history = History.find(params[:id])
 		history.update(history_params)
-		redirect_to histories_path
+		if user_signed_in?
+			redirect_to user_history_path(current_user)
+		else
+		# binding.pry
+			redirect_to histories_path
+		end
 	end
 
 	def create
