@@ -5,27 +5,11 @@
 		<div class="main-menu">
     		<div class="title-headline">退会のお手続き</div>
 			<div class="form-horizontal">
-                <%= form_for(@user, url: user_path(@user), html: { method: :post }) do |f| %>
-                    <%= devise_error_messages! %>
-    		        <div class="form-group">
-                        <label class="control-label col-sm-3 nav-text" for="email">メールアドレス:</label>
-                        <div class="col-sm-6">
-                        	<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-                        </div>
-    		        </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-3 nav-text" for="password">パスワード:</label>
-                        <div class="col-sm-6">
-                        	<%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-                        </div>
-                    </div>
-                	<div class="col-sm-9">
-    		            <div class="right">
-    		                <%= f.submit "退会する", class: "btn btn-default destroy" %>
-                            <%= link_to "退会する", admin_user_path(@user), method: :delete, class: "btn btn-default destroy" %>
-    		            </div>
-    	        	</div>
-                <% end %>
+                <h3>
+                    退会すると、全ての情報が失われ、ログインできなくなりますが、<br>
+                    よろしいですか？
+                </h3>
+                <%= link_to "はい、退会します", admin_user_path(@user), method: :delete, class: "btn btn-default destroy" %>
 			</div>
 		</div>
   	</div>
