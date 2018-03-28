@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
 
 	def index
 		@cd = Cd.find(params[:cd_id])
+		@rankings = Ranking.order("rank asc")
 		@genres = Genre.all
 		@reviews = Review.all
 		@star5 = @cd.reviews.where(star: 5)

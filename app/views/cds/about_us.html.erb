@@ -1,22 +1,21 @@
 <div class="aboutus">
-			<div class="container">
-	<div class="col-xs-3">
-		<%= link_to cds_greeting_path do %>
-			<div class="c1">
-				社長からのご挨拶
-			</div>
-		<% end %>
-<div class="c2">
-	採用情報
-</div>
-<%= link_to cds_about_us_path do %>
-	<div class="c3">
-		会社概要
-	</div>
-<% end %>
-	</div>
-	<div class="col-xs-9">		
-
+	<div class="container">
+		<div class="col-xs-3">
+			<%= link_to cds_greeting_path do %>
+				<div class="c1">
+					社長からのご挨拶
+				</div>
+			<% end %>
+			<%= link_to cds_work_path do %>
+				<div class="c2">採用情報</div>
+			<% end %>
+			<%= link_to cds_about_us_path do %>
+				<div class="c3">
+					会社概要
+				</div>
+			<% end %>
+		</div>
+		<div class="col-xs-9">		
 			<div class="us">
 				<div class="logo" style="padding-top: 30px"><img src="/assets/sd.png"></div>
 				<h3 style="padding-top: 30px">経営理念-PHILOSOPHY-</h3>
