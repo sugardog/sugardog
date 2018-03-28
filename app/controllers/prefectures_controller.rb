@@ -9,6 +9,7 @@ class PrefecturesController < ApplicationController
 
 	def edit
 		@prefecture = Prefecture.find(params[:id])
+		@prefectures = Prefecture.all
 	end
 
 	def create

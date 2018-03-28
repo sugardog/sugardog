@@ -1,0 +1,26 @@
+<div class="col-lg-8">
+    <div class="title-headline">PREFECTURE/POSTAGE INDEX</div>
+    <div class="col-lg-8 col-lg-offset-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>都道府県名</th>
+                    <th>送料</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            	<% @prefectures.each do |prefecture| %>
+                    <tr>
+                        <td> <%= prefecture.prefecture_name %> </td>
+                        <td> + <%= prefecture.postage %> 円 </td>
+                        <td> <%= link_to "edit", edit_prefecture_path(prefecture), class: "btn btn-success" %> </td>
+                        <td>
+                         <%= link_to "delete", prefecture_path(prefecture), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %></div>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

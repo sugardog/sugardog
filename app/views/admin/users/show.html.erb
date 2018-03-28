@@ -66,8 +66,10 @@
 							  	<%= delivery.name %>様<br>
 							  	電話番号：<%=  delivery.tel %><br>
 						        <div class="right">
+						        <% if user_signed_in? %>
 								  	<%= link_to "edit", edit_delivery_path(delivery), class:"btn btn-default edit" %>
 									<%= link_to "destroy", delivery_path(delivery), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-default destroy" %>
+								<% end %>
 							    </div>
 						    </li>
 						<% end %>
