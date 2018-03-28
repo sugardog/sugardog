@@ -21,8 +21,10 @@
                         <span class="label label-info"> ただ今受付け中です。 </span>
                       <% elsif history.status_before_type_cast == 1 %>
                         <span class="label label-success"> この商品はただ今準備中です。 </span>
-                      <% else %>
+                      <% elsif history.status_before_type_cast == 2 %>
                         <span class="label label-warning"> この商品は出荷済みです。 </span>
+                      <% else %>
+                      <span class="label label-danger"> キャンセルしました </span>
                       <% end %>
                     </div>
                     <table class="table">
@@ -82,8 +84,10 @@
                         <% if history.status_before_type_cast == 0 %>
                           <tr>
                             <td colspan="3">
-                              <div class="status_label">
-                                <%= link_to "destroy", "/histories/#{history.id}", method: :delete, "data-confirm" => "本当に注文をキャンセルしますか？", class: "btn btn-default destroy" %>
+                              <%= form_for(history) do |f| %>
+                                <%= f.hidden_field :status, :value => "キャンセル" %>
+                                <%= f.submit "キャンセル", class: "btn btn-danger" %>
+                              <% end %>
                               </div>
                             </td>
                           </tr>

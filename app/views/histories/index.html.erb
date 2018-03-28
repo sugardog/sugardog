@@ -231,7 +231,7 @@
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3> 注文キャンセル商品 </h3>
-      <% histories = @histories.where.not(soft_destroyed_at: nil) %>
+      <% histories = @histories.where(status: 3) %>
       <% histories.each do |history| %>
         <button class="list-group-item" data-toggle="collapse" data-target="#demo<%= history.id %>" style="background-color: pink">
           <%= link_to admin_user_path(history.user.id) do %>
@@ -239,16 +239,16 @@
           <% end %>
           <div class="right">
             注文日：<%= history.created_at.strftime('%Y/%m/%d') %><br>
-            注文キャンセル日：<%= history.soft_destroyed_at.strftime('%Y/%m/%d') %>
+            注文キャンセル日：<%= history.updated_at.strftime('%Y/%m/%d') %>
           </div>
         </button>
         <div id="demo<%= history.id %>" class="collapse">
-<!--           <div class="dropdown">
-            <%#= form_for(history) do|f| %>
-              <%#= f.select :status,History.statuses.keys, {}, {class: "btn btn-info dropdown-toggle"} %>
-              <%#= f.submit "ステータスを更新", class: "btn btn-primary" %>
-            <%# end %>
-          </div> -->
+           <div class="dropdown">
+            <%= form_for(history) do|f| %>
+              <%= f.select :status,History.statuses.keys, {}, {class: "btn btn-info dropdown-toggle"} %>
+              <%= f.submit "ステータスを更新", class: "btn btn-primary" %>
+            <% end %>
+          </div>
           <table class="table">
             <thead>
               <tr>

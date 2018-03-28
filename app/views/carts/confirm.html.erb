@@ -38,6 +38,10 @@
 		                <td><%= number_with_delimiter(sum) %>円(税抜)</td>
 		            </tr>
 		            <tr>
+		                <th colspan="2">消費税</th>
+		                <td><% tax = sum * 0.08 %><%= number_with_delimiter(tax.round) %>円</td>
+		            </tr>
+		            <tr>
 		                <th colspan="2">代引手数料</th>
 		                <td>324円(税込)</td>
 		            </tr>
@@ -47,7 +51,7 @@
 		            </tr>
 		            <tr>
 		                <th colspan="2">合計</th>
-		                <td><% total_price = (sum + @delivery.prefecture.postage + 324 ) %>
+		                <td><% total_price = (sum + tax + @delivery.prefecture.postage + 324 ).round %>
 		                	<%= number_with_delimiter(total_price) %>円(税込)</td>
 		            </tr>
 		               	<tr>
