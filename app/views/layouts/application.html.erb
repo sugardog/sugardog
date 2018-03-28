@@ -14,6 +14,7 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	    <%= javascript_include_tag 'application' %>
+	    <%= favicon_link_tag('/assets/favicon.ico') %>
 		<title>sugerdog.</title>
 	</head>
     <!-- ここからコードを書きましょう -->
@@ -43,9 +44,10 @@
 		<% else %>
 		 	<header class="navbar-fixed-top">
 		        <nav class="clearfix">
-		       		<div class="title">sugerdog。</div>
+		        	<%= link_to cds_greeting_path do %>
+		       			<div class="logo title"><img src="/assets/sd.png"></div>
+		       		<% end %>
 				 	<div class="search-box">
-
 					<dl>
 						<%= search_form_for @q, :url => {:controller => '/cds', :action => 'search'} do |f| %>
 							<dt>
@@ -76,13 +78,25 @@
 				            		<div class="nav-text white">mymenu</div>
 				            	</div>
 				            <% end %>
-				            <%= link_to cart_path(current_user.cart) do %>
-					            <div class="nav-list-big">
-					            	<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
-					            		<div class="nav-text white">cart</div>
-					            	</li>
-					            </div>
-				            <% end %>
+				            <% if Cart.find_by(user_id: current_user) %>
+					            <%= link_to cart_path(current_user.cart) do %>
+					            	<div class="nav-list-big">
+					            		<li class="fa fa-shopping-cart white" style="font-size: 45px">
+					            			<br>
+					            			<div class="nav-text white"><%= current_user.cart.cd_carts.count %>>個</div>
+					            		</li>
+					            	</div>
+					            <% end %>
+					         <% else %>
+					         <%= link_to cds_path do %>
+					            	<div class="nav-list-big">
+					            		<li class="fa fa-shopping-cart white" style="font-size: 25px">
+					            			<br>
+					            			<div class="nav-text white">カート内は<br>空です</div>
+					            		</li>
+					            	</div>
+					            <% end %>
+					        <% end %>
 				        </ul>
 				    <% else %>
 				    	<ul class="nav-list clearfix">
@@ -101,12 +115,7 @@
 				            		<div class="nav-text white">login</div>
 				            	</div>
 				            <% end %>
-				            <%= link_to new_user_session_path do %>
-				            	<div class="nav-list-item">
-				            		<div class="nav-text white">mymenu</div>
-				            	</div>
-				            <% end %>
-				            <%= link_to cds_path do %>
+				            <%= link_to new_user_registration_path do %>
 				            	<div class="nav-list-big">
 				            		<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
 				            			<div class="nav-text white">cart</div>
@@ -118,10 +127,7 @@
 			    </nav>
 			</header>
 		<% end %>
-    	<%= yield %>
-    	<footer>
-			<p>©sugardog</p>
-    	</footer>
+    <%= yield %>
 
 </body>
 </html>

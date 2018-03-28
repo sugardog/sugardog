@@ -14,14 +14,15 @@ Rails.application.routes.draw do
 
   	namespace :admin do
   		resources :users
-  		resources :reviews, except: [:new, :create, :show]
+  		resources :reviews, only: [:index, :destroy]
   	end
 
 	root 'cds#index'
 
 	# get 'search', to: 'application#search'
 	get 'cds/about_us' => 'cds#about_us'
-	get 'carts/sorry' => 'carts#sorry'
+	get 'cds/greeting' => 'cds#greeting'
+	get 'cds/work' => 'cds#work'
 	get 'cds/search' => 'cds#search'
 	get 'carts/:id/select' => 'carts#select'
 	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
 	resources :cds do
 		resource :cd_carts
 		resources :discs, except: [:index, :show]
-		resources :reviews, only: [:index, :create, :new]
+		resources :reviews, except: [:destroy]
 			# resources :songs
 		# end
 	end

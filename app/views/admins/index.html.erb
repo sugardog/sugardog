@@ -1,24 +1,60 @@
 <div class="col-lg-10 col-lg-offset-1">
-  <h2 class="title_headline">CD INDEX</h2>
-  <% @cds.each do |cd| %>
-    <div class="cd-box">
-      <div class="cd_image">
-        <%= link_to cd_path(cd) do %>
-          <%= attachment_image_tag cd,:image %>
+  <!-- タブメニュー -->
+
+  <ul class="nav nav-tabs" style="margin-top: 50px">
+    <li class="active"><a data-toggle="tab" href="#home">販売中</a></li>
+    <li><a data-toggle="tab" href="#menu1">販売中止</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h2 class="title_headline">CD INDEX</h2>
+      <% sell = @cds.where(status: 0) %>
+        <% sell.each do |cd| %>
+          <div class="cd-box">
+            <div class="cd_image">
+              <%= link_to cd_path(cd) do %>
+                <%= attachment_image_tag cd,:image %>
+              <% end %>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= link_to artist_path(cd.artist) do %><%= cd.artist.artist_name %><% end %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         <% end %>
       </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= link_to artist_path(cd.artist) do %><%= cd.artist.artist_name %><% end %></td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="menu1" class="tab-pane fade">
+        <h3>販売中止商品</h3>
+        <% no = @cds.where(status: 1) %>
+        <% no.each do |cd| %>
+          <div class="cd-box">
+            <div class="cd_image">
+              <%= link_to cd_path(cd) do %>
+                <%= attachment_image_tag cd,:image %>
+              <% end %>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <td><%= link_to cd_path(cd) do %><%= cd.album_name %><% end %></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= link_to artist_path(cd.artist) do %><%= cd.artist.artist_name %><% end %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

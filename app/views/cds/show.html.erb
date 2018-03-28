@@ -7,13 +7,13 @@
       <div class="show_pic">
         <%= attachment_image_tag @cd,:image %><br>
       </div>
+      <% if @cd.reviews.present? %>
       <% sum = 0 %>
           <% @cd.reviews.each do |c| %>
             <% sum += c.star %>
           <% end %>
           <% star = sum / @cd.reviews.count %>
             <div class="star-rating" data-score=<%= star.round %>></div>
-        <% if @cd.reviews.present? %>
          <%= link_to cd_reviews_path(@cd) do %>
          <p>ユーザーレビュー<%= @cd.reviews.count %>件</p>
          <% end %>
@@ -73,6 +73,7 @@
             <td>在庫数</td>
             <td>残り<%= @cd.stock %>点</td>
           </tr>
+           <% end %>
           <tr>
             <td>
 
@@ -85,6 +86,14 @@
                     </td>
                   </tr>
                 <% end %>
+                <% elsif admin_signed_in? %>
+                  <td colspan="2">
+                  <%= form_for(@cd) do |f| %>
+                    <%= f.select :status,Cd.statuses.keys, {}, {class: "btn btn-info dropdown-toggle"} %>
+                    <%= f.submit "ステータスを更新", class: "btn btn-primary" %>
+                  <% end %>
+                </td>
+              </tr>
               <% else %>
               <input type="number", class="btn btn-default">
                   </td>
@@ -93,7 +102,7 @@
                     </td>
                   </tr>
               <% end %>
-        <% end %>
+       
       </table>
     </div>
     <table class="table">
