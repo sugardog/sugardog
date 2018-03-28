@@ -1,5 +1,5 @@
 <div class="col-lg-4">
-    <div class="title-headline">都道府県別送料</div>
+    <div class="title-headline">都道府県別送料 追加</div>
         <% if @prefecture.errors.any? %>
             <div id="error_explanation" class="text-center">
                 <h4><%= @prefecture.errors.count %>件のエラーが発生しました。</h4>
@@ -28,26 +28,4 @@
     	</div>
     <% end %>
 </div>
-<div class="col-lg-8">
-    <div class="title-headline">PREFECTURE/POSTAGE INDEX</div>
-    <div class="col-lg-8 col-lg-offset-2">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>都道府県名</th>
-                    <th>送料</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            	<% @prefectures.each do |prefecture| %>
-                    <tr>
-                        <td> <%= prefecture.prefecture_name %> </td>
-                        <td> + <%= prefecture.postage %> 円 </td>
-                        <td> <%= link_to "edit", edit_prefecture_path(prefecture), class: "btn btn-success" %> </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </div>
-</div>
+<%= render 'prefectures/list', prefectures: @prefectures %>

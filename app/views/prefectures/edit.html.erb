@@ -1,5 +1,5 @@
-<div class="col-lg-8">
-    <div class="title-headline">都道府県別送料 編集画面</div>
+<div class="col-lg-4">
+    <div class="title-headline">都道府県別送料 編集</div>
     <%= form_for(@prefecture) do |f| %>
         <div class="form-horizontal">
             <div class="form-group">
@@ -16,11 +16,10 @@
             </div>
         </div>
     	<div class="right">
-        	<%= f.submit "update", class: "btn btn-default create" %>
+            <%= link_to "back", prefectures_path, class: "btn btn-success" %>
+        	<%= f.submit "update", class: "btn btn-warning" %>
     	</div>
     <% end %>
-    <br>
-    <div class="right">
-    	<%= link_to "delete", prefecture_path(@prefecture), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
 	</div>
 </div>
+<%= render 'prefectures/list', prefectures: @prefectures %>
