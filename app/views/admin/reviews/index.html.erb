@@ -33,7 +33,7 @@
               </div>
             </td>
             <td>
-              <%= link_to "Destroy", admin_review_path(review), method: :delete, class:"btn btn-danger",data: { confirm: '本当に消しますか？'} %><br>
+              <%= link_to "Destroy", admin_review_path(review), method: :delete, "data-confirm" => "are you sure?", class:"btn btn-danger" %><br>
               <% if user_signed_in? %>
                 <%= link_to "Edit", edit_cd_review_path(review, :cd_id), class:"btn btn-success", style: "margin-top: 5px;" %>
               <% end %>
