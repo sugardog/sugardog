@@ -3,8 +3,8 @@ class HistoriesController < ApplicationController
 	# indexの時だけadminの認証がいる
 	before_action :authenticate_admin?, only: [:index, :update]
 
-	# ログインユーザーと編集しようとしているユーザーのidが一致しない場合にアクセスを拒否するメソッド
-	# before_action :ensure_correct_user
+	# index以外のページをログインuserが見れるようにする
+	before_action :authenticate_user?, except: [:index, :update]
 
 	def index
 		@histories = History.all
@@ -48,8 +48,11 @@ class HistoriesController < ApplicationController
 		redirect_to root_path unless  admin_signed_in?
 	end
 
-	# def ensure_correct_user
-	# end
+	# admin又はuserでログインしていなければ、ページは見れないようにする
+	def authenticate_user?
+		redirect_to root_path unless  user_signed_in? || admin_signed_in?
+	end
+
 	def history_params
 		params.require(:history).permit(:total_price, :prefecture_id, :zipcode, :address, :tel, :name, :user_id, :status,
 			cd_histories_attributes: [:id, :history_id, :cd_id, :count, :last_price])

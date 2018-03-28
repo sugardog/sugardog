@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+	before_action :authenticate_user!
+	
 	def create
 		artist = Artist.find(params[:artist_id])
 		favorite = current_user.favorites.new(artist_id: artist.id)

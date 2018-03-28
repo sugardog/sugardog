@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    redirect_to admin_user_path(current_user)
+    # redirect_to admin_user_path(current_user)
     super
   end
 
@@ -51,8 +51,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+ protected
 
+  def after_update_path_for(resource)
+    admin_user_path(current_user)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :kana_first_name, :kana_last_name, :zipcode, :tel, :prefecture_id, :address, :nickname])

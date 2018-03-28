@@ -1,4 +1,7 @@
 class GenresController < ApplicationController
+
+	before_action :authenticate_admin?, except: [:index, :show]
+
 	def index
 		@genres = Genre.all
 		@genre = Genre.new
@@ -44,5 +47,8 @@ class GenresController < ApplicationController
 		params.require(:genre).permit(:genre_name)
 	end
 
+	def authenticate_admin?
+		redirect_to root_path unless admin_signed_in?
+	end
 
 end
