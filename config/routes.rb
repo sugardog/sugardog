@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
 	# get 'search', to: 'application#search'
 	get 'cds/about_us' => 'cds#about_us'
-	get 'carts/sorry' => 'carts#sorry'
+	get 'cds/greeting' => 'cds#greeting'
 	get 'cds/search' => 'cds#search'
 	get 'carts/:id/select' => 'carts#select'
 	post 'carts/:id/confirm' => 'carts#confirm', as: 'confirm'

@@ -7,7 +7,8 @@ class Cd < ApplicationRecord
 	has_many :cd_carts
 	has_many :carts, through: :cd_carts
 	has_many :reviews
-	belongs_to :ranking
+	has_one :ranking
+	enum status:{販売中: 0,販売中止: 1}
 
 	validates :album_name, :album_kana_name, :label, :price, :stock, :release_date, presence: true
 
