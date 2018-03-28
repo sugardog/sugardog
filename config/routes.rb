@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 	get 'users/:id/history' => 'users#history', as: 'user_history'
 	get 'admin/users/:id/restore' => 'admin/users#restore', as: 'admin_user_restore' # 論理削除で退会させた人を復元させる
 
+	# 論理削除後にログイン状態を維持してしまうので、強制ログアウトを行う
 	devise_scope :user do
 		get '/logout', to: 'users/sessions#destroy', as: "logout"
 	end
