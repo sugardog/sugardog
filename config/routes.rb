@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   	namespace :admin do
   		resources :users
-  		resources :reviews, except: [:new, :create, :show]
+  		resources :reviews, only: [:index, :destroy]
   	end
 
 	root 'cds#index'
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 	resources :cds do
 		resource :cd_carts
 		resources :discs, except: [:index, :show]
-		resources :reviews, only: [:index, :create, :new]
+		resources :reviews, except: [:destroy]
 			# resources :songs
 		# end
 	end

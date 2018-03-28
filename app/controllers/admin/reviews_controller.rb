@@ -2,7 +2,7 @@ class Admin::ReviewsController < ApplicationController
 	# before_action :authenticate_admin!
 	def index
 		if admin_signed_in?
-			@reviews = Review.all
+			@reviews = Review.order(created_at: :desc)
 		elsif user_signed_in?
 			@reviews = Review.where(user_id: current_user.id)
 		else
