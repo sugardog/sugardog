@@ -1,5 +1,7 @@
 class RankingsController < ApplicationController
- 
+
+  before_action :authenticate_admin?
+
   def index
   	@cds = Cd.all
   	@rankings = Ranking.all
@@ -25,5 +27,9 @@ end
 private
 	def ranking_params
 		params.require(:ranking).permit(:cd_id, :id, :rank)
+	end
+
+	def authenticate_admin?
+		redirect_to root_path unless admin_signed_in?
 	end
 end

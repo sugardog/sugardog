@@ -10,14 +10,14 @@ class UsersController < ApplicationController
 		@user = current_user
 	end
 
-	def destroy
-		user = User.find(params[:id])
-		user.destroy
-		if admin_signed_in?
-			redirect_to users_path
-		else
-			redirect_to cds_path
-		end
-	end
+	# def destroy
+	# 	user = User.find(params[:id])
+	# 	user.destroy
+	# 	if admin_signed_in?
+	# 		redirect_to users_path
+	# 	else
+	# 		redirect_to cds_path
+	# 	end
+	# end
 
 end

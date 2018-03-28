@@ -38,10 +38,6 @@ class Admin::UsersController < ApplicationController
 		redirect_to admin_user_path(user)
 	end
 
-	# def quit
-	# 	@user = User.find(params[:id])
-	# end
-
 	def destroy
 		user = User.find(params[:id])
 		user.soft_destroy

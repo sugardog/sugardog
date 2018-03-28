@@ -1,5 +1,7 @@
 class DiscsController < ApplicationController
 
+	before_action :authenticate_admin?
+
 	def new
 		@cd = Cd.find(params[:cd_id])
 			@disc = Disc.new
@@ -47,9 +49,14 @@ class DiscsController < ApplicationController
   		redirect_to cd_path(@cd)
 	end
 
-private
-def disc_params
-	params.require(:disc).permit(:cd_id, :disc_num, :songs_attributes => [:id, :song_name, :song_kana_name, :order_num, :minutes, :disc_id, :singer_id, :_destroy])
+	private
+	def disc_params
+		params.require(:disc).permit(:cd_id, :disc_num, :songs_attributes => [:id, :song_name, :song_kana_name, :order_num, :minutes, :disc_id, :singer_id, :_destroy])
 
-end
+	end
+
+	def authenticate_admin?
+		redirect_to root_path unless admin_signed_in?
+	end
+
 end

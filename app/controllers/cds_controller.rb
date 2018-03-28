@@ -1,5 +1,8 @@
 class CdsController < ApplicationController
 
+	# adminの認証
+	before_action :authenticate_admin?, only: [:new, :edit, :create, :update, :destroy]
+
 def about_us
 	
 end
@@ -90,6 +93,11 @@ end
 private
 def cd_params
 	params.require(:cd).permit(:album_name, :album_kana_name, :image, :label, :price, :stock, :release_date, :cd_introduction, :artist_id, :campaign_id, :status)
+end
+
+# adminでログインしていなければ、root_pathにリダイレクトされる
+def authenticate_admin?
+	redirect_to root_path unless admin_signed_in?
 end
 
 end

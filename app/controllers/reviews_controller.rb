@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+	before_action :authenticate_user?
+
 	def new
 		if Review.find_by(cd_id: params[:cd_id] , user_id: current_user)
 			redirect_to user_history_path(current_user), flash: {review: "既に記入済みです"}
@@ -43,4 +46,10 @@ class ReviewsController < ApplicationController
 	def review_params
 		params.require(:review).permit(:comment, :star, :user_id, :cd_id)
 	end
+
+	# admin又はuserでログインしていなければ、ページは見れないようにする
+	def authenticate_user?
+		redirect_to root_path unless user_signed_in? || admin_signed_in?
+	end
+
 end
