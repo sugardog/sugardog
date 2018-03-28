@@ -44,6 +44,9 @@
 		             	もう少々お待ちくださいませ。
 		            </div>
 	            <% end %>
+	             <% if flash[:nortice] %>
+	             	<%= flash[:nortice] %>
+	            <% end %>
             <% end %>
 			<h2>CDS</h2>
 			<% sell = @cds.where(status: 0) %>

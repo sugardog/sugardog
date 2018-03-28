@@ -49,6 +49,15 @@
 	padding-top: 200px;
 	overflow: auto;
 }
+.work {
+	height: 1000px;
+	background-size: cover;
+	background-attachment: fixed;
+  	margin-top: -100px;
+	background-image: url(/assets/music.jpg);
+	padding-top: 200px;
+	overflow: auto;
+}
 .us {
 	width: 700px;
 	background-color: #0000004d;
@@ -61,6 +70,14 @@
 	width: 700px;
 	height: 500px;
 	background-color: #eaeaea6e;
+	margin: 0 auto;
+	color: #fff;
+	text-align: center;
+}
+.we {
+	width: 700px;
+	height: 500px;
+	background-color: #f1a9c775;
 	margin: 0 auto;
 	color: #fff;
 	text-align: center;

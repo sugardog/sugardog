@@ -78,13 +78,25 @@
 				            		<div class="nav-text white">mymenu</div>
 				            	</div>
 				            <% end %>
-				            <%= link_to cart_path(current_user.cart) do %>
-				            	<div class="nav-list-big">
-				            		<li class="fa fa-shopping-cart white" style="font-size: 45px"><br>
-				            			<div class="nav-text white">cart</div>
-				            		</li>
-				            	</div>
-				            <% end %>
+				            <% if Cart.find_by(user_id: current_user) %>
+					            <%= link_to cart_path(current_user.cart) do %>
+					            	<div class="nav-list-big">
+					            		<li class="fa fa-shopping-cart white" style="font-size: 45px">
+					            			<br>
+					            			<div class="nav-text white"><%= current_user.cart.cd_carts.count %>>個</div>
+					            		</li>
+					            	</div>
+					            <% end %>
+					         <% else %>
+					         <%= link_to cds_path do %>
+					            	<div class="nav-list-big">
+					            		<li class="fa fa-shopping-cart white" style="font-size: 25px">
+					            			<br>
+					            			<div class="nav-text white">カート内は<br>空です</div>
+					            		</li>
+					            	</div>
+					            <% end %>
+					        <% end %>
 				        </ul>
 				    <% else %>
 				    	<ul class="nav-list clearfix">

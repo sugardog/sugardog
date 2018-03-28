@@ -36,7 +36,6 @@ class DiscsController < ApplicationController
 		@disc = Disc.find(params[:id])
 		@songs = @disc.songs
 		@disc.update(disc_params)
-		# binding.pry
 		redirect_to cd_path(@cd)
 	end
 
