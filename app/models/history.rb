@@ -9,4 +9,7 @@ class History < ApplicationRecord
 	has_many :cd_histories
 	accepts_nested_attributes_for :cd_histories
 
+	# kakurenbo-putiを使えるようにする
+    soft_deletable
+
 end

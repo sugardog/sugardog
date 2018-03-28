@@ -5,6 +5,7 @@
     <li class="active"><a data-toggle="tab" href="#home">受付</a></li>
     <li><a data-toggle="tab" href="#menu1">準備中</a></li>
     <li><a data-toggle="tab" href="#menu2">発送済</a></li>
+    <li><a data-toggle="tab" href="#menu3">注文キャンセル</a></li>
   </ul>
   <!-- タブ内容 -->
   <div class="tab-content">
@@ -16,7 +17,7 @@
           <%= link_to admin_user_path(history.user.id) do %>
             <%= history.user.last_name %> <%= history.user.first_name %>
           <% end %>
-          <div class="right"><%= history.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="right">注文日：<%= history.created_at.strftime('%Y/%m/%d') %></div>
         </button>
         <div id="demo<%= history.id %>" class="collapse">
           <div class="dropdown">
@@ -36,7 +37,9 @@
                 <tr>
                   <td>
                     <%= link_to cd_path(c_h.cd) do %>
-                      <%= attachment_image_tag c_h.cd, :image, :fill, 60, 60, format: 'jpeg', class: "cart_show_image" %>
+                      <div class="cart_show_image">
+                        <%= attachment_image_tag c_h.cd, :image %>
+                      </div>
                     <% end %>
                   </td>
                   <td>
@@ -87,7 +90,7 @@
           <%= link_to admin_user_path(history.user.id) do %>
             <%= history.user.last_name %> <%= history.user.first_name %>
           <% end %>
-          <div class="right"><%= history.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="right">注文日：<%= history.created_at.strftime('%Y/%m/%d') %></div>
         </button>
         <div id="demo<%= history.id %>" class="collapse">
           <div class="dropdown">
@@ -107,7 +110,9 @@
                 <tr>
                   <td>
                     <%= link_to cd_path(c_h.cd) do %>
-                      <%= attachment_image_tag c_h.cd, :image, :fill, 60, 60, format: 'jpeg', class: "cart_show_image" %>
+                      <div class="cart_show_image">
+                        <%= attachment_image_tag c_h.cd, :image %>
+                      </div>
                     <% end %>
                   </td>
                   <td>
@@ -159,7 +164,7 @@
           <%= link_to admin_user_path(history.user.id) do %>
             <%= history.user.last_name %> <%= history.user.first_name %>
           <% end %>
-          <div class="right"><%= history.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="right">注文キャンセル日：<%= history.created_at.strftime('%Y/%m/%d') %></div>
         </button>
         <div id="demo<%= history.id %>" class="collapse">
           <div class="dropdown">
@@ -179,7 +184,85 @@
                 <tr>
                   <td>
                     <%= link_to cd_path(c_h.cd) do %>
-                      <%= attachment_image_tag c_h.cd, :image, :fill, 60, 60, format: 'jpeg', class: "cart_show_image" %>
+                      <div class="cart_show_image">
+                        <%= attachment_image_tag c_h.cd, :image %>
+                      </div>
+                    <% end %>
+                  </td>
+                  <td><%= link_to c_h.cd.album_name, cd_path(c_h.cd) %><br>
+                      <%= link_to c_h.cd.artist.artist_name, artist_path(c_h.cd.artist) %>
+                  </td>
+                  <td> <%= c_h.last_price %> 円（税込) </td>
+                </tr>
+              <% end %>
+
+              <tr>
+                <th colspan="2">小計</th>
+                <td> <%= history.total_price %> 円(税込) </td>
+              </tr>
+              <tr>
+                <th colspan="2">代引手数料</th>
+                <td> <%= history.user.prefecture.postage %> 円(税込) </td>
+              </tr>
+              <tr>
+                <th colspan="2">合計</th>
+                <td> <%= history.total_price + history.user.prefecture.postage %> 円(税込) </td>
+              </tr>
+              <tr>
+                <th colspan="3"><div>お手続内容</div></th>
+              </tr>
+              <tr>
+                <th>お支払方法</th>
+                <td colspan="2">代引き</td>
+              </tr>
+              <tr>
+                <th>お届け先</th>
+                <td colspan="2">
+                  <%= history.name %><br> 〒 <%= history.zipcode %><br>
+                  <%= history.prefecture.prefecture_name %> <%= history.address %><br>
+                  <%= history.tel %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+      <% end %>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3> 注文キャンセル商品 </h3>
+      <% histories = @histories.where.not(soft_destroyed_at: nil) %>
+      <% histories.each do |history| %>
+        <button class="list-group-item" data-toggle="collapse" data-target="#demo<%= history.id %>" style="background-color: pink">
+          <%= link_to admin_user_path(history.user.id) do %>
+            <%= history.user.last_name %> <%= history.user.first_name %>
+          <% end %>
+          <div class="right">
+            注文日：<%= history.created_at.strftime('%Y/%m/%d') %><br>
+            注文キャンセル日：<%= history.soft_destroyed_at.strftime('%Y/%m/%d') %>
+          </div>
+        </button>
+        <div id="demo<%= history.id %>" class="collapse">
+<!--           <div class="dropdown">
+            <%#= form_for(history) do|f| %>
+              <%#= f.select :status,History.statuses.keys, {}, {class: "btn btn-info dropdown-toggle"} %>
+              <%#= f.submit "ステータスを更新", class: "btn btn-primary" %>
+            <%# end %>
+          </div> -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="3">商品内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% history.cd_histories.each do |c_h| %>
+                <tr>
+                  <td>
+                    <%= link_to cd_path(c_h.cd) do %>
+                      <div class="cart_show_image">
+                        <%= attachment_image_tag c_h.cd, :image %>
+                      </div>
                     <% end %>
                   </td>
                   <td><%= link_to c_h.cd.album_name, cd_path(c_h.cd) %><br>

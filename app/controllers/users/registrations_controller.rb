@@ -21,7 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @genres = Genre.all
-    
+    @rankings = Ranking.all
+    @rankings = Ranking.order("rank asc")
     super
   end
 
@@ -31,10 +32,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # PUT /resource
-  # def update
-  #   super
-  #   redirect_to admin_user_path(current_user)
-  # end
+  def update
+    redirect_to admin_user_path(current_user)
+    super
+  end
 
   # DELETE /resource
   # def destroy

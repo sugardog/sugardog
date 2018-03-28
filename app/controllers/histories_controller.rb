@@ -36,7 +36,7 @@ class HistoriesController < ApplicationController
 
 	def destroy
 		history = History.find(params[:id])
-		history.destroy
+		history.soft_destroy
 		redirect_to user_history_path(current_user)
 
 	end

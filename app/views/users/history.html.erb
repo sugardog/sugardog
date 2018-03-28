@@ -38,12 +38,13 @@
                                 </div>
                               <% end %>
                             </td>
-                            <td><%= c_h.cd.album_name %><br>
-                                <%= c_h.cd.artist.artist_name %>
+                            <td>
+                              <%= c_h.cd.album_name %><br>
+                              <%= c_h.cd.artist.artist_name %>
                             </td>
-                            <td><%= c_h.last_price %> 円（税込) <br>
-                                <%= link_to "write review", new_review_path, class: "btn btn-default write" %>
-                                <%= link_to "write review", new_cd_review_path(c_h.cd), class: "btn btn-default write" %>
+                            <td>
+                              <%= c_h.last_price %> 円（税込) <br>
+                              <%= link_to "write review", new_cd_review_path(c_h.cd), class: "btn btn-default write" %>
                             </td>
                           </tr>
                         <% end %>
@@ -91,7 +92,7 @@
               <br>
             <% end %>
           <% else %>
-            <p class="list-group-item list-group-item-warning">お客様がご購入された商品はまだありません。</p>
+            <p class="list-group-item list-group-item-warning">お客様がご購入された商品はまだございません。</p>
           <% end %>
         </div>
       </div>
