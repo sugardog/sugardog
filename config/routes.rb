@@ -31,6 +31,10 @@ Rails.application.routes.draw do
 	get 'users/:id/history' => 'users#history', as: 'user_history'
 	get 'admin/users/:id/restore' => 'admin/users#restore', as: 'admin_user_restore' # 論理削除で退会させた人を復元させる
 
+	devise_scope :user do
+		get '/logout', to: 'users/sessions#destroy', as: "logout"
+	end
+
 	resources :deliveries, except: [:index, :show]
 
 	resources :cds do

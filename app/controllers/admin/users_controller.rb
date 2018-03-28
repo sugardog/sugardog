@@ -40,11 +40,13 @@ class Admin::UsersController < ApplicationController
 
 	def destroy
 		user = User.find(params[:id])
+		# session[:user] = nil
 		user.soft_destroy
 		if admin_signed_in?
 			redirect_to admin_users_path
 		else
-			redirect_to cds_path
+			redirect_to logout_path
+		# 	redirect_to destroy_user_session_path, method: :delete
 		end
 	end
 

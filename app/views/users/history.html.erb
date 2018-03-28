@@ -53,11 +53,11 @@
                         <% end %>
                         <tr>
                           <th colspan="2">小計</th>
-                          <td> <%= history.total_price %> 円(税込) </td>
+                          <td> <%= history.total_price %> 円(税抜) </td>
                         </tr>
                         <tr>
                           <th colspan="2">代引手数料</th>
-                          <td> <%#= history.prefecture.postage %> 円(税込) </td>
+                          <td> <%= history.prefecture.postage %> 円(税込) </td>
                         </tr>
                         <tr>
                           <th colspan="2">合計</th>
@@ -72,10 +72,11 @@
                         </tr>
                         <tr>
                           <th>お届け先</th>
-                          <td colspan="2">佐藤犬代<br>
-                                          〒150-0041<br>
-                                          東京都渋谷区神南1丁目19番11号パークウェースクエア2 4階<br>
-                                          03-6868-8470
+                          <td colspan="2">
+                            <%= history.name %><br>
+                            <%= history.zipcode %>〒<br>
+                            <%= history.prefecture.prefecture_name %> <%= history.address %><br>
+                            <%= history.tel %>
                           </td>
                         </tr>
                         <% if history.status_before_type_cast == 0 %>

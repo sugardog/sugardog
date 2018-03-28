@@ -57,7 +57,7 @@ class DeliveriesController < ApplicationController
 	end
 
 	def ensure_correct_user
-		@delivery = Delivery.find_by(id:params[:id])
+		@delivery = Delivery.find_by(id: params[:id])
 		if Delivery.exists?(params[:id])							 # Deliveryのレコードが存在しているかどうか、".exist?()"でチェックしている
 			unless admin_signed_in? then  							 # adminでsigned_inしていないときに
 				if @delivery.user_id != @current_user.id 			 # ログインuserのidと、見ようとしているページのuser_idが一致していなければ
