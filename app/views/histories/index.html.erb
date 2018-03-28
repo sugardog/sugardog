@@ -164,7 +164,7 @@
           <%= link_to admin_user_path(history.user.id) do %>
             <%= history.user.last_name %> <%= history.user.first_name %>
           <% end %>
-          <div class="right">注文キャンセル日：<%= history.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="right">注文日：<%= history.created_at.strftime('%Y/%m/%d') %></div>
         </button>
         <div id="demo<%= history.id %>" class="collapse">
           <div class="dropdown">

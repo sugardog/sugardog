@@ -52,7 +52,7 @@ class HistoriesController < ApplicationController
 	def authenticate_user?
 		redirect_to root_path unless  user_signed_in? || admin_signed_in?
 	end
-	
+
 	def history_params
 		params.require(:history).permit(:total_price, :prefecture_id, :zipcode, :address, :tel, :name, :user_id, :status,
 			cd_histories_attributes: [:id, :history_id, :cd_id, :count, :last_price])

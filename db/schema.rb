@@ -122,12 +122,12 @@ ActiveRecord::Schema.define(version: 20180328084234) do
     t.datetime "soft_destroyed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.integer "prefecture_id"
     t.string "zipcode"
     t.string "address"
     t.string "tel"
     t.string "name"
-    t.integer "user_id"
     t.integer "status", default: 0, null: false
   end
 

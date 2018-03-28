@@ -10,11 +10,13 @@
 	    	<ol>
 		    	<li> <%= link_to "ユーザー情報の確認", admin_user_path(user) %> </li>
 		    	<li> <%= link_to "基本情報の編集", edit_admin_user_path(user) %> </li>
-		    	<li> <%= link_to "お届け先追加", new_delivery_path %> </li>
-		    	<li> <%= link_to "パスワード変更", edit_user_registration_path %> </li>
-		    	<li> <%= link_to "購入履歴", user_history_path(user) %> </li>
-		    	<li> <%= link_to "お気に入りアーティスト", favorites_path(user) %> </li>
-		    	<li> <%= link_to "my review", admin_reviews_path(user) %> </li>
+			    <li> <%= link_to "お届け先追加", new_delivery_path %> </li>
+			    <% if user_signed_in? %>
+			    	<li> <%= link_to "パスワード変更", edit_user_registration_path %> </li>
+			    	<li> <%= link_to "購入履歴", user_history_path(user) %> </li>
+			    	<li> <%= link_to "お気に入りアーティスト", favorites_path(user) %> </li>
+			    	<li> <%= link_to "my review", admin_reviews_path(user) %> </li>
+		    	<% end %>
 		    </ol>
     	</div>
 	</div>

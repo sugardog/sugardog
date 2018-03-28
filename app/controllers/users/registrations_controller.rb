@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
  protected
-
+  # パスワード変更後のパス先設定
   def after_update_path_for(resource)
     admin_user_path(current_user)
   end
