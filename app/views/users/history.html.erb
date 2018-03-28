@@ -6,6 +6,9 @@
         <div class="main-menu">
           <h3>購入履歴</h3>
           <% if History.exists?(user_id: @user.id) %>
+            <% if flash[:review] %>
+              <div style="font-size: 20px"><%= current_user.nickname %>様は、このCDレビューを記入済みです。</div>
+            <% end %>
             <% @user.histories.reverse_each do |history| %>
               <button class="list-group-item" data-toggle="collapse" data-target="#demo<%= history.id %>" style="background-color: #cecece7d">
                 <%= history.created_at.strftime('%Y/%m/%d') %>

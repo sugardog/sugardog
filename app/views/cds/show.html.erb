@@ -7,13 +7,13 @@
       <div class="show_pic">
         <%= attachment_image_tag @cd,:image %><br>
       </div>
+      <% if @cd.reviews.present? %>
       <% sum = 0 %>
           <% @cd.reviews.each do |c| %>
             <% sum += c.star %>
           <% end %>
           <% star = sum / @cd.reviews.count %>
             <div class="star-rating" data-score=<%= star.round %>></div>
-        <% if @cd.reviews.present? %>
          <%= link_to cd_reviews_path(@cd) do %>
          <p>ユーザーレビュー<%= @cd.reviews.count %>件</p>
          <% end %>
