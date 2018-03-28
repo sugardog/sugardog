@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   	namespace :admin do
   		resources :users
-  		resources :reviews, exept: [:new, :create]
+  		resources :reviews, except: [:new, :create, :show]
   	end
 
 	root 'cds#index'
@@ -28,12 +28,14 @@ Rails.application.routes.draw do
 	get 'users/:id/quit' => 'users#quit', as: 'quit' # 退会ページへのパス
 	get 'users/:id/favorites' => 'favorites#favorite', as: "favorites"
 	get 'users/:id/history' => 'users#history', as: 'user_history'
+	get 'admin/users/:id/restore' => 'admin/users#restore', as: 'admin_user_restore' # 論理削除で退会させた人を復元させる
 
 	resources :deliveries, except: [:index, :show]
 
 	resources :cds do
 		resource :cd_carts
 		resources :discs, except: [:index, :show]
+		resources :reviews, only: [:index, :create, :new]
 			# resources :songs
 		# end
 	end
@@ -49,8 +51,6 @@ Rails.application.routes.draw do
 	resources :prefectures, except: [:new]
 	resource :singers, except: [:show, :index, :edit]
 	resources :admins
-	resources :reviews, only: [:new, :create]
-
 	resources :cd_histories, only: [:show]
 	resources :cd_genres, only: [:show]
 	resources :rankings, only: [:index, :destroy, :create]

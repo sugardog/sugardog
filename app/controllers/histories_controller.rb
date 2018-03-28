@@ -15,6 +15,7 @@ class HistoriesController < ApplicationController
 		history.update(history_params)
 		redirect_to histories_path
 	end
+
 	def create
 		@user = User.find(current_user[:id])
 		@history = History.new(history_params)
@@ -35,7 +36,7 @@ class HistoriesController < ApplicationController
 
 	def destroy
 		history = History.find(params[:id])
-		history.destroy
+		history.soft_destroy
 		redirect_to user_history_path(current_user)
 
 	end
@@ -47,6 +48,8 @@ class HistoriesController < ApplicationController
 		redirect_to root_path unless  admin_signed_in?
 	end
 
+	# def ensure_correct_user
+	# end
 	def history_params
 		params.require(:history).permit(:total_price, :prefecture_id, :zipcode, :address, :tel, :name, :user_id, :status,
 			cd_histories_attributes: [:id, :history_id, :cd_id, :count, :last_price])

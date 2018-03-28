@@ -46,7 +46,6 @@ def new
 	@cd_genres = CdGenre.all
 	@genres = Genre.all
 	@artists = Artist.all
-	
 
 	if params[:id].present?
 		@cd = Cd.find(params[:id]) 

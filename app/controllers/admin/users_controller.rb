@@ -24,10 +24,12 @@ class Admin::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@genres = Genre.all
 	end
 
 	def edit
 		@user = User.find(params[:id])
+		@genres = Genre.all
 	end
 
 	def update
@@ -36,13 +38,13 @@ class Admin::UsersController < ApplicationController
 		redirect_to admin_user_path(user)
 	end
 
-	def quit
-		@user = User.find(params[:id])
-	end
+	# def quit
+	# 	@user = User.find(params[:id])
+	# end
 
 	def destroy
 		user = User.find(params[:id])
-		user.destroy
+		user.soft_destroy
 		if admin_signed_in?
 			redirect_to admin_users_path
 		else
@@ -50,9 +52,18 @@ class Admin::UsersController < ApplicationController
 		end
 	end
 
+	# 論理削除で退会させた人を復元させる
+	def restore
+		user = User.find(params[:id])
+		user.restore
+		redirect_to admin_users_path
+	end
+
+
 	private
 	def user_params
-		params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :zipcode, :prefecture_id, :address, :tel, :email)
+		params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name,
+		 :zipcode, :prefecture_id, :address, :tel, :email)
 	end
 
 	# adminでログインしていなければ、root_pathにリダイレクトされる
