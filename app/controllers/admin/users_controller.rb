@@ -59,7 +59,7 @@ class Admin::UsersController < ApplicationController
 	private
 	def user_params
 		params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name,
-		 :zipcode, :prefecture_id, :address, :tel, :email)
+		 :zipcode, :prefecture_id, :address, :tel, :email, :nickname)
 	end
 
 	# adminでログインしていなければ、root_pathにリダイレクトされる
