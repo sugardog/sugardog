@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-	before_action :authenticate_user?
+	before_action :authenticate_user?, except: [:index]
 
 	def new
 		if Review.find_by(cd_id: params[:cd_id] , user_id: current_user)

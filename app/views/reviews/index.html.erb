@@ -99,9 +99,6 @@
                  <span class="star-rating" data-score=<%= f.star %>></span><br>
                  <%= f.comment %><br>
                   <div class="review_date"><%= f.created_at.strftime('%Y/%m/%d')  %>
-                   <% if current_user.id = f.user_id %>
-                    <%#= link_to "edit", edit_cd_review_path(f.id), class: "btn btn-success"%>
-                   <% end %>
                 </td>
               </tr>
             <% end %>
